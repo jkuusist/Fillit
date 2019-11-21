@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 13:05:10 by lharvey           #+#    #+#             */
-/*   Updated: 2019/11/21 11:07:35 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/21 14:41:41 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_isspace(int c);
 int					ft_intlen(int n);
 int					get_next_line (const int fd, char **line);
-void				print_binary(char c);
+void				print_binary(unsigned char c);
 
 #endif
