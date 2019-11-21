@@ -6,11 +6,10 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:01:49 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/21 11:02:25 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/21 11:08:04 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "print_binary.h"
 #include "libft.h"
 
 void	print_binary(char c)
