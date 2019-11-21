@@ -6,13 +6,13 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:01:49 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/21 11:08:04 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/21 14:34:13 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	print_binary(char c)
+void	print_binary(unsigned char byte)
 {
 	int		i;
 	char	str[9];
@@ -21,7 +21,7 @@ void	print_binary(char c)
 	str[0] = '\0';
 	while (i > 0)
 	{
-		ft_strcat(str, ((c & i) == i) ? "1" : "0");
+		ft_strcat(str, ((byte & i) == i) ? "1" : "0");
 		i >>= 1;
 	}
 	ft_putstr(str);
