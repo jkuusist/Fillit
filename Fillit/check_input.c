@@ -6,31 +6,53 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/22 16:39:10 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/22 17:17:12 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #define BUFF_SIZE 512
 #include <unistd.h>
-
 #include <stdio.h>
 
-static int	check_character(char c)
+static int	line_checker(char *map)
 {
-	if ((c == '#') || (c == '.') || (c == '\n'))
-		return (1);
-	else
+	unsigned char str_length;
+	unsigned char tetri_height;
+	unsigned char num_tetri;
+
+	str_length = 0;
+	num_tetri = 0;
+	tetri_height = 0;
+	while ((*map == '#' || *map == '.') && (str_length++ < 6) 
+			&& (num_tetri <= 26 && (tetri_height <= 4)))
+	{
+		if (str_length == 5 && *map == '\n')
+		{
+			str_length = 0;
+			tetri_height++;
+		}
+		if (str_length == 0 && *map == '\n' 
+				&& *(map + 1) != '#' || *(map + 1) != '.')
+			return (0);
+		if (str_length == 0 && *map == '\n')
+		{
+		   	tetri_height = 0;
+			num_tetri++;
+		}
+		if (*map == '\0')
+		{
+			if (str_length == 5)
+			{
+				num_tetri++;
+				return (1);
+			}
+			else 
+				return (0):
+		}
+		map++;
+	}
+	else 
 		return (0);
-}
-
-static int linelength(char *s)
-{
-	int i;
-
-	i = 0;
-	while ((s[i] != '\0') && check_character(s[i]))
-		i++;
-	return (i);
 }
 
 int		check_input(int fd)
