@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/22 17:28:53 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/22 17:46:48 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static int	line_checker(char *map)
 	str_length = 0;
 	num_tetri = 0;
 	tetri_height = 0;
-	while ((*map == '#' || *map == '.') && (str_length++ < 6)
-			&& (num_tetri <= 26 && (tetri_height <= 4)))
+	while ((*map == '#' || *map == '.' || *map == '\n' || *map == '\0') 
+			&& (str_length++ < 6) && (num_tetri <= 26 && (tetri_height <= 4)))
 	{
 		if (str_length == 5 && *map == '\n')
 		{
@@ -32,7 +32,7 @@ static int	line_checker(char *map)
 			tetri_height++;
 		}
 		if (str_length == 0 && *map == '\n'
-				&& (*(map + 1) != '#' || *(map + 1) != '.'))
+				&& (*(map + 1)) != '#' || (*(map + 1)) != '.')
 			return (0);
 		if (str_length == 0 && *map == '\n')
 		{
