@@ -6,34 +6,22 @@ LIBFT = libft/
 
 SRCS = Fillit/check_input.c Fillit/main.c
 
-INCLUDES = $(LIBFT)/includes
-
 OBJECTS = $(SRCS:.c=.o)
-
-PROGRAM = Fillit
-
-PROGRAM_OBJ = $(PROGRAM:.c=.o)
 
 all: $(NAME)
 
 $(NAME):
 	make -C $(LIBFT) fclean && make -C $(LIBFT)
+	gcc -o $(NAME) -Wall -Werror -Wextra $(OBJECTS) libft.a
 
-.PHONY: clean fclean re testing
+.PHONY: clean fclean re
 
 clean:
-	rm -f *.o
-	rm -f ../../*.o
-	rm -f $(LIBFT)/$(OBJECTS)
+	rm -f $(OBJECTS)
+	make -C $(LIBFT) clean
 
 fclean: clean
 	rm -f $(NAME)
-	rm test_gnl
 	make -C $(LIBFT) fclean
 
 re: fclean all
-
-testing:
-	clang -Wall -Wextra -Werror -I $(INCLUDES) -o $(PROGRAM_OBJ) -c $(PROGRAM)
-	clang -Wall -Wextra -Werror -I $(INCLUDES) -o main.o -c main.c
-	clang -o test_gnl main.o $(PROGRAM_OBJ) -I $(INCLUDES) -L $(LIBFT) -lft	
