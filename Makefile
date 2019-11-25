@@ -1,16 +1,16 @@
-NAME = libft.a
+NAME = fillit
 
-HEDR = libft.h
+HEDR = fillit.h
 
-LIBFT = ../../libft
+LIBFT = libft/
 
-SRCS = ft_*.c
+SRCS = Fillit/check_input.c Fillit/main.c
 
 INCLUDES = $(LIBFT)/includes
 
 OBJECTS = $(SRCS:.c=.o)
 
-PROGRAM = ../../get_next_line.c
+PROGRAM = Fillit
 
 PROGRAM_OBJ = $(PROGRAM:.c=.o)
 
