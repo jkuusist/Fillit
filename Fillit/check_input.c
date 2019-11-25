@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/25 12:15:46 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/25 12:17:18 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	line_checker(char *map)
 	{
 		if (str_length == 0 && *map == '\n')
 		{
-			if (*(map + 1) != '#') && (*(map + 1) != '.' 
+			if ((*(map + 1) != '#') && (*(map + 1) != '.') 
 					&& (*(map + 1) != '\0'))
 				return (0);
 			else
