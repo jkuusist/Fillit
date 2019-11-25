@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/25 14:44:37 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/25 14:58:42 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,25 @@ static int	get_return_value(unsigned char line_length,
 		return (1);
 	else
 		return (0);
+}
+
+static int	handle_newline(unsigned char *line_length,
+		unsigned char *tetri_height, unsigned char *num_tetri)
+{
+	if (*line_length != 1 && *line_length != 5)
+		return (0);
+	else if (*line_length == 1 && *tetri_height == 4)
+	{
+		*tetri_height = 0;
+		*line_length = 0;
+		(*num_tetri)++;
+	}
+	else if (*line_length == 5)
+	{
+		*line_length = 0;
+		(*tetri_height)++;
+	}
+	return (1);
 }
 
 static int	line_checker(char *map)
@@ -40,21 +59,9 @@ static int	line_checker(char *map)
 	{
 		if (*map == '#')
 			num_hashtags++;
-		if (*map == '\n' && line_length != 1 && line_length != 5)
-			return (0);
 		if (*map == '\0')
 			return (get_return_value(line_length, tetri_height, num_hashtags));
-		if (line_length == 1 && *map == '\n' && tetri_height == 4)
-		{
-			tetri_height = 0;
-			line_length = 0;
-			num_tetri++;
-		}
-		if (line_length == 5 && *map == '\n')
-		{
-			line_length = 0;
-			tetri_height++;
-		}
+		handle_newline(&line_length, &tetri_height, &num_tetri);
 		map++;
 	}
 	return (0);
