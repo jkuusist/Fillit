@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/25 11:58:10 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/25 12:01:19 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	line_checker(char *map)
 				num_tetri++;
 				return (1);
 			}
-			if (num_tetri && (str_lenth == 1 && tetri_height == 0))
+			if (num_tetri && (str_length == 1 && tetri_height == 0))
 				return (1);
 			else
 				return (0);
@@ -64,7 +64,7 @@ int			check_input(int fd)
 
 	if ((ret = read(fd, map, BUFF_SIZE) < 0))
 		return (0);
-	line_checker(map);
-	printf("line checker says: %d\n", line_checker_ret);
+	line_checker_ret = line_checker(map);
+	printf("line checker returned: %d\n", line_checker_ret);
 	return (1);
 }
