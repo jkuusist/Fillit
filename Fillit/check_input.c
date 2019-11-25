@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/25 12:57:56 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/25 13:51:32 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,18 @@
 
 static int	line_checker(char *map)
 {
-	unsigned char	str_length;
+	unsigned char	line_length;
 	unsigned char	tetri_height;
 	unsigned char	num_tetri;
 
-	str_length = 0;
+	line_length = 0;
 	num_tetri = 0;
 	tetri_height = 0;
 	while ((*map == '#' || *map == '.' || *map == '\n' || *map == '\0') 
 			&& (line_length++ < 6) && (num_tetri <= 26 && (tetri_height <= 4)))
 	{
+		if (*map == '\n' && line_length != 1 && line_length != 5)
+			return (0);
 		if (*map == '\0')
 		{
 			if (line_length == 5 && tetri_height == 4)
@@ -33,7 +35,7 @@ static int	line_checker(char *map)
 				num_tetri++;
 				return (1);
 			}
-			if (num_tetri && (line_length == 2 && tetri_height == 0))
+			if (line_length == 1 && tetri_height == 4)
 				return (1);
 			else
 				return (0);
@@ -47,9 +49,7 @@ static int	line_checker(char *map)
 		{
 			line_length = 0;
 			tetri_height++;
-		}
-		if (*map == '\n' && (line_length != 1 || line_length != 5))
-			return (0);
+		}	
 		map++;
 	}
 	return (0);
