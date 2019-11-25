@@ -6,13 +6,23 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/25 14:13:45 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/25 14:44:37 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #define BUFF_SIZE 512
 #include <unistd.h>
 #include <stdio.h>
+
+static int	get_return_value(unsigned char line_length,
+		unsigned char tetri_height, unsigned char num_hashtags)
+{
+	if ((line_length == 5 || line_length == 1)
+					&& tetri_height == 4 && num_hashtags != 0)
+		return (1);
+	else
+		return (0);
+}
 
 static int	line_checker(char *map)
 {
@@ -25,7 +35,7 @@ static int	line_checker(char *map)
 	num_tetri = 0;
 	tetri_height = 0;
 	num_hashtags = 0;
-	while ((*map == '#' || *map == '.' || *map == '\n' || *map == '\0') 
+	while ((*map == '#' || *map == '.' || *map == '\n' || *map == '\0')
 			&& (line_length++ < 6) && (num_tetri <= 26 && (tetri_height <= 4)))
 	{
 		if (*map == '#')
@@ -33,12 +43,7 @@ static int	line_checker(char *map)
 		if (*map == '\n' && line_length != 1 && line_length != 5)
 			return (0);
 		if (*map == '\0')
-		{
-			if ((line_length == 5 || line_length == 1) && tetri_height == 4 && num_hashtags != 0)
-				return (1);
-			else
-				return (0);
-		}
+			return (get_return_value(line_length, tetri_height, num_hashtags));
 		if (line_length == 1 && *map == '\n' && tetri_height == 4)
 		{
 			tetri_height = 0;
@@ -49,7 +54,7 @@ static int	line_checker(char *map)
 		{
 			line_length = 0;
 			tetri_height++;
-		}	
+		}
 		map++;
 	}
 	return (0);
