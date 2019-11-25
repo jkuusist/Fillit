@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/25 14:01:04 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/25 14:13:45 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,22 @@ static int	line_checker(char *map)
 	unsigned char	line_length;
 	unsigned char	tetri_height;
 	unsigned char	num_tetri;
+	unsigned char	num_hashtags;
 
 	line_length = 0;
 	num_tetri = 0;
 	tetri_height = 0;
+	num_hashtags = 0;
 	while ((*map == '#' || *map == '.' || *map == '\n' || *map == '\0') 
 			&& (line_length++ < 6) && (num_tetri <= 26 && (tetri_height <= 4)))
 	{
+		if (*map == '#')
+			num_hashtags++;
 		if (*map == '\n' && line_length != 1 && line_length != 5)
 			return (0);
 		if (*map == '\0')
 		{
-			if ((line_length == 5 || line_length == 1) && tetri_height == 4)
+			if ((line_length == 5 || line_length == 1) && tetri_height == 4 && num_hashtags != 0)
 				return (1);
 			else
 				return (0);
@@ -38,7 +42,7 @@ static int	line_checker(char *map)
 		if (line_length == 1 && *map == '\n' && tetri_height == 4)
 		{
 			tetri_height = 0;
-			line length = 0;
+			line_length = 0;
 			num_tetri++;
 		}
 		if (line_length == 5 && *map == '\n')
