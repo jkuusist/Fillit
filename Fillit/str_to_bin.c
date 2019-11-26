@@ -6,11 +6,11 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 15:17:00 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/26 15:22:05 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/26 16:24:10 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../Libft/libft.h"
 #include <stdlib.h>
 
 unsigned int		binary_atoi(const unsigned char *str, int len)
