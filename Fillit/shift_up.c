@@ -1,20 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shift_left.c                                       :+:      :+:    :+:   */
+/*   shift_up.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/26 17:00:42 by lharvey           #+#    #+#             */
-/*   Updated: 2019/11/26 17:07:56 by jkuusist         ###   ########.fr       */
+/*   Created: 2019/11/26 16:59:06 by jkuusist          #+#    #+#             */
+/*   Updated: 2019/11/26 17:06:18 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	shift_left(unsigned int *semi_valid_map)
+void	shift_up(unsigned int *semi_valid_map)
 {
-	unsigned int	leftmost_mask;
-
-	leftmost_mask = 34952;
-	while (*semi_valid_map & leftmost_mask >= 1)
-		*semi_valid_map <<= 1;
+	while (*semi_valid_map < 4096)
+		*semi_valid_map <<= 4;
 }
