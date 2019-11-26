@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:17:19 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/26 16:50:26 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/26 17:32:35 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,12 @@ unsigned int	*create_block_array(char *string, int num_blocks)
 		{
 			if (*string == '\n')
 				nl_count++;
-			temp[j++] = *string;
-			string++;
+			*temp++ = *string++;
 		}
-		array[i] = str_to_bin(temp);
+		array[i++] = str_to_bin(temp);
 		ft_strdel((char**)&temp);
 		j = 0;
 		nl_count = 0;
-		i++;
 	}
-	array[i] = 0;
 	return (array);
 }
