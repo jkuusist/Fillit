@@ -6,11 +6,11 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 14:56:47 by lharvey           #+#    #+#             */
-/*   Updated: 2019/11/25 17:09:38 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/26 10:35:56 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	binary_checker(void *A_Tetrino)
+int	binary_checker(void *a_tetrino)
 {
 	Block = 		"##..\n##..\n....\n....\n"
 	3WayD = 		"###.\n.#..\n....\n....\n"
