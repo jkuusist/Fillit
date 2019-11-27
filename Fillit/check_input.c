@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/25 14:58:42 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/27 12:39:39 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,23 @@
 #include <unistd.h>
 #include <stdio.h>
 
+/*
+** A penultimate check for any tetrino, ensuring almost all criteria.
+*/
+
 static int	get_return_value(unsigned char line_length,
 		unsigned char tetri_height, unsigned char num_hashtags)
 {
 	if ((line_length == 5 || line_length == 1)
-					&& tetri_height == 4 && num_hashtags != 0)
+					&& tetri_height == 4 && num_hashtags == 4)
 		return (1);
 	else
 		return (0);
 }
+
+/*
+**  Checks lengths of tetrinos, subfn of line checker
+*/
 
 static int	handle_newline(unsigned char *line_length,
 		unsigned char *tetri_height, unsigned char *num_tetri)
@@ -42,6 +50,10 @@ static int	handle_newline(unsigned char *line_length,
 	}
 	return (1);
 }
+
+/*
+** Ensure no invalid chars, over/under length/height but no N.N. check
+*/
 
 static int	line_checker(char *map)
 {
@@ -76,6 +88,7 @@ int			check_input(int fd)
 	if ((ret = read(fd, map, BUFF_SIZE) < 0))
 		return (0);
 	line_checker_ret = line_checker(map);
+	// DO NOT FORGET TO REMOVE THIS LINE AND THE LIBRARY WE DONT NEED
 	printf("line checker returned: %d\n", line_checker_ret);
 	return (1);
 }
