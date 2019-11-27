@@ -2,17 +2,20 @@ NAME = fillit
 
 HEDR = fillit.h
 
-LIBFT = libft/
+LIBFT = ../Libft
 
-SRCS = Fillit/check_input.c Fillit/main.c
+SRCS = binary_checker.c str_to_bin.c create_block_array.c check_input.c main.c 
 
 OBJECTS = $(SRCS:.c=.o)
+
+FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
 $(NAME):
-	make -C $(LIBFT) fclean && make -C $(LIBFT)
-	gcc -o $(NAME) -Wall -Werror -Wextra $(OBJECTS) libft.a
+	make -C $(LIBFT) fclean
+	make -C $(LIBFT)
+	gcc $(FLAGS) $(SRCS) $(LIBFT)/libft.a -o $(NAME)
 
 .PHONY: clean fclean re
 
