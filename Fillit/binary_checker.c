@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 14:56:47 by lharvey           #+#    #+#             */
-/*   Updated: 2019/11/27 12:53:08 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/27 14:06:04 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 ** Decimal representations of each (Top & Leftmost version) valid tetrino.
 */
 
-int		valid_maps(unsigned int *tetrino_block)
+static int		valid_maps(unsigned int *tetrino_block)
 {
 	if (*tetrino_block != 52224 || *tetrino_block != 58368 ||
 		*tetrino_block != 19520 || *tetrino_block != 35968 ||
@@ -35,22 +35,30 @@ int		valid_maps(unsigned int *tetrino_block)
 ** Shift functions move the bitmaps up/left via the magic of bit masks.
 */
 
-void	shift_left(unsigned int *semi_valid_map)
+static void		shift_left(unsigned int *semi_valid_map)
 {
-	unsigned int	leftmost_mask;
-
-	leftmost_mask = 34952;
-	while (*semi_valid_map & leftmost_mask >= 1)
+	while (*semi_valid_map & 34952 >= 1)
 		*semi_valid_map <<= 1;
 }
 
-void	shift_up(unsigned int *semi_valid_map)
+static void		shift_up(unsigned int *semi_valid_map)
 {
 	while (*semi_valid_map < 4096)
 		*semi_valid_map <<= 4;
 }
 
-int		binary_checker(unsigned int **semi_valid_array)
+unsigned int	*binary_checker(unsigned int *semi_valid_array)
 {
-	return (0);
+	int	i;
+
+	i = 0;
+	while (semi_valid_array[i] != 0)
+	{
+		shift_up(semi_valid_array[i]);
+		shift_left(semi_valid_array[i]);
+		if (!(valid_map(semi_valid_array[i])))
+			return (NULL);
+		i++;
+	}
+	return (semi_valid_array);
 }
