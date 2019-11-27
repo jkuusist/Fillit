@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 14:56:47 by lharvey           #+#    #+#             */
-/*   Updated: 2019/11/27 14:06:04 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/27 17:17:45 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int		valid_maps(unsigned int *tetrino_block)
 
 static void		shift_left(unsigned int *semi_valid_map)
 {
-	while (*semi_valid_map & 34952 >= 1)
+	while ((*semi_valid_map & 34952) >= 1)
 		*semi_valid_map <<= 1;
 }
 
@@ -54,10 +54,10 @@ unsigned int	*binary_checker(unsigned int *semi_valid_array)
 	i = 0;
 	while (semi_valid_array[i] != 0)
 	{
-		shift_up(semi_valid_array[i]);
-		shift_left(semi_valid_array[i]);
-		if (!(valid_map(semi_valid_array[i])))
-			return (NULL);
+		shift_up(&(semi_valid_array[i]));
+		shift_left(&(semi_valid_array[i]));
+		if (!(valid_maps(semi_valid_array[i])))
+			return (0);
 		i++;
 	}
 	return (semi_valid_array);
