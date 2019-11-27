@@ -6,13 +6,12 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/27 12:39:39 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/27 13:25:23 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #define BUFF_SIZE 512
 #include <unistd.h>
-#include <stdio.h>
 
 /*
 ** A penultimate check for any tetrino, ensuring almost all criteria.
@@ -76,19 +75,14 @@ static int	line_checker(char *map)
 		handle_newline(&line_length, &tetri_height, &num_tetri);
 		map++;
 	}
-	return (0);
+	return (NULL);
 }
 
-int			check_input(int fd)
+char		*check_input(int fd)
 {
 	char	map[BUFF_SIZE];
-	int		ret;
-	int		line_checker_ret;
 
-	if ((ret = read(fd, map, BUFF_SIZE) < 0))
-		return (0);
-	line_checker_ret = line_checker(map);
-	// DO NOT FORGET TO REMOVE THIS LINE AND THE LIBRARY WE DONT NEED
-	printf("line checker returned: %d\n", line_checker_ret);
-	return (1);
+	if ((read(fd, map, BUFF_SIZE) < 0))
+		return (NULL);
+	return (line_checker(map));
 }

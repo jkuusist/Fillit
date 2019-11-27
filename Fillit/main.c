@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:21:04 by lharvey           #+#    #+#             */
-/*   Updated: 2019/11/26 14:54:22 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/27 13:21:25 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+
+int		check_validity(i dont know)
+{
+	create_block_array(*file_string, numbah_of_blockies)
+	binary_checker(At some point IDK)
+	
+	return (0);
+}
 
 int		main(int argc, char **argv)
 {
@@ -30,13 +38,10 @@ int		main(int argc, char **argv)
 		write(2, "Open failed work with file\n", 26);
 		return (-1);
 	}
-	if (check_input(fd) == 0)
+	if (check_input(fd) == NULL)
 		write(2, "error\n", 6);
-	else
-		write(1, "WE STILL HAVE TO DO SOMETHING FROM HERE", 40); 
-	/********** TESTING PHASE FROM HERE DOWN  ****************************/
-	int function_ret = check_input(fd);
-	printf("open returned: %d\nCheck_input returned: %d\n", fd, function_ret);
+	else if (check_validity())
+		Algorithm_Nonsence_That_Needs_Creating
 	close(fd);
 	return (0);
 }
