@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:21:04 by lharvey           #+#    #+#             */
-/*   Updated: 2019/11/27 17:27:54 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/27 17:52:37 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int				main(int argc, char **argv)
 	char			*file_map;
 	unsigned int	*binary_map;
 
-	file_map = 0;
 	if (argc != 2)
 	{
 		write(2, "Usage: fillit target_file\n", 26);
@@ -42,7 +41,8 @@ int				main(int argc, char **argv)
 		write(2, "Open failed work with file\n", 26);
 		return (-1);
 	}
-	if (!(*file_map = check_input(fd)))
+	file_map = check_input(fd);
+	if (!file_map)
 		write(1, "error\n", 6);
 	else if ((binary_map = check_validity(file_map)))
 		write(1, "Algorithm_Nonsence_That_Needs_Creating\n", 39);
