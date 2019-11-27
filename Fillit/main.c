@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:21:04 by lharvey           #+#    #+#             */
-/*   Updated: 2019/11/27 14:25:41 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/27 17:27:54 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int				main(int argc, char **argv)
 	char			*file_map;
 	unsigned int	*binary_map;
 
+	file_map = 0;
 	if (argc != 2)
 	{
 		write(2, "Usage: fillit target_file\n", 26);

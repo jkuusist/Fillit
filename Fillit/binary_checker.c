@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 14:56:47 by lharvey           #+#    #+#             */
-/*   Updated: 2019/11/27 17:17:45 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/27 17:23:06 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ unsigned int	*binary_checker(unsigned int *semi_valid_array)
 	{
 		shift_up(&(semi_valid_array[i]));
 		shift_left(&(semi_valid_array[i]));
-		if (!(valid_maps(semi_valid_array[i])))
+		if (!(valid_maps(&(semi_valid_array[i]))))
 			return (0);
 		i++;
 	}
