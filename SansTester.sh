@@ -57,7 +57,7 @@ echo "You're gonna have a bad time..."
 sleep 1
 clear
 
-make fclean && make 
+make -C Fillit fclean && make -C Fillit
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 echo "Testing Time!"
