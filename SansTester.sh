@@ -64,59 +64,59 @@ echo "Testing Time!"
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 
 echo "1 Invalid"
-./fillit Test_Files_TBR!/1_INVALID
+./Fillit/fillit Test_Files_TBR!/1_INVALID
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 sleep 1
 
 
 echo "1 No EOF"
-./fillit Test_Files_TBR!/1_NoEOF
+./Fillit/fillit Test_Files_TBR!/1_NoEOF
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 sleep 1
 
 echo "1 Valid"
-./fillit Test_Files_TBR!/1_Valid
+./Fillit/fillit Test_Files_TBR!/1_Valid
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 sleep 1
 
 echo "2_Invalid"
-./fillit Test_Files_TBR!/2_INVALID
+./Fillit/fillit Test_Files_TBR!/2_INVALID
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 sleep 1
 
 echo "2 No EOF"
-./fillit Test_Files_TBR!/2_NoEoF
+./Fillit/fillit Test_Files_TBR!/2_NoEoF
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 sleep 1
 
 echo "3 INVALID"
-./fillit Test_Files_TBR!/3_INVALID
+./Fillit/fillit Test_Files_TBR!/3_INVALID
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 sleep 1
 
 echo "3b INVALID"
-./fillit Test_Files_TBR!/3b_INVALID
+./Fillit/fillit Test_Files_TBR!/3b_INVALID
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 sleep 1
 
 echo "3 Valid"
-./fillit Test_Files_TBR!/3_Valid
+./Fillit/fillit Test_Files_TBR!/3_Valid
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 sleep 1
 
 echo "26 Valid"
-./fillit Test_Files_TBR!/1_Valid
+./Fillit/fillit Test_Files_TBR!/1_Valid
 
 sleep 1
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 echo "END OF TESTING"
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
-make fclean
+make -C Fillit fclean
