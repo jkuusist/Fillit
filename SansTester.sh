@@ -57,48 +57,66 @@ echo "You're gonna have a bad time..."
 sleep 1
 clear
 
-make -C FILE_TESTS/ && make -C FILE_TESTS/ testing
+make fclean && make 
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
-echo "TESTING WITH FILE INPUT"
+echo "Testing Time!"
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 
-echo "EMPTY FILE TEST"
-./FILE_TESTS/test_gnl FILE_TESTS/empty_file
-
-echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
-sleep 1
-
-
-echo "SHORT FILE TEST"
-./FILE_TESTS/test_gnl FILE_TESTS/short_file
+echo "1 Invalid"
+./fillit Test_Files_TBR!/1_INVALID
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 sleep 1
 
-echo "NEWLINES ONLY TEST!"
-./FILE_TESTS/test_gnl FILE_TESTS/newlines_file
+
+echo "1 No EOF"
+./fillit Test_Files_TBR!/1_NoEOF
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 sleep 1
 
-echo "MULTILINE FILE TEST!"
-./FILE_TESTS/test_gnl FILE_TESTS/multiline_file
+echo "1 Valid"
+./fillit Test_Files_TBR!/1_Valid
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 sleep 1
 
-echo "NULL FILE TEST!"
-./FILE_TESTS/test_gnl FILE_TESTS/NULL_file
+echo "2_Invalid"
+./fillit Test_Files_TBR!/2_INVALID
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 sleep 1
 
-echo "RANDOM FILE TEST!"
-./FILE_TESTS/test_gnl FILE_TESTS/random_file
+echo "2 No EOF"
+./fillit Test_Files_TBR!/2_NoEoF
+
+echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
+sleep 1
+
+echo "3 INVALID"
+./fillit Test_Files_TBR!/3_INVALID
+
+echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
+sleep 1
+
+echo "3b INVALID"
+./fillit Test_Files_TBR!/3b_INVALID
+
+echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
+sleep 1
+
+echo "3 Valid"
+./fillit Test_Files_TBR!/3_Valid
+
+echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
+sleep 1
+
+echo "26 Valid"
+./fillit Test_Files_TBR!/1_Valid
 
 sleep 1
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 echo "END OF TESTING"
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
-make -C FILE_TESTS/ fclean
+make fclean
