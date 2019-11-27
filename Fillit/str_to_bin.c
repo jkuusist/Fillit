@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 15:17:00 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/26 16:24:10 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/27 14:10:32 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ unsigned int		str_to_bin(unsigned char *block)
 		i++;
 	}
 	result = binary_atoi(binstr, length);
+	free(binstr);
 	return (result);
 }
