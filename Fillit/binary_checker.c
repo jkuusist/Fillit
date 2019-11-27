@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 14:56:47 by lharvey           #+#    #+#             */
-/*   Updated: 2019/11/26 12:58:18 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/27 12:06:45 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,28 @@ int	binary_checker(void *a_tetrino)
 		Z-PieceR	=	"0110110000000000"
 		Z-PieceRU	=	"1000110001000000"
 	}
+
+	AS DECIMAL
+	{
+		Block = 		"52224"
+		3WayD = 		"58368"
+		3WayL = 		"19520"
+		3WayR =			"35968"
+		3WayU = 		"19968"
+		H_P-PieceLD =	"59392"
+		H_P-PieceLU =	"36352"
+		H_P-PieceRD =	"57856"
+		H_P-PieceRU =	"11776"
+		LineH		=	"61440"
+		LineV		=	"34952"
+		P-PieceLD	=	"17600"
+		P-PieceLU	=	"36352"
+		P-PieceRD	=	"35008"
+		P-PieceRU	=	"51328"
+		Z-PieceL	=	"50688"
+		Z-PieceLU	=	"19584"
+		Z-PieceR	=	"27648"
+		Z-PieceRU	=	"35904"
+	}
+
 }
