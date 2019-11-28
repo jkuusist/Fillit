@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:17:19 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/28 14:48:36 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/28 15:36:28 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 #include "fillit.h"
 #include "../Libft/libft.h"
 
-void			write_temp(unsigned char **string, unsigned char *temp, int *nl_count)
+void			write_temp(unsigned char **string, unsigned char *temp,
+				int *nl_count)
 {
 	int i;
 
 	i = 0;
+	if (**string == '\n')
+		(*string)++;
 	while (**string != '\0' && *nl_count < 5)
 	{
 		if (**string == '\n')
@@ -60,9 +63,8 @@ unsigned int	*create_block_array(unsigned char *string)
 	array = (unsigned int*)malloc(sizeof(unsigned int*) * 27);
 	while (i < block_count)
 	{
-		temp = (unsigned char *)malloc((sizeof(unsigned char*)) * 21);
+		temp = (unsigned char *)malloc((sizeof(unsigned char*)) * 20);
 		write_temp(&string, temp, &nl_count);
-		string++;
 		array[i] = str_to_bin(temp);
 		ft_strdel((char**)&temp);
 		nl_count = 0;
