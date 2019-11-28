@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/28 12:05:56 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/28 12:19:17 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,15 @@ static int	line_checker(char *map)
 	tetri_height = 0;
 	num_hashtags = 0;
 	while ((*map == '#' || *map == '.' || *map == '\n' || *map == '\0')
-			&& (line_length++ < 6) && (num_tetri <= 26 && (tetri_height <= 4)))
+			&& (line_length++ < 6) && (num_tetri <= 26) && (tetri_height <= 4) && (num_hashtags <= 4))
 	{
 		if (*map == '#')
 			num_hashtags++;
 		if (*map == '\0')
 			return (get_return_value(line_length, tetri_height, num_hashtags));
-		handle_newline(&line_length, &tetri_height, &num_tetri, &num_hashtags);
+		if (!(handle_newline(&line_length, &tetri_height, &num_tetri,
+			&num_hashtags)))
+			return (0);
 		map++;
 	}
 	return (0);
