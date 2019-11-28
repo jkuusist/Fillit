@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:17:19 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/27 16:49:06 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/28 13:35:09 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int				get_block_count(char *string)
 	return (block_count / 5);
 }
 
-unsigned int	*create_block_array(char *string)
+unsigned int	*create_block_array(unsigned char *string)
 {
 	int				i;
 	int				block_count;
