@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/27 17:34:54 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/28 12:05:56 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static int	get_return_value(unsigned char line_length,
 */
 
 static int	handle_newline(unsigned char *line_length,
-		unsigned char *tetri_height, unsigned char *num_tetri)
+		unsigned char *tetri_height, unsigned char *num_tetri,
+		unsigned char *num_hashtags)
 {
 	if (*line_length != 1 && *line_length != 5)
 		return (0);
@@ -42,6 +43,7 @@ static int	handle_newline(unsigned char *line_length,
 		*tetri_height = 0;
 		*line_length = 0;
 		(*num_tetri)++;
+		*num_hashtags = 0;
 	}
 	else if (*line_length == 5)
 	{
@@ -73,7 +75,7 @@ static int	line_checker(char *map)
 			num_hashtags++;
 		if (*map == '\0')
 			return (get_return_value(line_length, tetri_height, num_hashtags));
-		handle_newline(&line_length, &tetri_height, &num_tetri);
+		handle_newline(&line_length, &tetri_height, &num_tetri, &num_hashtags);
 		map++;
 	}
 	return (0);
@@ -83,7 +85,7 @@ char		*check_input(int fd)
 {
 	char	map[MAP_SIZE];
 
-	if ((read(fd, map, BUFF_SIZE) < 0))
+	if ((read(fd, map, MAP_SIZE) < 0))
 		return (NULL);
 	if (line_checker(map) != 0)
 		return (ft_strdup(map));
