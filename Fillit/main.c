@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:21:04 by lharvey           #+#    #+#             */
-/*   Updated: 2019/11/27 17:52:37 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/28 13:51:08 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-unsigned int	*check_validity(char *file_map)
+unsigned int	*check_validity(unsigned char *file_map)
 {
 	unsigned int	*semi_valid_array;
 
@@ -28,7 +28,7 @@ unsigned int	*check_validity(char *file_map)
 int				main(int argc, char **argv)
 {
 	int				fd;
-	char			*file_map;
+	unsigned char	*file_map;
 	unsigned int	*binary_map;
 
 	if (argc != 2)

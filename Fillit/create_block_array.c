@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:17:19 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/28 13:35:09 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/28 13:44:54 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "fillit.h"
 #include "../Libft/libft.h"
 
-void			write_temp(char **string, unsigned char *temp, int *nl_count)
+void			write_temp(unsigned char **string, unsigned char *temp, int *nl_count)
 {
 	int i;
 
@@ -28,7 +28,7 @@ void			write_temp(char **string, unsigned char *temp, int *nl_count)
 	}
 }
 
-int				get_block_count(char *string)
+int				get_block_count(unsigned char *string)
 {
 	int	i;
 	int	block_count;

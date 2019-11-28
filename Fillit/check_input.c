@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/28 13:35:23 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/28 13:42:19 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static int	line_checker(char *map)
 	return (0);
 }
 
-char		*check_input(int fd)
+unsigned char		*check_input(int fd)
 {
 	char	map[MAP_SIZE];
 
