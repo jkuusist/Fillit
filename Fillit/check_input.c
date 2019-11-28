@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/28 12:32:07 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/28 13:35:23 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ char		*check_input(int fd)
 	if ((read(fd, map, MAP_SIZE) < 0))
 		return (NULL);
 	if (line_checker(map) != 0)
-		return (ft_strdup(map));
+		return ((unsigned char *)ft_strdup(map));
 	else
 		return (NULL);
 }
