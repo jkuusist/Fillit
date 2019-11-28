@@ -86,6 +86,12 @@ echo "2 No EOF"
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 sleep 0.2
 
+echo "2 Valid"
+./Fillit/fillit Test_Files_TBR!/2_Valid
+
+echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
+sleep 0.2
+
 echo "3 INVALID"
 ./Fillit/fillit Test_Files_TBR!/3_INVALID
 
@@ -104,10 +110,28 @@ echo "3 Valid"
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 sleep 0.2
 
-echo "26 Valid"
-./Fillit/fillit Test_Files_TBR!/1_Valid
+echo "4 INVALID"
+./Fillit/fillit Test_Files_TBR!/4_INVALID
 
-sleep 2
+echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
+sleep 0.2
+
+echo "4 Valid"
+./Fillit/fillit Test_Files_TBR!/4_Valid
+
+echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
+sleep 0.2
+
+echo "5 Valid"
+./Fillit/fillit Test_Files_TBR!/5_Valid
+
+echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
+sleep 0.2
+
+echo "26 Valid"
+./Fillit/fillit Test_Files_TBR!/26_Valid
+
+sleep 1
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 echo "END OF TESTING"
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
