@@ -27,14 +27,6 @@ else
 	echo "Goodbye..."
 	fi
 
-read answer2
-if [ "$answer2" != "${answer2#[Yy]}" ] ;then
-    echo "Alright..." 
-else
-    echo "Farewell..."
-	fi
-sleep 1
-
 clear
 echo "
 ░░░░░░░░██████████████████
@@ -54,7 +46,7 @@ echo "
 ░░░░░░░░░░██████████████
 "
 echo "You're gonna have a bad time..."
-sleep 1
+sleep 0.5
 clear
 
 make -C Fillit fclean && make -C Fillit
@@ -67,55 +59,55 @@ echo "1 Invalid"
 ./Fillit/fillit Test_Files_TBR!/1_INVALID
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
-sleep 1
+sleep 0.2
 
 
 echo "1 No EOF"
 ./Fillit/fillit Test_Files_TBR!/1_NoEOF
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
-sleep 1
+sleep 0.2
 
 echo "1 Valid"
 ./Fillit/fillit Test_Files_TBR!/1_Valid
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
-sleep 1
+sleep 0.2
 
 echo "2_Invalid"
 ./Fillit/fillit Test_Files_TBR!/2_INVALID
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
-sleep 1
+sleep 0.2
 
 echo "2 No EOF"
 ./Fillit/fillit Test_Files_TBR!/2_NoEoF
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
-sleep 1
+sleep 0.2
 
 echo "3 INVALID"
 ./Fillit/fillit Test_Files_TBR!/3_INVALID
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
-sleep 1
+sleep 0.2
 
 echo "3b INVALID"
 ./Fillit/fillit Test_Files_TBR!/3b_INVALID
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
-sleep 1
+sleep 0.2
 
 echo "3 Valid"
 ./Fillit/fillit Test_Files_TBR!/3_Valid
 
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
-sleep 1
+sleep 0.2
 
 echo "26 Valid"
 ./Fillit/fillit Test_Files_TBR!/1_Valid
 
-sleep 1
+sleep 2
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"
 echo "END OF TESTING"
 echo "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_"

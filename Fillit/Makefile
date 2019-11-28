@@ -8,23 +8,23 @@ SRCS = binary_checker.c str_to_bin.c create_block_array.c check_input.c main.c
 
 OBJECTS = $(SRCS:.c=.o)
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g
 
 all: $(NAME)
 
 $(NAME):
 	make -C $(LIBFT) fclean
 	make -C $(LIBFT)
-	gcc $(FLAGS) $(SRCS) $(LIBFT)/libft.a -o $(NAME)
+	@gcc $(FLAGS) $(SRCS) $(LIBFT)/libft.a -o $(NAME)
 
 .PHONY: clean fclean re
 
 clean:
-	rm -f $(OBJECTS)
+	@rm -f $(OBJECTS)
 	make -C $(LIBFT) clean
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 	make -C $(LIBFT) fclean
 
 re: fclean all
