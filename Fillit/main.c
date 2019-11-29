@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:21:04 by lharvey           #+#    #+#             */
-/*   Updated: 2019/11/29 10:14:18 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/29 10:23:54 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-unsigned int	*check_validity(unsigned char *file_map)
+unsigned short	*check_validity(unsigned char *file_map)
 {
 	unsigned short	*semi_valid_array;
 
