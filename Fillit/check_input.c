@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/29 14:13:10 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/29 17:25:29 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,9 @@ unsigned char	*check_input(int fd)
 {
 	char		map[MAP_SIZE];
 
+	ft_memset(map, 0, (MAP_SIZE - 1));
 	if (read(fd, map, MAP_SIZE) < 0)
 		return (NULL);
-	
-	printf("map is now: %s", map);
-
 	if (line_checker(map) != 0)
 		return ((unsigned char *)ft_strdup(map));
 	return (NULL);
