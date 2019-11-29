@@ -6,20 +6,22 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/29 10:24:18 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/29 14:13:10 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define MAP_SIZE 512
+#define MAP_SIZE 600
 #include <unistd.h>
 #include "../Libft/libft.h"
+
+#include <stdio.h>
 
 /*
 ** A penultimate check for any tetrino, ensuring almost all criteria.
 */
 
-static int		get_return_value(unsigned char line_length,
-		unsigned char tetri_height, unsigned char num_hashtags)
+static int		get_return_value(unsigned int line_length,
+		unsigned int tetri_height, unsigned int num_hashtags)
 {
 	if ((line_length == 5 || line_length == 1)
 					&& tetri_height == 4 && num_hashtags == 4)
@@ -32,9 +34,9 @@ static int		get_return_value(unsigned char line_length,
 **  Checks lengths of tetrinos, subfn of line checker
 */
 
-static int		handle_newline(unsigned char *line_length,
-		unsigned char *tetri_height, unsigned char *num_tetri,
-		unsigned char *num_hashtags)
+static int		handle_newline(unsigned int *line_length,
+		unsigned int *tetri_height, unsigned int *num_tetri,
+		unsigned int *num_hashtags)
 {
 	if (*line_length != 1 && *line_length != 5)
 		return (0);
@@ -59,10 +61,10 @@ static int		handle_newline(unsigned char *line_length,
 
 static int		line_checker(char *map)
 {
-	unsigned char	line_length;
-	unsigned char	tetri_height;
-	unsigned char	num_tetri;
-	unsigned char	num_hashtags;
+	unsigned int	line_length;
+	unsigned int	tetri_height;
+	unsigned int	num_tetri;
+	unsigned int	num_hashtags;
 
 	line_length = 0;
 	num_tetri = 0;
@@ -89,10 +91,12 @@ unsigned char	*check_input(int fd)
 {
 	char		map[MAP_SIZE];
 
-	if ((read(fd, map, MAP_SIZE) < 0))
+	if (read(fd, map, MAP_SIZE) < 0)
 		return (NULL);
+	
+	printf("map is now: %s", map);
+
 	if (line_checker(map) != 0)
 		return ((unsigned char *)ft_strdup(map));
-	else
-		return (NULL);
+	return (NULL);
 }

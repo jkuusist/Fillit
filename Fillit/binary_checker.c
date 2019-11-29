@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 14:56:47 by lharvey           #+#    #+#             */
-/*   Updated: 2019/11/29 13:01:44 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/29 14:28:23 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 ** Decimal representations of each (Top & Leftmost version) valid tetrino.
 */
 
+#include <stdio.h>
+
 static int		valid_maps(unsigned short *tetrino_block)
 {
+	printf("value of tetrino block is %d\n", tetrino_block);
+
 	if (*tetrino_block == 52224 || *tetrino_block == 58368 ||
 		*tetrino_block == 19520 || *tetrino_block == 35968 ||
 		*tetrino_block == 19968 || *tetrino_block == 59392 ||

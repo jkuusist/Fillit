@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:17:19 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/29 10:21:17 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/29 13:54:33 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static void		write_temp(unsigned char **string, unsigned char *temp,
 	{
 		if (**string == '\n')
 			(*nl_count)++;
-		temp[i++] = **string;
+		temp[i] = **string;
+		i++;
 		(*string)++;
 	}
 }
