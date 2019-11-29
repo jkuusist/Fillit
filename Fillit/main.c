@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:21:04 by lharvey           #+#    #+#             */
-/*   Updated: 2019/11/29 14:22:30 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/29 17:07:41 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int				main(int argc, char **argv)
 		write(1, "Algorithm_Nonsence_That_Needs_Creating\n", 39);
 	else
 		write(1, "error\n", 6);
-	//while(1)
 	close(fd);
 	return (0);
 }
