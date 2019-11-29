@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:21:04 by lharvey           #+#    #+#             */
-/*   Updated: 2019/11/28 13:51:08 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/29 10:14:18 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 unsigned int	*check_validity(unsigned char *file_map)
 {
-	unsigned int	*semi_valid_array;
+	unsigned short	*semi_valid_array;
 
 	semi_valid_array = create_block_array(file_map);
 	if (binary_checker(semi_valid_array))
@@ -29,7 +29,7 @@ int				main(int argc, char **argv)
 {
 	int				fd;
 	unsigned char	*file_map;
-	unsigned int	*binary_map;
+	unsigned short	*binary_map;
 
 	if (argc != 2)
 	{
