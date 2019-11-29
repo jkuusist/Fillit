@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/28 13:42:19 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/29 10:24:18 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** A penultimate check for any tetrino, ensuring almost all criteria.
 */
 
-static int	get_return_value(unsigned char line_length,
+static int		get_return_value(unsigned char line_length,
 		unsigned char tetri_height, unsigned char num_hashtags)
 {
 	if ((line_length == 5 || line_length == 1)
@@ -32,7 +32,7 @@ static int	get_return_value(unsigned char line_length,
 **  Checks lengths of tetrinos, subfn of line checker
 */
 
-static int	handle_newline(unsigned char *line_length,
+static int		handle_newline(unsigned char *line_length,
 		unsigned char *tetri_height, unsigned char *num_tetri,
 		unsigned char *num_hashtags)
 {
@@ -57,7 +57,7 @@ static int	handle_newline(unsigned char *line_length,
 ** Ensure no invalid chars, over/under length/height but no N.N. check
 */
 
-static int	line_checker(char *map)
+static int		line_checker(char *map)
 {
 	unsigned char	line_length;
 	unsigned char	tetri_height;
@@ -85,9 +85,9 @@ static int	line_checker(char *map)
 	return (0);
 }
 
-unsigned char		*check_input(int fd)
+unsigned char	*check_input(int fd)
 {
-	char	map[MAP_SIZE];
+	char		map[MAP_SIZE];
 
 	if ((read(fd, map, MAP_SIZE) < 0))
 		return (NULL);
