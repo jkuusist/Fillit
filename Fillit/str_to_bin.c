@@ -6,14 +6,14 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 15:17:00 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/27 14:10:32 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/29 10:19:48 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Libft/libft.h"
 #include <stdlib.h>
 
-unsigned int		binary_atoi(const unsigned char *str, int len)
+unsigned short		binary_atoi(const unsigned char *str, int len)
 {
 	unsigned long long	binary_value;
 	unsigned long long	result;
@@ -31,12 +31,12 @@ unsigned int		binary_atoi(const unsigned char *str, int len)
 	return (result);
 }
 
-unsigned int		str_to_bin(unsigned char *block)
+unsigned short		str_to_bin(unsigned char *block)
 {
 	int				i;
 	int				length;
 	unsigned char	*binstr;
-	unsigned int	result;
+	unsigned short	result;
 
 	i = 0;
 	length = 0;

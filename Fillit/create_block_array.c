@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:17:19 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/28 15:36:28 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/29 10:21:17 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "fillit.h"
 #include "../Libft/libft.h"
 
-void			write_temp(unsigned char **string, unsigned char *temp,
+static void		write_temp(unsigned char **string, unsigned char *temp,
 				int *nl_count)
 {
 	int i;
@@ -31,7 +31,7 @@ void			write_temp(unsigned char **string, unsigned char *temp,
 	}
 }
 
-int				get_block_count(unsigned char *string)
+static int		get_block_count(unsigned char *string)
 {
 	int	i;
 	int	block_count;
@@ -49,18 +49,18 @@ int				get_block_count(unsigned char *string)
 	return (block_count / 5);
 }
 
-unsigned int	*create_block_array(unsigned char *string)
+unsigned short	*create_block_array(unsigned char *string)
 {
 	int				i;
 	int				block_count;
 	int				nl_count;
 	unsigned char	*temp;
-	unsigned int	*array;
+	unsigned short	*array;
 
 	i = 0;
 	block_count = get_block_count(string);
 	nl_count = 0;
-	array = (unsigned int*)malloc(sizeof(unsigned int*) * 27);
+	array = (unsigned short*)malloc(sizeof(unsigned short*) * 27);
 	while (i < block_count)
 	{
 		temp = (unsigned char *)malloc((sizeof(unsigned char*)) * 20);
