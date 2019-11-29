@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:21:04 by lharvey           #+#    #+#             */
-/*   Updated: 2019/11/29 10:23:54 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/11/29 13:02:28 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "fillit.h"
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdio.h>
 
 unsigned short	*check_validity(unsigned char *file_map)
 {
