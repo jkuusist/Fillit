@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 14:56:47 by lharvey           #+#    #+#             */
-/*   Updated: 2019/11/29 10:15:26 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/11/29 12:18:14 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ static int		valid_maps(unsigned short *tetrino_block)
 
 static void		shift_left(unsigned short *semi_valid_map)
 {
-	while ((*semi_valid_map & 34952) >= 1)
+	while ((*semi_valid_map & 34952) == 0)
 		*semi_valid_map <<= 1;
 }
 
 static void		shift_up(unsigned short *semi_valid_map)
 {
-	while (*semi_valid_map < 4096)
+	while ((*semi_valid_map & 61440) == 0)
 		*semi_valid_map <<= 4;
 }
 
