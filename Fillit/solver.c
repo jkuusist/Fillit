@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/03 13:09:57 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/03 13:26:53 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,7 @@
 static unsigned short	check_bit(unsigned short *bit_field,
 		unsigned short bit_nb)
 {
-	unsigned short index;
-	unsigned short position;
-	unsigned short flag;
-
-	index = bit_nb / 16;
-	position = bit_nb % 16;
-	flag = (1 << position);
-	if (bit_field[index] & flag)
+	if (bit_field[bit_nb / 16] & (1 << (bit_nb % 16)))
 		return (1);
 	else
 		return (0);
@@ -35,27 +28,13 @@ static unsigned short	check_bit(unsigned short *bit_field,
 static void				set_bit(unsigned short *bit_field,
 		unsigned short bit_nb)
 {
-	unsigned short index;
-	unsigned short position;
-	unsigned short flag;
-
-	index = bit_nb / 16;
-	position = bit_nb % 16;
-	flag = (1 << position);
-	bit_field[index] |= flag;
+	bit_field[bit_nb / 16] |= (1 << (bit_nb % 16));
 }
 
 static void				clear_bit(unsigned short *bit_field,
 		unsigned short bit_nb)
 {
-	unsigned short index;
-	unsigned short position;
-	unsigned short flag;
-
-	index = bit_nb / 16;
-	position = bit_nb % 16;
-	flag = ~(1 << position);
-	bit_field[index] &= flag;
+	bit_field[bit_nb / 16] &= ~(1 << (bit_nb % 16));
 }
 
 void					*solver(unsigned short *binary_map)
