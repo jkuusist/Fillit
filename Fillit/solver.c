@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/03 12:42:48 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/03 13:02:38 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,25 @@ static unsigned short	check_bit(unsigned short *bit_field,
 	unsigned short flag;
 
 	index = bit_nb / 16;
-	position = bit_nb % 32;
+	position = bit_nb % 16;
 	flag = (1 << position);
 	if (bit_field[index] & flag)
 		return (1);
 	else
 		return (0);
+}
+
+static void				set_bit(unsigned short *bit_field,
+		unsigned short bit_nb)
+{
+	unsigned short index;
+	unsigned short position;
+	unsigned short flag;
+
+	index = bit_nb / 16;
+	position = bit_nb % 16;
+	flag = (1 << position);
+	bit_field[index] |= flag;
 }
 
 void					*solver(unsigned short *binary_map)
