@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/03 12:26:38 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/03 12:42:48 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,15 @@
 ** (13 x 13) is max array (169 bits) - (11 * 2 * 8  == 176)
 */
 
-unsigned short check_bit(unsigned short *bit_field, unsigned short index, unsigned short position)
+static unsigned short	check_bit(unsigned short *bit_field,
+		unsigned short bit_nb)
 {
+	unsigned short index;
+	unsigned short position;
 	unsigned short flag;
 
+	index = bit_nb / 16;
+	position = bit_nb % 32;
 	flag = (1 << position);
 	if (bit_field[index] & flag)
 		return (1);
@@ -27,12 +32,12 @@ unsigned short check_bit(unsigned short *bit_field, unsigned short index, unsign
 		return (0);
 }
 
-void	*solver(unsigned short *binary_map)
+void					*solver(unsigned short *binary_map)
 {
 	int i;
 //	int map_size;
 	unsigned short bit_field[10];
-	
+
 	while (i <= 10)
 		ft_memset(bit_field[i++], 0, 1);
 //	i = 0;
