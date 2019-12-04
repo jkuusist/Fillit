@@ -6,33 +6,42 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 17:05:39 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/04 17:07:46 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/04 17:15:19 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-unsigned short	*array_create(void)
+unsigned short	*R_SHIFT_array_create(void)
 {
-	unsigned short	*result;
+	unsigned short	*array;
 	int				i;
-	unsigned short	value;
-	unsigned short	temp;
+	unsigned short	bitmask;
 
-	result = (unsigned short*)malloc(sizeof(unsigned short) * 16);
+	array = (unsigned short*)malloc(sizeof(unsigned short) * 16);
 	i = 0;
-	value = 1;
-	temp = 1;
+	bitmask = 1;
 	while (i < 16)
 	{
-		if (value <= 65535)
-		{
-			result[i++] = value;
-			temp <<= 1;
-			value = temp | value;
-		}
-		else
-			return (result);
+		array[i++] = bitmask;
+		bitmask = ((bitmask << 1) | bitmask);
 	}
-	return (result);
+	return (array);
+}
+
+unsigned short	*L_SHIFT_array_create(void)
+{
+	unsigned short	*array;
+	int				i;
+	unsigned short	bitmask;
+
+	array = (unsigned short*)malloc(sizeof(unsigned short) * 16);
+	i = 0;
+	bitmask = 32768;
+	while (i < 16)
+	{
+		array[i++] = bitmask;
+		bitmask = (bitmask >> 1) | bitmask;
+	}
+	return (array);
 }
