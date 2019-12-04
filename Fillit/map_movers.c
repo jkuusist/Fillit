@@ -6,17 +6,20 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 10:50:51 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/04 13:57:15 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/04 14:20:18 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Libft/libft.h"
+#include "fillit.h"
 
 unsigned short	shift_left(unsigned short *bit_field, int shift_amount)
 {
 	int i;
 
 	i = -1;
+	if (shift_amount == 0)
+		return (0);
 	while (++i < 11)
 		if ((bit_field[i] & 32768) != 0)
 			return (0);
