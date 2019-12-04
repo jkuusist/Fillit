@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/04 10:56:45 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/04 13:33:23 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,42 +15,6 @@
 /*
 ** (13 x 13) is max array (169 bits) - (11 * 2 * 8  == 176)
 */
-
-static unsigned short check_lowestfield(unsigned short *bit_field)
-{
-	if ((bit_field[10] & 65535) != 0)
-		return (0);
-	return (1);
-}
-
-static unsigned short check_highestfield(unsigned short *bit_field)
-{
-	if ((bit_field[0] & 65535) != 0)
-		return (0);
-	return (1);
-}
-
-static unsigned short check_rightfield(unsigned short *bit_field)
-{
-	int i;
-
-	i = 0;
-	while (i < 11)
-		if ((bit_field[i] & 1) != 0)
-			return (0);
-	return (1);
-}
-
-static unsigned short check_leftfield(unsigned short *bit_field)
-{
-	int i;
-
-	i = 0;
-	while (i < 11)
-		if ((bit_field[i] & 32768) != 0)
-			return (0);
-	return (1);
-}
 
 static unsigned short	check_bit(unsigned short *bit_field,
 		unsigned short bit_nb)
