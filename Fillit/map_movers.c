@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 10:50:51 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/04 13:34:12 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/04 13:40:45 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,7 @@ unsigned short	shift_up(unsigned short *bit_field, int shift_amount)
 		while (j <= 11)
 		{
 			temp = bit_field[j + 1];
-			bit_field[j] = temp;
-			j++;
+			bit_field[j++] = temp;
 		}
 		j = 0;
 		i++;
@@ -97,8 +96,7 @@ unsigned short	shift_down(unsigned short *bit_field, int shift_amount)
 		while (j >= 0)
 		{
 			temp = bit_field[j - 1];
-			bit_field[j] = temp;
-			j--;
+			bit_field[j--] = temp;
 		}
 		j = 10;
 		i++;
