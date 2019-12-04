@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 17:05:39 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/04 17:15:19 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/04 17:30:23 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ unsigned short	*R_SHIFT_array_create(void)
 	while (i < 16)
 	{
 		array[i++] = bitmask;
-		bitmask = ((bitmask << 1) | bitmask);
+		bitmask = (bitmask << 1) | bitmask;
 	}
 	return (array);
 }
