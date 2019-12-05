@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:32:01 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/05 11:46:47 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/05 13:22:26 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ unsigned short		*L_SHIFT_array_create(void);
 typedef struct		s_block
 {
 	unsigned char		id;
-	unsigned short		tetrino_field[10];
+	unsigned short		*tetrino_field;
 }						t_block;
 
 #endif
