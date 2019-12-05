@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:32:01 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/05 10:14:26 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/05 11:05:23 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 unsigned char		*check_input(int fd);
 unsigned short		*create_block_array(unsigned char *string);
 unsigned short		*binary_checker(unsigned short *semi_valid_array);
-unsigned short		str_to_bin(unsigned char *block);
 unsigned long long	squareroot(unsigned long long x);
 unsigned short		shift_left(unsigned short *bit_field, int shift_amount);
 unsigned short		shift_right(unsigned short *bit_field, int shift_amount);
