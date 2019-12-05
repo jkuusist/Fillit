@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:21:04 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/05 10:18:30 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/05 11:25:26 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,12 @@ int				main(int argc, char **argv)
 	if (!file_map)
 		write(1, "error\n", 6);
 	else if ((binary_map = check_validity(file_map)))
+	{
 		write(1, "Algorithm_Nonsence_That_Needs_Creating\n", 39);
-	// ADDING THIS COMMENT / CODE, TO BE REMOVED AT A LATER DATE
 		if (solver(binary_map) == 0)
 			return (0);
-	// BECAUSE IT SHOULD ALWAYS SUCCEED FROM HERE ON 
+	}
+	// DONT FORGET TO REMOVE ^^THIS^^ THINGS BECAUSE IT SHOULD ALWAYS SUCCEED AFTER VALID CHECK 
 	else
 		write(1, "error\n", 6);
 	close(fd);
