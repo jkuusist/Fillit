@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/05 10:41:32 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/05 11:53:30 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static void				clear_bit(unsigned short *bit_field,
 
 void					*solver(unsigned short *binary_map)
 {
-	unsigned int i;
-	unsigned short bit_field[10];
-	unsigned int min_size;
+	unsigned int	i;
+	unsigned short	bit_field[10];
+	unsigned int	min_size;
 
 	while (i <= 10)
 		ft_memset(bit_field[i++], 0, 1);
@@ -51,5 +51,5 @@ void					*solver(unsigned short *binary_map)
 	min_size = (unsigned int)squareroot(i * 4);
 	ft_putnbr((int)min_size);
 	// PUT THE HECKIN TETRINO FROM MAP TO FIELD
-	
+
 }

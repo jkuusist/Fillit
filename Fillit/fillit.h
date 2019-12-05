@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:32:01 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/05 11:05:23 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/05 11:46:47 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,10 @@ unsigned short		shift_up(unsigned short *bit_field, int shift_amount);
 unsigned short		shift_down(unsigned short *bit_field, int shift_amount);
 unsigned short		*R_SHIFT_array_create(void);
 unsigned short		*L_SHIFT_array_create(void);
+typedef struct		s_block
+{
+	unsigned char		id;
+	unsigned short		tetrino_field[10];
+}						t_block;
 
 #endif
