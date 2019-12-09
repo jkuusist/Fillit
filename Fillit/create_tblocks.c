@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:30:28 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/09 13:51:21 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/09 13:59:49 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 //DELET THIS
 #include <stdio.h>
 
-void	stack_to_heap(unsigned short *binary_map, unsigned short *array)
+void	stack_to_heap(unsigned short *array, t_block *temp)
 {
 	int i;
 
-	i = 0;
-	while (i <= 9)
+	i = -1;
+	while (++i <= 9)
 	{
-		temp->tetrino_field[i] = array[i++];
+		temp->tetrino_field[i] = array[i];
 	}
 }
 
@@ -46,7 +46,6 @@ void	tblock_conversion(unsigned short *binary_map, unsigned short *array)
 		else
 			array[j] = 0;
 	}
-	stack_to_heap(binary_map, array)
 }
 
 t_block	**create_tblock(unsigned short *binary_map)
@@ -64,9 +63,10 @@ t_block	**create_tblock(unsigned short *binary_map)
 	{
 		bit_field[i] = (t_block*)malloc(sizeof(t_block));
 		temp = (t_block*)malloc(sizeof(t_block));
-		temp->(*tetrino_field) = (unsigned short*)malloc(sizeof(unsigned short) * 10);
+		*(temp->tetrino_field) = (unsigned short)malloc(sizeof(unsigned short) * 10);
 		temp->id = id;
 		tblock_conversion(binary_map, array);
+		stack_to_heap(array, temp);
 //ZERO ARRAY BEFOER NEXT LOOP
 		
 		printf("temp->id is: %c\n", temp->id);
