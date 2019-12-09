@@ -6,15 +6,44 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/05 14:16:00 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/09 15:39:53 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/libft.h"
+#include "fillit.h"
 
 /*
 ** (13 x 13) is max array (169 bits) - (11 * 2 * 8  == 176)
 */
+
+unsigned long long	squareroot(unsigned long long x)
+{
+	unsigned long long start;
+	unsigned long long end;
+	unsigned long long result;
+	unsigned long long mid;
+
+	if (!x || x > 18446744073709551615U)
+		return (0);
+	if (x == 0 || x == 1)
+		return (x);
+	start = 1;
+	end = x;
+	while (start <= end)
+	{
+		mid = (start + end) / 2;
+		if (mid * mid == x)
+			return (mid);
+		if (mid * mid < x)
+		{
+			start = mid + 1;
+			result = mid;
+		}
+		else
+			end = mid - 1;
+	}
+	return (result);
+}
 
 static unsigned short	check_bit(unsigned short *bit_field,
 		unsigned short bit_nb)
