@@ -6,16 +6,13 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:30:28 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/09 14:44:27 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/09 15:36:36 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "fillit.h"
 #include "../Libft/libft.h"
-
-//DELETE THIS pls
-#include <stdio.h>
 
 void	stack_to_heap(unsigned short *array, t_block *temp)
 {
@@ -64,17 +61,12 @@ t_block	**create_tblock(unsigned short *binary_map)
 	while (binary_map[i] != 0)
 	{
 		temp = (t_block*)malloc(sizeof(t_block));
-		temp->tetrino_field = (unsigned short *)malloc(sizeof(unsigned short) * 10);
+		temp->tetrino_field =
+			(unsigned short *)malloc(sizeof(unsigned short) * 10);
 		temp->id = id;
 		tblock_conversion(binary_map[i], array);
 		stack_to_heap(array, temp);
-//DELETE THE PRINTF EXTRAVAGANZA 
-		
-		printf("temp->id is: %c\n", temp->id);
 		bit_field[i] = temp;
-		printf("bit_field[%d]->id is: %c\n", i, bit_field[i]->id);
-
-//		ft_bzero(array, 10);
 		id++;
 		i++;
 	}
