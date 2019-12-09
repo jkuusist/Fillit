@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:30:28 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/09 13:59:49 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/09 14:08:50 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ void	stack_to_heap(unsigned short *array, t_block *temp)
 {
 	int i;
 
-	i = -1;
-	while (++i <= 9)
+	i = 0;
+	while (i <= 9)
 	{
 		temp->tetrino_field[i] = array[i];
+		i++;
 	}
 }
 
@@ -63,11 +64,11 @@ t_block	**create_tblock(unsigned short *binary_map)
 	{
 		bit_field[i] = (t_block*)malloc(sizeof(t_block));
 		temp = (t_block*)malloc(sizeof(t_block));
-		*(temp->tetrino_field) = (unsigned short)malloc(sizeof(unsigned short) * 10);
+		temp->tetrino_field = (unsigned short *)malloc(sizeof(unsigned short) * 10);
 		temp->id = id;
 		tblock_conversion(binary_map, array);
 		stack_to_heap(array, temp);
-//ZERO ARRAY BEFOER NEXT LOOP
+//DELETE THE PRINTF EXTRAVAGANZA 
 		
 		printf("temp->id is: %c\n", temp->id);
 		bit_field[i] = temp;
