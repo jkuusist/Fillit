@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/09 16:30:05 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/09 16:54:40 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** (13 x 13) is max array (169 bits) - (11 * 2 * 8  == 176)
 */
 
-unsigned long long	squareroot(unsigned long long x)
+static unsigned long long	squareroot(unsigned long long x)
 {
 	unsigned long long start;
 	unsigned long long end;
@@ -45,7 +45,7 @@ unsigned long long	squareroot(unsigned long long x)
 	return (result);
 }
 
-static unsigned short	check_bit(unsigned short *bit_field,
+static unsigned shor		check_bit(unsigned short *bit_field,
 		unsigned short bit_nb)
 {
 	if (bit_field[bit_nb / 16] & (1 << (bit_nb % 16)))
@@ -54,19 +54,34 @@ static unsigned short	check_bit(unsigned short *bit_field,
 		return (0);
 }
 
-static void				set_bit(unsigned short *bit_field,
+static void					set_bit(unsigned short *bit_field,
 		unsigned short bit_nb)
 {
 	bit_field[bit_nb / 16] |= (1 << (bit_nb % 16));
 }
 
-static void				clear_bit(unsigned short *bit_field,
+static void					clear_bit(unsigned short *bit_field,
 		unsigned short bit_nb)
 {
 	bit_field[bit_nb / 16] &= ~(1 << (bit_nb % 16));
 }
 
-void					*solver(unsigned short *binary_map)
+void						stamp_check(unsigned short *map_field, unsigned short *tetrino)
+{
+	int i;
+
+	i = 0;
+	while (i < 10)
+	{
+		if (map_field[i] & tetrino[i] == 0)
+			i++;
+		else 
+			return (0)
+	}
+	return (1);
+}
+
+void						*solver(unsigned short *binary_map)
 {
 	unsigned int	tetrino_count;
 	unsigned short	map_field[10];
@@ -84,7 +99,14 @@ void					*solver(unsigned short *binary_map)
 	bit_field = create_tblocks(binary_map);
 	while (min_size <= 16)
 	{
-			
+		if (stamp_check() == 1)
+			stamp_map(map_field, tetrino_boi);
+		else 
+		{
+			if (!(shift_right(*tetrino_boi, 1)
+				if(!(shift_down(*tetrino_boi, 1)
+					min_size++;
+		}
 	}
 	return (0);
 }
