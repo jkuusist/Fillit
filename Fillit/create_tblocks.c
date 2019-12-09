@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:30:28 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/09 14:40:29 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/09 14:44:27 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	tblock_conversion(unsigned short binary_mapi, unsigned short *array)
 		if (j == 0)
 			array[j] = binary_mapi & 61440;
 		else if (j == 1)
-			array[j] = binary_mapi & 3840;
+			array[j] = ((binary_mapi & 3840) << 4);
 		else if (j == 2)
-			array[j] = binary_mapi & 240;
+			array[j] = ((binary_mapi & 240) << 8);
 		else if (j == 3)
-			array[j] = binary_mapi & 15;
+			array[j] = ((binary_mapi & 15) << 12);
 		else
 			array[j] = 0;
 		j++;
