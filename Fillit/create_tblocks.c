@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:30:28 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/09 13:29:25 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/09 13:31:45 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ t_block	**create_tblock(unsigned short *binary_map)
 		bit_field[i] = (t_block*)malloc(sizeof(t_block));
 		bit_field[i]->tetrino_field = malloc(sizeof(unsigned short) * 10);
 		temp = (t_block*)malloc(sizeof(t_block));
-		temp->tetrino_field = (unsigned short*)malloc(sizeof(unsigned short) * 10);
 		temp->id = id;
 		while (j < 10)
 		{
@@ -80,7 +79,6 @@ t_block	**create_tblock(unsigned short *binary_map)
 
 		ft_bzero(array, 10);
 		j = 0;
-		//free(temp->tetrino_field);
 		free(temp);
 		id++;
 		i++;
