@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/09 15:39:53 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/09 16:30:05 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,23 @@ static void				clear_bit(unsigned short *bit_field,
 
 void					*solver(unsigned short *binary_map)
 {
-	unsigned int	i;
+	unsigned int	tetrino_count;
 	unsigned short	map_field[10];
 	unsigned int	min_size;
 	t_block			*bit_field;
 
-	while (i <= 10)
-		ft_memset(map_field[i++], 0, 1);
-	i = 0;
-	while (binary_map[i] != 0)
-		i++;
-	min_size = (unsigned int)squareroot(i * 4);
-	ft_putnbr((int)min_size);
+	tetrino_count = 0;
+	while (tetrino_count <= 10)
+		ft_memset(map_field[tetrino_count++], 0, 1);
+	tetrino_count = 0;
+	while (binary_map[tetrino_count] != 0)
+		tetrino_count++;
+	min_size = (unsigned int)squareroot(tetrino_count * 4);
+//	ft_putnbr((int)min_size);
 	bit_field = create_tblocks(binary_map);
 	while (min_size <= 16)
 	{
-		
+			
 	}
 	return (0);
 }
