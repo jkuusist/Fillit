@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:30:28 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/09 14:20:54 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/09 14:27:56 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	tblock_conversion(unsigned short *binary_map, unsigned short *array)
 			array[j] = (binary_map[j] & 15);
 		else
 			array[j] = 0;
+		j++;
 	}
 }
 
