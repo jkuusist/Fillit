@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/10 12:55:24 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/10 14:03:17 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,6 @@ static int					algorithm_alpha(unsigned short *map_field, unsigned short *tetrin
 {
 	while (stamp_map(map_field, tetrino) == 0)
 	{
-		while (shift_right(*tetrino, 1) == 0)
-		{
-			while (shift_down(*tetrino, 1) == 0)
-			{
-			}
-		}
 	}
 }
 
@@ -97,13 +91,11 @@ void						*solver(unsigned short *binary_map)
 	bit_field = create_tblocks(binary_map);
 	while (min_size <= 16)
 	{
-		if (stamp_check(map_field, bit_field[i]->tetrino_field) == 1)
-			stamp_map(map_field, tetrino_boi);
+		if (stamp_map(map_field, bit_field[i]->tetrino_field) == 1)
 		else 
 		{
-			if (!(shift_right(*tetrino_boi, 1)
-				if(!(shift_down(*tetrino_boi, 1)
-					min_size++;
+			if ((algorithm_alpha(map_field, bit_field[i]->tetrino_field)) == 0) 
+				algorithm_alpha(map_field, bit_field[i++]->tetrino_field);
 		}
 	}
 	return (0);
