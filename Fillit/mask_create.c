@@ -6,13 +6,13 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 17:05:39 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/10 14:12:42 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/10 15:20:05 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-unsigned short	R_SHIFT_create(void)
+unsigned short	L_SHIFT_create(unsigned int min_size)
 {
 	unsigned short	value;
 	int				i;
@@ -20,14 +20,15 @@ unsigned short	R_SHIFT_create(void)
 
 	i = 0;
 	bitmask = 1;
-	while (i < 16)
+	while (i < (min_size - 2))
 	{
 		bitmask = (bitmask << 1) | bitmask;
+		i++;
 	}
-	return (bitmask);
+	return (~bitmask);
 }
 
-unsigned short	L_SHIFT_create(void)
+unsigned short	R_SHIFT_create(unsigned int min_size)
 {
 	unsigned short	value;
 	int				i;
@@ -35,9 +36,10 @@ unsigned short	L_SHIFT_create(void)
 
 	i = 0;
 	bitmask = 32768;
-	while (i < 16)
+	while (i < (min_size - 2))
 	{
 		bitmask = (bitmask >> 1) | bitmask;
+		i++;
 	}
-	return (bitmask);
+	return (~bitmask);
 }
