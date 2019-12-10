@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:32:01 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/09 15:40:15 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/10 12:31:11 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct		s_block
 {
 	unsigned char		id;
 	unsigned short		*tetrino_field;
+	unsigned char		used_flag;
 }						t_block;
 
 #endif

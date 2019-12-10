@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:30:28 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/09 15:36:36 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/10 12:32:00 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ t_block	**create_tblock(unsigned short *binary_map)
 		temp->tetrino_field =
 			(unsigned short *)malloc(sizeof(unsigned short) * 10);
 		temp->id = id;
+		temp->used_flag = 0;
 		tblock_conversion(binary_map[i], array);
 		stack_to_heap(array, temp);
 		bit_field[i] = temp;
