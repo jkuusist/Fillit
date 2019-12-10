@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 10:50:51 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/10 14:35:32 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/10 15:39:20 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 unsigned short	shift_left(unsigned short *bit_field, int shift_amount)
 {
 	int 			i;
-	t_shift_left	l_mask;
+	unsigned int	l_mask;
 
 	i = -1;
-	mask = shift_amount;
 	if (shift_amount == 0)
 		return (0);
-	while (++i < 11)
+	l_mask = L_SHIFT_create;	
+	while (++i < mask_size)
 		if ((bit_field[i] & l_mask) != 0)
 			return (0);
 	while (i >= 0)
@@ -36,11 +36,13 @@ unsigned short	shift_left(unsigned short *bit_field, int shift_amount)
 unsigned short	shift_right(unsigned short *bit_field, int shift_amount, unsigned int mask_size)
 {
 	int 			i;
-	t_shift_right	r_mask;
+	unsigned int	r_mask;
 
 	i = -1;
-	mask = shift_amount;
-	while (++i < 11)
+	if (shift_amount == 0)
+		return (0);
+	r_mask = R_SHIFT_create(mask_size);
+	while (++i < mask_size)
 		if ((bit_field[i] & r_mask) != 0)
 			return (0);
 	while (i >= 0)
@@ -74,7 +76,7 @@ unsigned short	shift_up(unsigned short *bit_field, int shift_amount)
 	i = (11 - shift_amount);
 	while (i < 11)
 	{
-		ft_bzero(&(bit_field[i]), 1);
+		bit_field[i] = 0;
 		i++;
 	}
 	return (1);
@@ -87,10 +89,11 @@ unsigned short	shift_down(unsigned short *bit_field, int shift_amount, unsigned 
 	int temp;
 	
 	i = mask_size - 1;	
-	while (++i < 10)
+	while (i < 10)
 	{
 		if ((bit_field[i] & 65535) != 0)
 			return (0);
+		i++;
 	}
 	i = 0;
 	j = mask_size;
@@ -107,7 +110,7 @@ unsigned short	shift_down(unsigned short *bit_field, int shift_amount, unsigned 
 	i = 0;
 	while (i < shift_amount)
 	{
-		ft_bzero(&(bit_field[i]), 1);
+		bit_field[i] = 0;
 		i++;
 	}
 	return (1);
