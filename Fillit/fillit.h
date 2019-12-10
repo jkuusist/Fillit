@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:32:01 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/10 12:31:11 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/10 15:23:50 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ unsigned short		shift_left(unsigned short *bit_field, int shift_amount);
 unsigned short		shift_right(unsigned short *bit_field, int shift_amount);
 unsigned short		shift_up(unsigned short *bit_field, int shift_amount);
 unsigned short		shift_down(unsigned short *bit_field, int shift_amount);
-unsigned short		*R_SHIFT_array_create(void);
-unsigned short		*L_SHIFT_array_create(void);
+unsigned short		R_SHIFT_create(void);
+unsigned short		L_SHIFT_create(void);
 typedef struct		s_block
 {
 	unsigned char		id;
