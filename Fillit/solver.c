@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/09 16:54:40 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/10 12:10:26 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,25 @@ void						stamp_check(unsigned short *map_field, unsigned short *tetrino)
 	return (1);
 }
 
+void						stamp_map(unsigned short *map_field, unsigned short *tetrino)
+{
+	int i;
+
+	i = 0;
+	while (i < 10)
+	{
+		map_field[i] &= tetrino[i];
+		i++;
+	}
+}
+
 void						*solver(unsigned short *binary_map)
 {
 	unsigned int	tetrino_count;
 	unsigned short	map_field[10];
 	unsigned int	min_size;
 	t_block			*bit_field;
+	int				i;
 
 	tetrino_count = 0;
 	while (tetrino_count <= 10)
@@ -99,7 +112,7 @@ void						*solver(unsigned short *binary_map)
 	bit_field = create_tblocks(binary_map);
 	while (min_size <= 16)
 	{
-		if (stamp_check() == 1)
+		if (stamp_check(map_field, bit_field[i]->tetrino_field) == 1)
 			stamp_map(map_field, tetrino_boi);
 		else 
 		{
