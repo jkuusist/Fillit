@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/10 12:10:26 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/10 12:39:59 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,28 +45,7 @@ static unsigned long long	squareroot(unsigned long long x)
 	return (result);
 }
 
-static unsigned shor		check_bit(unsigned short *bit_field,
-		unsigned short bit_nb)
-{
-	if (bit_field[bit_nb / 16] & (1 << (bit_nb % 16)))
-		return (1);
-	else
-		return (0);
-}
-
-static void					set_bit(unsigned short *bit_field,
-		unsigned short bit_nb)
-{
-	bit_field[bit_nb / 16] |= (1 << (bit_nb % 16));
-}
-
-static void					clear_bit(unsigned short *bit_field,
-		unsigned short bit_nb)
-{
-	bit_field[bit_nb / 16] &= ~(1 << (bit_nb % 16));
-}
-
-void						stamp_check(unsigned short *map_field, unsigned short *tetrino)
+static int 					stamp_check(unsigned short *map_field, unsigned short *tetrino)
 {
 	int i;
 
@@ -108,7 +87,6 @@ void						*solver(unsigned short *binary_map)
 	while (binary_map[tetrino_count] != 0)
 		tetrino_count++;
 	min_size = (unsigned int)squareroot(tetrino_count * 4);
-//	ft_putnbr((int)min_size);
 	bit_field = create_tblocks(binary_map);
 	while (min_size <= 16)
 	{
