@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/10 16:44:27 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/10 16:46:03 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ static int 					stamp_map(unsigned short *map_field, unsigned short *tetrino)
 	i = 0;
 	while (i < 10)
 	{
-		if ((map_field[i] & tetrino[i]) == 0)
+		if (map_field[i] & tetrino[i] == 0)
 			i++;
 		else 
-			return (0);
+			return (0)
 	}
 	i = 0;
 	while (i < 10)
 	{
-		map_field[i] |= tetrino[i];
+		map_field[i] &= tetrino[i];
 		i++;
 	}
 	return (1);
@@ -71,20 +71,20 @@ static int					algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 	int i;
 
 	i = 0;
+	while (stamp_map(map_field, bit_field[i]->tetrino_field) == 0)
+	{
+		while (shift_right(bit_field[i]->tetrino_field, 1) == 1)
+			while (shift_down(bit_field[i]->tetrino_field, 1) == 1)
+				if (shift_down(bit_field[i]->tetrino_field, 1) == 0)
+					break ;
+	}		
 	if (stamp_map(map_field, bit_field[i]->tetrino_field) == 1)
 	{
 		bit_field[i]->used_flag = 1;
 		i++;
 	}
-	else 
-	{
-		if ((algorithm_alpha(map_field, bit_field[i]->tetrino_field)) == 0) 
+	if ((algorithm_alpha(map_field, bit_field[i]->tetrino_field)) == 0) 
 				algorithm_alpha(map_field, bit_field[i++]->tetrino_field);
-	}
-	while (stamp_map(map_field, tetrino) == 0)
-	{
-
-	}
 }
 
 void						*solver(unsigned short *binary_map)
