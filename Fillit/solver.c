@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/10 12:39:59 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/10 12:47:38 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static unsigned long long	squareroot(unsigned long long x)
 	return (result);
 }
 
-static int 					stamp_check(unsigned short *map_field, unsigned short *tetrino)
+static int 					stamp_map(unsigned short *map_field, unsigned short *tetrino)
 {
 	int i;
 
@@ -57,19 +57,19 @@ static int 					stamp_check(unsigned short *map_field, unsigned short *tetrino)
 		else 
 			return (0)
 	}
-	return (1);
-}
-
-void						stamp_map(unsigned short *map_field, unsigned short *tetrino)
-{
-	int i;
-
 	i = 0;
 	while (i < 10)
 	{
 		map_field[i] &= tetrino[i];
 		i++;
 	}
+	return (1);
+}
+
+static int					algorithm_alpha(unsigned short *map_field, t_block *bitfield)
+{
+
+
 }
 
 void						*solver(unsigned short *binary_map)
