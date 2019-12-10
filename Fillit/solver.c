@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/10 16:06:04 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/10 16:44:27 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ static int 					stamp_map(unsigned short *map_field, unsigned short *tetrino)
 	i = 0;
 	while (i < 10)
 	{
-		if (map_field[i] & tetrino[i] == 0)
+		if ((map_field[i] & tetrino[i]) == 0)
 			i++;
 		else 
-			return (0)
+			return (0);
 	}
 	i = 0;
 	while (i < 10)
 	{
-		map_field[i] &= tetrino[i];
+		map_field[i] |= tetrino[i];
 		i++;
 	}
 	return (1);
