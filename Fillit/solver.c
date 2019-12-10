@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/10 14:23:46 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/10 16:06:04 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,24 @@ static int 					stamp_map(unsigned short *map_field, unsigned short *tetrino)
 	return (1);
 }
 
-static int					algorithm_alpha(unsigned short *map_field, unsigned short *tetrino)
+static int					algorithm_alpha(unsigned short *map_field, t_block **bit_field, unsigned int min_size)
 {
+	int i;
+
+	i = 0;
+	if (stamp_map(map_field, bit_field[i]->tetrino_field) == 1)
+	{
+		bit_field[i]->used_flag = 1;
+		i++;
+	}
+	else 
+	{
+		if ((algorithm_alpha(map_field, bit_field[i]->tetrino_field)) == 0) 
+				algorithm_alpha(map_field, bit_field[i++]->tetrino_field);
+	}
 	while (stamp_map(map_field, tetrino) == 0)
 	{
+
 	}
 }
 
@@ -78,7 +92,7 @@ void						*solver(unsigned short *binary_map)
 	unsigned int	tetrino_count;
 	unsigned short	map_field[10];
 	unsigned int	min_size;
-	t_block			*bit_field;
+	t_block			**bit_field;
 	int				i;
 
 	tetrino_count = 0;
@@ -90,14 +104,11 @@ void						*solver(unsigned short *binary_map)
 	i = 0;
 	min_size = (unsigned int)squareroot(tetrino_count * 4);
 	bit_field = create_tblocks(binary_map, tetrino_count);
-	while (min_size <= 16)
+	while (min_size <= 10)
 	{
-		if (stamp_map(map_field, bit_field[i]->tetrino_field) == 1)
-		else 
-		{
-			if ((algorithm_alpha(map_field, bit_field[i]->tetrino_field)) == 0) 
-				algorithm_alpha(map_field, bit_field[i++]->tetrino_field);
-		}
+		if (algorith_alpha(map_field, tetrino, min_size) == 1)
+			break;
+		min_size++;
 	}
 	return (0);
 }
