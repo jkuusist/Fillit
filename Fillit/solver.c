@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/11 11:24:54 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/11 11:39:05 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,24 @@
 /*
 ** (13 x 13) is max array (169 bits) - (11 * 2 * 8  == 176)
 */
+
+t_block						*copy_tblock(t_block *src)
+{
+	int		i;
+	t_block *copy;
+
+	i = 0;
+	copy = (t_block *)malloc(sizeof(t_block));
+	copy->tetrino_field = (unsigned short *)malloc(sizeof(unsigned short) * 10);
+	copy->id = src->id;
+	copy->used_flag = src->used_flag;
+	while (i < 10)
+	{
+		copy->tetrino_field[i] = src->tetrino_field[i];
+		i++;
+	}
+	return (copy);
+}
 
 static unsigned long long	squareroot(unsigned long long x)
 {
