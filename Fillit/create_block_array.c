@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:17:19 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/05 11:05:47 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/11 10:02:49 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,9 @@ static unsigned short		str_to_bin(unsigned char *block)
 	result = binary_atoi(binstr, length);
 	free(binstr);
 	return (result);
+}
 
-static void					write_temp(unsigned char **string, 
+static void					write_temp(unsigned char **string,
 		unsigned char *temp, int *nl_count)
 {
 	int i;
