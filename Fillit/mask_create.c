@@ -6,13 +6,13 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 17:05:39 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/10 15:20:05 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/11 09:49:32 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-unsigned short	L_SHIFT_create(unsigned int min_size)
+unsigned short	l_shift_create(unsigned int min_size)
 {
 	unsigned short	value;
 	int				i;
@@ -28,7 +28,7 @@ unsigned short	L_SHIFT_create(unsigned int min_size)
 	return (~bitmask);
 }
 
-unsigned short	R_SHIFT_create(unsigned int min_size)
+unsigned short	r_shift_create(unsigned int min_size)
 {
 	unsigned short	value;
 	int				i;
