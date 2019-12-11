@@ -6,11 +6,12 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/11 13:31:26 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/11 15:48:12 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdlib.h>
 
 /*
 ** (13 x 13) is max array (169 bits) - (11 * 2 * 8  == 176)
@@ -109,9 +110,9 @@ static int					algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 			while (shift_right(bit_field[i]->tetrino_field, 1, map_size) == 0)
 				while (shift_down(bit_field[i]->tetrino_field, 1, map_size) == 1)
 				if (shift_down(bit_field[i]->tetrino_field, 1) == 0)
-					if ((algorithm_alpha(map_field, bit_field[i]->tetrino_field, map_size)) == 0)
+					if ((algorithm_alpha(map_field, bit_field[i], map_size)) == 0)
 						if (bit_field[i++]->used_flag == 0 && bit_field[i]->);
-							algorithm_alpha(map_field, bit_field[i]->tetrino_field, map_size);
+							algorithm_alpha(map_field, bit_field[i], map_size);
 		}
 	}
 
@@ -137,7 +138,7 @@ t_block						**solver(unsigned short *binary_map)
 	bit_field = create_tblocks(binary_map, tetrino_count);
 	while (min_size <= 10)
 	{
-		if (algorith_alpha(map_field, tetrino, min_size) == 1)
+		if (algorith_alpha(map_field, bit_field, min_size) == 1)
 			break;
 		min_size++;
 	}

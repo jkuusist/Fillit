@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 10:50:51 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/11 09:53:51 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/11 15:49:33 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ unsigned short	shift_left(unsigned short *bit_field, int shift_amount)
 unsigned short	shift_right(unsigned short *bit_field, int shift_amount,
 		unsigned int mask_size)
 {
-	int 			i;
+	int				i;
 	unsigned int	r_mask;
 
 	i = -1;
@@ -89,7 +89,7 @@ unsigned short	shift_down(unsigned short *bit_field, int shift_amount, unsigned 
 	int j;
 	int temp;
 
-	i = mask_size - 1;	
+	i = mask_size - 1;
 	while (i < 10)
 	{
 		if ((bit_field[i] & 65535) != 0)
