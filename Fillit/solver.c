@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/11 15:48:12 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/11 16:17:47 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,20 @@ t_block						**copy_tblocks(t_block **src)
 		i++;
 	}
 	return (copy);
+}
+
+void						free_tblocks(t_block **array)
+{
+	int i;
+
+	i = 0;
+	while (array[i] != 0)
+	{
+		free(array[i]->tetrino_field);
+		free(array[i];
+		i++;
+	}
+	free(array);
 }
 
 static unsigned long long	squareroot(unsigned long long x)
