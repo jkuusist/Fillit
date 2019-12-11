@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/11 16:17:47 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/11 16:58:09 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ static int 					stamp_map(unsigned short *map_field, unsigned short *tetrino)
 	return (1);
 }
 
-static int					algorithm_alpha(unsigned short *map_field, t_block **bit_field, unsigned int map_size)
+t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, unsigned int map_size)
 {
 	int 	i;
 	t_block	bit_field_copy;
@@ -125,12 +125,15 @@ static int					algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 				while (shift_down(bit_field[i]->tetrino_field, 1, map_size) == 1)
 				if (shift_down(bit_field[i]->tetrino_field, 1) == 0)
 					if ((algorithm_alpha(map_field, bit_field[i], map_size)) == 0)
-						if (bit_field[i++]->used_flag == 0 && bit_field[i]->);
+						if (bit_field[i]->used_flag == 0 && bit_field != NULL);
+						UNDO LAST TETRINO
+						RESET USED FLAG
+						TRY ALL POSSIBLE TETRINO BOYS FOR THIS PLACE (loop)
 							algorithm_alpha(map_field, bit_field[i], map_size);
 		}
 	}
-
-	return (0);
+	free_tblocks(bit_field);
+	return (NULL);
 }
 
 t_block						**solver(unsigned short *binary_map)
