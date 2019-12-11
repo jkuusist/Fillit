@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/10 16:47:17 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/11 10:55:22 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,25 +66,26 @@ static int 					stamp_map(unsigned short *map_field, unsigned short *tetrino)
 	return (1);
 }
 
-static int					algorithm_alpha(unsigned short *map_field, t_block **bit_field, unsigned int min_size)
+static int					algorithm_alpha(unsigned short *map_field, t_block **bit_field, unsigned int map_size)
 {
 	int i;
 
 	i = 0;
-	while (stamp_map(map_field, bit_field[i]->tetrino_field) == 0)
-	{
-		while (shift_right(bit_field[i]->tetrino_field, 1) == 1)
-			while (shift_down(bit_field[i]->tetrino_field, 1) == 1)
-				if (shift_down(bit_field[i]->tetrino_field, 1) == 0)
-					break ;
-	}		
-	if (stamp_map(map_field, bit_field[i]->tetrino_field) == 1)
+	while (stamp_map(map_field, bit_field[i]->tetrino_field) == 1)
 	{
 		bit_field[i]->used_flag = 1;
 		i++;
-	}
-	if ((algorithm_alpha(map_field, bit_field[i]->tetrino_field)) == 0) 
-				algorithm_alpha(map_field, bit_field[i++]->tetrino_field);
+		while (stamp_map(map_field, bit_field[i]->tetrino_field) == 0)
+		{
+			while (shift_right(bit_field[i]->tetrino_field, 1, map_size) == 0)
+				while (shift_down(bit_field[i]->tetrino_field, 1, map_size) == 1)
+				if (shift_down(bit_field[i]->tetrino_field, 1) == 0)
+					if ((algorithm_alpha(map_field, bit_field[i]->tetrino_field)) == 0) 
+						algorithm_alpha(map_field, bit_field[i++]->tetrino_field);
+		}
+	}		
+
+	return (0);
 }
 
 void						*solver(unsigned short *binary_map)
