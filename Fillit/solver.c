@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/11 11:39:05 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/11 13:31:26 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,29 @@
 ** (13 x 13) is max array (169 bits) - (11 * 2 * 8  == 176)
 */
 
-t_block						*copy_tblock(t_block *src)
+t_block						**copy_tblocks(t_block **src)
 {
 	int		i;
-	t_block *copy;
+	int		j;
+	t_block **copy;
 
 	i = 0;
-	copy = (t_block *)malloc(sizeof(t_block));
-	copy->tetrino_field = (unsigned short *)malloc(sizeof(unsigned short) * 10);
-	copy->id = src->id;
-	copy->used_flag = src->used_flag;
-	while (i < 10)
+	j = 0;
+	while (src[i] != 0)
+		i++;
+	copy = (t_block **)malloc(sizeof(t_block) * i);
+	i = 0;
+	while(src[i] != 0)
 	{
-		copy->tetrino_field[i] = src->tetrino_field[i];
+		copy[i] = (t_block*)malloc(sizeof(t_block));
+		copy[i]->tetrino_field = (unsigned short *)malloc(sizeof(unsigned short) * 10);
+		copy[i]->id = src[i]->id;
+		copy[i]->used_flag = src[i]->used_flag;
+		while (j < 10)
+		{
+			copy[i]->tetrino_field[j] = src[i]->tetrino_field[j];
+			j++;
+		}
 		i++;
 	}
 	return (copy);
