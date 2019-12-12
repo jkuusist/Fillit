@@ -6,9 +6,18 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 11:45:18 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/12 14:21:19 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/12 14:26:31 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+static unsigned short		check_bit(unsigned short *bit_field,
+		unsigned int bit_nb)
+{
+	if (bit_field[bit_nb] & (32768 >> (bit_nb)))
+		return (1);
+	else
+		return (0);
+}
 
 void	print_map(t_block **bit_field, unsigned int map_size, unsigned int num_tetrinos)
 {
