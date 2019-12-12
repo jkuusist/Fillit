@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/12 11:40:22 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/12 11:49:06 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,7 @@ t_block						**solver(unsigned short *binary_map)
 {
 	unsigned int	tetrino_count;
 	unsigned short	map_field[10];
-	unsigned int	min_size;
+	unsigned int	map_size;
 	t_block			**bit_field;
 	int				i;
 
@@ -190,13 +190,13 @@ t_block						**solver(unsigned short *binary_map)
 	while (i <= tetrino_count)
 		ft_memset(map_field[i++], 0, 1);
 	i = 0;
-	min_size = (unsigned int)squareroot(tetrino_count * 4);
+	map_size = (unsigned int)squareroot(tetrino_count * 4);
 	bit_field = create_tblocks(binary_map, tetrino_count);
-	while (min_size <= 10)
+	while (map_size <= 10)
 	{
-		if (algorith_alpha(map_field, bit_field, min_size) == 1)
+		if (algorith_alpha(map_field, bit_field, map_size) == 1)
 			break;
-		min_size++;
+		map_size++;
 	}
 	return (bit_field);
 }
