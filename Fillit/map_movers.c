@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 10:50:51 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/12 14:35:14 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/12 15:00:50 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ unsigned short	shift_left(unsigned short *bit_field, int shift_amount,
 	i = -1;
 	if (shift_amount == 0)
 		return (0);
-	l_mask = l_shift_create;
+	l_mask = l_shift_create(mask_size);
 	while (++i < mask_size)
 		if ((bit_field[i] & l_mask) != 0)
 			return (0);

@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:21:04 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/12 14:52:08 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/12 15:16:50 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ int				main(int argc, char **argv)
 		write(1, "Algorithm_Nonsence_That_Needs_Creating\n", 39);
 		if ((bit_field = solver(binary_map)) == NULL)
 			return (0);
-		else
-			print_map(bit_field);
+//		else
+//			print_map(bit_field);
+//			^.^MOVED TO SOLVER^.^
 	}
 	// DONT FORGET TO REMOVE ^^THIS^^ THINGS BECAUSE IT SHOULD ALWAYS SUCCEED AFTER VALID CHECK 
 	else
