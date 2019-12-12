@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/12 10:42:45 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/12 10:58:32 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,35 +140,39 @@ void						unstamp_map(unsigned short *map_field, unsigned short *tetrino)
 t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, unsigned int map_size)
 {
 	int 	i;
-	t_block	bit_field_copy;
+	t_block	**bit_field_copy;
 
 	i = 0;
 	bit_field_copy = copy_tblocks(bit_field);
-
-	while (stamp_map(map_field, bit_field_copy[i]->tetrino_field) == 1)
+//	TRY ALL POSSIBLE TETRINO BOYS FOR THIS PLACE (loop)
+	while (check_tblocks(bit_field_copy))
 	{
-		bit_field_copy[i]->used_flag = 1;
-		i++;
-		while (stamp_map(map_field, bit_field_copy[i]->tetrino_field) == 0)
+		while (stamp_map(map_field, bit_field_copy[i]->tetrino_field) == 1)
 		{
-			while (shift_right(bit_field_copy[i]->tetrino_field, 1, map_size) == 0)
-				while (shift_down(bit_field_copy[i]->tetrino_field, 1, map_size) == 1)
-				if (shift_down(bit_field_copy[i]->tetrino_field, 1) == 0)
-					if ((algorithm_alpha(map_field, bit_field_copy[i], map_size)) == 0)
-						if (bit_field_copy[i]->used_flag == 0 && bit_field != NULL);
-						{
-							i--;
-							unstamp_map(map_field, bit_field_copy[i]->tetrino_field);	
-							bit_field_copy[i]->used_flag = 0;
-						}
-//						TRY ALL POSSIBLE TETRINO BOYS FOR THIS PLACE (loop)
-						while (check_tblocks(bit_field_copy))
-						{
-							algorithm_alpha(map_field, bit_field[i], map_size);
-//							GO TO NEXT BLOCK
-						}
+			bit_field_copy[i]->used_flag = 1;
+			i++;
+			while (stamp_map(map_field, bit_field_copy[i]->tetrino_field) == 0)
+			{
+				while (shift_right(bit_field_copy[i]->tetrino_field, 1, map_size) == 0)
+					while (shift_down(bit_field_copy[i]->tetrino_field, 1, map_size) == 1)
+					if (shift_down(bit_field_copy[i]->tetrino_field, 1) == 0)
+						if ((algorithm_alpha(map_field, bit_field_copy[i], map_size)) == 0)
+							if (bit_field_copy[i]->used_flag == 0 && bit_field_copy[i] != NULL);
+							{
+								i--;
+								unstamp_map(map_field, bit_field_copy[i]->tetrino_field);	
+								bit_field_copy[i]->used_flag = 0;
+							}
+						
+							{
+								algorithm_alpha(map_field, bit_field[i], map_size);
+								if (bit_field_copy[i] == NULL)
+									i = 0;
+								else
+									i++;
+							}
+			}
 		}
-	}
 	free_tblocks(bit_field_copy);
 	return (NULL);
 }
