@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/11 17:24:38 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/12 10:42:45 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,9 +156,11 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 				if (shift_down(bit_field_copy[i]->tetrino_field, 1) == 0)
 					if ((algorithm_alpha(map_field, bit_field_copy[i], map_size)) == 0)
 						if (bit_field_copy[i]->used_flag == 0 && bit_field != NULL);
+						{
+							i--;
 							unstamp_map(map_field, bit_field_copy[i]->tetrino_field);	
-//						UNDO LAST TETRINO
-//						RESET USED FLAG
+							bit_field_copy[i]->used_flag = 0;
+						}
 //						TRY ALL POSSIBLE TETRINO BOYS FOR THIS PLACE (loop)
 						while (check_tblocks(bit_field_copy))
 						{
