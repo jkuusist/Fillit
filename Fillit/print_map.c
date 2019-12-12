@@ -6,9 +6,12 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 11:45:18 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/12 14:26:31 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/12 14:42:41 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "fillit.h"
+#include "../Libft/libft.h"
 
 static unsigned short		check_bit(unsigned short *bit_field,
 		unsigned int bit_nb)

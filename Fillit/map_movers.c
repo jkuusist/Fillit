@@ -6,16 +6,17 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 10:50:51 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/12 14:14:16 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/12 14:35:14 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Libft/libft.h"
 #include "fillit.h"
 
-unsigned short	shift_left(unsigned short *bit_field, int shift_amount)
+unsigned short	shift_left(unsigned short *bit_field, int shift_amount,
+		unsigned int mask_size)
 {
-	int				i;
+	unsigned int	i;
 	unsigned int	l_mask;
 
 	i = -1;
@@ -36,7 +37,7 @@ unsigned short	shift_left(unsigned short *bit_field, int shift_amount)
 unsigned short	shift_right(unsigned short *bit_field, int shift_amount,
 		unsigned int mask_size)
 {
-	int				i;
+	unsigned int	i;
 	unsigned int	r_mask;
 
 	i = 0;
