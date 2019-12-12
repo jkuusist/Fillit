@@ -6,11 +6,12 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/12 11:49:06 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/12 14:54:00 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include "../Libft/libft.h"
 #include <stdlib.h>
 
 /*
@@ -68,7 +69,7 @@ void						free_tblocks(t_block **array)
 	while (array[i] != 0)
 	{
 		free(array[i]->tetrino_field);
-		free(array[i];
+		free(array[i]);
 		i++;
 	}
 	free(array);
@@ -155,8 +156,8 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 				while (shift_right(bit_field_copy[i]->tetrino_field, 1, map_size) == 0)
 				{
 					while (shift_down(bit_field_copy[i]->tetrino_field, 1, map_size) == 1)
-					if (shift_down(bit_field_copy[i]->tetrino_field, 1) == 0)
-						if (bit_field_copy[i]->used_flag == 0 && bit_field_copy[i] != NULL);
+					if (shift_down(bit_field_copy[i]->tetrino_field, 1, map_size) == 0)
+						if (bit_field_copy[i]->used_flag == 0 && bit_field_copy[i] != NULL)
 						{
 							i--;
 							unstamp_map(map_field, bit_field_copy[i]->tetrino_field);	
@@ -165,7 +166,7 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 				}
 			}
 		}				
-		algorithm_alpha(map_field, bit_field[i], map_size);
+		algorithm_alpha(map_field, bit_field, map_size);
 		if (bit_field_copy[i] == NULL)
 			i = 0;
 		else
@@ -181,7 +182,7 @@ t_block						**solver(unsigned short *binary_map)
 	unsigned short	map_field[10];
 	unsigned int	map_size;
 	t_block			**bit_field;
-	int				i;
+	unsigned int	i;
 
 	tetrino_count = 0;
 	i = 0;
@@ -194,7 +195,7 @@ t_block						**solver(unsigned short *binary_map)
 	bit_field = create_tblocks(binary_map, tetrino_count);
 	while (map_size <= 10)
 	{
-		if (algorith_alpha(map_field, bit_field, map_size) == 1)
+		if (algorithm_alpha(map_field, bit_field, map_size) == 1)
 			break;
 		map_size++;
 	}

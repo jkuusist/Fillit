@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:32:01 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/12 14:34:11 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/12 14:51:11 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ typedef struct		s_block
 	unsigned char		used_flag;
 }					t_block;
 t_block				**solver(unsigned short *binary_map);
+void	print_map(t_block **bit_field, unsigned int map_size, unsigned int num_tetrinos);
 
 #endif
