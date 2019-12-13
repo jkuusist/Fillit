@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/12 15:16:06 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/13 12:43:56 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int							check_tblocks(t_block **src)
 
 	i = 0;
 	if (src[i] == NULL)
-		return (0);
+		return (-1);
 	while ((src[i] != NULL) && (src[i]->used_flag == 1))
 		i++;
 	if (src[i]->used_flag == 0)
 		return (i);
-	return (0);
+	return (-1);
 }
 
 
@@ -145,7 +145,7 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 	i = 0;
 	bit_field_copy = copy_tblocks(bit_field);
 //	TRY ALL POSSIBLE TETRINO BOYS FOR THIS PLACE (loop)
-	while (check_tblocks(bit_field_copy) != 0)
+	while (check_tblocks(bit_field_copy) != (-1))
 	{
 		while (stamp_map(map_field, bit_field_copy[i]->tetrino_field) == 1)
 		{
@@ -157,7 +157,7 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 				{
 					while (shift_down(bit_field_copy[i]->tetrino_field, 1, map_size) == 1)
 					if (shift_down(bit_field_copy[i]->tetrino_field, 1, map_size) == 0)
-						if (bit_field_copy[i]->used_flag == 0 && bit_field_copy[i] != NULL)
+						if ((bit_field_copy[i] != NULL) && (bit_field_copy[i]->used_flag == 0))
 						{
 							i--;
 							unstamp_map(map_field, bit_field_copy[i]->tetrino_field);	
