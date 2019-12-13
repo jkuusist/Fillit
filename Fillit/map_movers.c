@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 10:50:51 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/13 12:34:52 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/13 17:00:30 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,6 @@ unsigned short	shift_down(unsigned short *bit_field, int shift_amount, unsigned 
 		bit_field[i] = 0;
 		i++;
 	}
-	shift_left(bit_field, (mask_size - 1), mask_size;
+	shift_left(bit_field, (mask_size - 1), mask_size);
 	return (1);
 }
