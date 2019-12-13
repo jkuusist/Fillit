@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/13 17:50:10 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/13 18:05:50 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int							check_tblocks(t_block **src)
 		return (-1);
 	while ((src[i] != NULL) && (src[i]->used_flag == 1))
 		i++;
-	if (src[i]->used_flag == 0)
+	if ((src[i] != NULL) && (src[i]->used_flag == 0))
 		return (i);
 	return (2);
 }
@@ -166,12 +166,12 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 						bit_field_copy[i]->used_flag = 0;
 					}
 			}
+		}
 		algorithm_alpha(map_field, bit_field, map_size, tetrino_count);
 		if (bit_field_copy[i] == NULL)
 			i = 0;
 		else
 			i++;
-		}
 	}
 	if (check_tblocks(bit_field) == 2)
 	{
