@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 11:45:18 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/13 12:05:45 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/13 12:08:58 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	print_map(t_block **bit_field, unsigned int map_size, unsigned int num_tetr
 				checked_rows++;
 				checked_bits = 0;
 			}
-			if (check_bit(bit_field[i]->tetrino_field[checked_rows]), checked_bits++)
+			if (check_bit(&(bit_field[i]->tetrino_field[checked_rows]), checked_bits++))
 				char_map[i] = bit_field[i]->id;
 			if ((checked_bits != 0) && (checked_bits % map_size == 0))
 				char_map[i++] = '\n';
