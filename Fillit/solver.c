@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/13 13:20:48 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/13 16:20:56 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void						unstamp_map(unsigned short *map_field, unsigned short *tetrino)
 	}
 }
 
-t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, unsigned int map_size)
+t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, unsigned int map_size, unsigned int tetrino_count)
 {
 	int 	i;
 	t_block	**bit_field_copy;
@@ -148,7 +148,7 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 //	TRY ALL POSSIBLE TETRINO BOYS FOR THIS PLACE (loop)
 	while (check_tblocks(bit_field_copy) != (-1))
 	{
-		while (stamp_map(map_field, bit_field_copy[i]->tetrino_field) == 1)
+		while ((i < tetrino_count) && (stamp_map(map_field, bit_field_copy[i]->tetrino_field) == 1))
 		{
 			bit_field_copy[i]->used_flag = 1;
 			i++;
@@ -201,7 +201,7 @@ t_block						**solver(unsigned short *binary_map)
 	bit_field = create_tblocks(binary_map, tetrino_count);
 	while (map_size <= 10)
 	{
-		if (algorithm_alpha(map_field, bit_field, map_size) != NULL)
+		if (algorithm_alpha(map_field, bit_field, map_size, tetrino_count) != NULL)
 		{
 			print_map(bit_field, map_size, tetrino_count);
 			free_tblocks(bit_field);
