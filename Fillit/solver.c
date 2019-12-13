@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/13 16:20:56 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/13 16:40:44 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,8 +140,8 @@ void						unstamp_map(unsigned short *map_field, unsigned short *tetrino)
 
 t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, unsigned int map_size, unsigned int tetrino_count)
 {
-	int 	i;
-	t_block	**bit_field_copy;
+	unsigned int	i;
+	t_block			**bit_field_copy;
 
 	i = 0;
 	bit_field_copy = copy_tblocks(bit_field);
@@ -153,7 +153,7 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 			bit_field_copy[i]->used_flag = 1;
 			i++;
 		}
-		while (stamp_map(map_field, bit_field_copy[i]->tetrino_field) == 0)
+		while ((i < tetrino_count) && (stamp_map(map_field, bit_field_copy[i]->tetrino_field) == 0))
 		{
 			while (shift_right(bit_field_copy[i]->tetrino_field, 1, map_size) == 0)
 			{
@@ -166,7 +166,7 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 						bit_field_copy[i]->used_flag = 0;
 					}
 			}
-		algorithm_alpha(map_field, bit_field, map_size);
+		algorithm_alpha(map_field, bit_field, map_size, tetrino_count);
 		if (bit_field_copy[i] == NULL)
 			i = 0;
 		else
