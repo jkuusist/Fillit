@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:32:01 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/16 16:21:19 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/16 16:50:00 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ void				print_map(t_block **bit_field, unsigned int map_size,
 		unsigned int num_tetrinos);
 t_block				**copy_tblocks(t_block **src);
 void				free_tblocks(t_block **array);
+unsigned long long	square_root(unsigned long long x);
+unsigned int		check_four(unsigned *map_field, unsigned int map_size);
 
 #endif

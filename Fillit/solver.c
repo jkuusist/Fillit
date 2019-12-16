@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/16 16:24:06 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/16 16:31:54 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,35 +31,6 @@ static int					check_tblocks(t_block **src)
 	if ((src[i] != NULL) && (src[i]->used_flag == 0))
 		return (i);
 	return (-2);
-}
-
-static unsigned long long	squareroot(unsigned long long x)
-{
-	unsigned long long start;
-	unsigned long long end;
-	unsigned long long result;
-	unsigned long long mid;
-
-	if (!x || x > 18446744073709551615U)
-		return (0);
-	if (x == 0 || x == 1)
-		return (x);
-	start = 1;
-	end = x;
-	while (start <= end)
-	{
-		mid = (start + end) / 2;
-		if (mid * mid == x)
-			return (mid);
-		if (mid * mid < x)
-		{
-			start = mid + 1;
-			result = mid;
-		}
-		else
-			end = mid - 1;
-	}
-	return (result);
 }
 
 static int 					stamp_map(unsigned short *map_field, unsigned short *tetrino)
@@ -155,8 +126,7 @@ t_block						**solver(unsigned short *binary_map)
 	while (binary_map[tetrino_count] != 0)
 		tetrino_count++;
 	ft_bzero(map_field, 10);
-	i = 0;
-	map_size = (unsigned int)squareroot(tetrino_count * 4);
+	map_size = (unsigned int)square_root(tetrino_count * 4);
 	bit_field = create_tblocks(binary_map, tetrino_count);
 	while (map_size <= 10)
 	{
