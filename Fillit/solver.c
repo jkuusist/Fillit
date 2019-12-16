@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/13 18:05:50 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/16 10:57:11 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_block						**copy_tblocks(t_block **src)
 	j = 0;
 	while (src[i] != 0)
 		i++;
-	copy = (t_block **)malloc(sizeof(t_block) * i);
+	copy = (t_block **)malloc((sizeof(t_block) * i) + 1);
 	i = 0;
 	while(src[i] != 0)
 	{
@@ -59,6 +59,7 @@ t_block						**copy_tblocks(t_block **src)
 		}
 		i++;
 	}
+	copy[i] = NULL;
 	return (copy);
 }
 
@@ -195,7 +196,7 @@ t_block						**solver(unsigned short *binary_map)
 	i = 0;
 	while (binary_map[tetrino_count] != 0)
 		tetrino_count++;
-	ft_memset(map_field, 0, 1);
+	ft_bzero(map_field, 10);
 	i = 0;
 	map_size = (unsigned int)squareroot(tetrino_count * 4);
 	bit_field = create_tblocks(binary_map, tetrino_count);

@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:30:28 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/12 11:27:28 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/16 11:03:10 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ t_block	**create_tblocks(unsigned short *binary_map, unsigned int tetrino_count)
 		temp = (t_block*)malloc(sizeof(t_block));
 		temp->tetrino_field =
 			(unsigned short *)malloc(sizeof(unsigned short) * 10);
+		ft_bzero(temp->tetrino_field, 10);
 		temp->id = id;
 		temp->used_flag = 0;
 		tblock_conversion(binary_map[i], array);
