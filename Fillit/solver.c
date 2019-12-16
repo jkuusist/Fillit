@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/16 15:00:57 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/16 16:24:06 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** finally, returns -2 if EVERY SINGLE ONE has been stamped.
 */
 
-int							check_tblocks(t_block **src)
+static int					check_tblocks(t_block **src)
 {
 	int i;
 
@@ -31,53 +31,6 @@ int							check_tblocks(t_block **src)
 	if ((src[i] != NULL) && (src[i]->used_flag == 0))
 		return (i);
 	return (-2);
-}
-
-
-t_block						**copy_tblocks(t_block **src)
-{
-	int		i;
-	int		j;
-	t_block **copy;
-
-	i = 0;
-	j = 0;
-	while (src[i] != 0)
-		i++;
-	copy = (t_block **)malloc((sizeof(t_block) * i) + 1);
-	i = 0;
-	while(src[i] != 0)
-	{
-		copy[i] = (t_block*)malloc(sizeof(t_block));
-		copy[i]->tetrino_field = (unsigned short *)malloc(sizeof(unsigned short) * 10);
-		copy[i]->id = src[i]->id;
-		
-		//printf("copy->used flag is now %d\nsrc->used_flag is now %d\n", );
-
-		copy[i]->used_flag = src[i]->used_flag;
-		while (j < 10)
-		{
-			copy[i]->tetrino_field[j] = src[i]->tetrino_field[j];
-			j++;
-		}
-		i++;
-	}
-	copy[i] = NULL;
-	return (copy);
-}
-
-void						free_tblocks(t_block **array)
-{
-	int i;
-
-	i = 0;
-	while (array[i] != 0)
-	{
-		free(array[i]->tetrino_field);
-		free(array[i]);
-		i++;
-	}
-	free(array);
 }
 
 static unsigned long long	squareroot(unsigned long long x)
@@ -209,9 +162,8 @@ t_block						**solver(unsigned short *binary_map)
 	{
 		if ((bit_field = algorithm_alpha(map_field, bit_field, map_size, tetrino_count)) != NULL)
 		{
-			
-			//printf("bit_field[0]->tetrino_field[0] is %d\n", bit_field[0]->tetrino_field[0]);
-
+			if (map_size < 4)
+				map_size = check_four(map_field)	
 			print_map(bit_field, map_size, tetrino_count);
 			free_tblocks(bit_field);
 			break;

@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 12:30:28 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/16 11:03:10 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/16 16:21:33 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,51 @@
 #include "fillit.h"
 #include "../Libft/libft.h"
 
-void	stack_to_heap(unsigned short *array, t_block *temp)
+
+t_block		**copy_tblocks(t_block **src)
+{
+	int		i;
+	int		j;
+	t_block **copy;
+
+	i = 0;
+	j = 0;
+	while (src[i] != 0)
+		i++;
+	copy = (t_block **)malloc((sizeof(t_block) * i) + 1);
+	i = 0;
+	while(src[i] != 0)
+	{
+		copy[i] = (t_block*)malloc(sizeof(t_block));
+		copy[i]->tetrino_field = (unsigned short *)malloc(sizeof(unsigned short) * 10);
+		copy[i]->id = src[i]->id;
+		copy[i]->used_flag = src[i]->used_flag;
+		while (j < 10)
+		{
+			copy[i]->tetrino_field[j] = src[i]->tetrino_field[j];
+			j++;
+		}
+		i++;
+	}
+	copy[i] = NULL;
+	return (copy);
+}
+
+void		free_tblocks(t_block **array)
+{
+	int i;
+
+	i = 0;
+	while (array[i] != 0)
+	{
+		free(array[i]->tetrino_field);
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
+
+void		stack_to_heap(unsigned short *array, t_block *temp)
 {
 	int k;
 
@@ -26,7 +70,7 @@ void	stack_to_heap(unsigned short *array, t_block *temp)
 	}
 }
 
-void	tblock_conversion(unsigned short binary_mapi, unsigned short *array)
+void		tblock_conversion(unsigned short binary_mapi, unsigned short *array)
 {
 	int	j;
 
@@ -47,7 +91,7 @@ void	tblock_conversion(unsigned short binary_mapi, unsigned short *array)
 	}
 }
 
-t_block	**create_tblocks(unsigned short *binary_map, unsigned int tetrino_count)
+t_block		**create_tblocks(unsigned short *binary_map, unsigned int tetrino_count)
 {
 	int				i;
 	unsigned char	id;

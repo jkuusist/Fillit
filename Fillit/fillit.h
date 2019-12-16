@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:32:01 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/16 15:00:20 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/16 16:21:19 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ t_block				**create_tblocks(unsigned short *binary_map,
 t_block				**solver(unsigned short *binary_map);
 void				print_map(t_block **bit_field, unsigned int map_size,
 		unsigned int num_tetrinos);
+t_block				**copy_tblocks(t_block **src);
+void				free_tblocks(t_block **array);
 
 #endif
