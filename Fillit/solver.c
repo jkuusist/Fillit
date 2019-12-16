@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/16 12:10:41 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/16 13:11:34 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 /*
 ** check_tblocks returns -1 on NULL pointer, i (index) for unused t_blocks and
-** finally, returns 2 if EVERY SINGLE ONE has been stamped.
+** finally, returns -2 if EVERY SINGLE ONE has been stamped.
 */
 
 int							check_tblocks(t_block **src)
@@ -34,7 +34,7 @@ int							check_tblocks(t_block **src)
 		i++;
 	if ((src[i] != NULL) && (src[i]->used_flag == 0))
 		return (i);
-	return (2);
+	return (-2);
 }
 
 
@@ -154,7 +154,7 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 	i = 0;
 	bit_field_copy = copy_tblocks(bit_field);
 //	TRY ALL POSSIBLE TETRINO BOYS FOR THIS PLACE (loop)
-	while (check_tblocks(bit_field_copy) != (-1))
+	while (check_tblocks(bit_field_copy) >= 0)
 	{
 		while ((i < tetrino_count) && (stamp_map(map_field, bit_field_copy[i]->tetrino_field) == 1))
 		{
@@ -176,7 +176,7 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 				}
 			}
 		}
-		if (check_tblocks(bit_field_copy) != 2)
+		if (check_tblocks(bit_field_copy) != -2)
 			algorithm_alpha(map_field, bit_field_copy, map_size, tetrino_count);
 		if (bit_field_copy[i] == NULL)
 			i = 0;
