@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/16 16:31:54 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/16 17:09:54 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ t_block						**solver(unsigned short *binary_map)
 		if ((bit_field = algorithm_alpha(map_field, bit_field, map_size, tetrino_count)) != NULL)
 		{
 			if (map_size < 4)
-				map_size = check_four(map_field)	
+				map_size = check_four(map_field, map_size);
 			print_map(bit_field, map_size, tetrino_count);
 			free_tblocks(bit_field);
 			break;

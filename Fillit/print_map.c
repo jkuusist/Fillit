@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 11:45:18 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/16 16:59:27 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/16 17:10:31 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 static unsigned short		check_bit(unsigned short tetrino_field,
 		unsigned int bit_nb)
 {
-	if (*tetrino_field & (32768 >> (bit_nb)))
+	if (tetrino_field & (32768 >> (bit_nb)))
 		return (1);
 	else
 		return (0);

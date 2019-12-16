@@ -5,7 +5,7 @@ HEDR = fillit.h
 
 LIBFT = ../Libft
 
-SRCS = main.c solver.c binary_checker.c map_shifters.c check_input.c handle_tblocks.c	mask_create.c create_block_array.c print_map.c
+SRCS = main.c solver.c binary_checker.c map_shifters.c check_input.c handle_tblocks.c mask_create.c create_block_array.c print_map.c square_root.c
 
 OBJECTS = $(SRCS:.c=.o)
 #REMEMBER TO REMOVE -g BEFORE FINAL PUSH
