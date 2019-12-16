@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/16 11:30:46 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/16 11:46:06 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,16 +163,17 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 		}
 		while ((i < tetrino_count) && (stamp_map(map_field, bit_field_copy[i]->tetrino_field) == 0))
 		{
-			while ((shift_right(bit_field_copy[i]->tetrino_field, 1, map_size)) == 0)
+			if ((shift_right(bit_field_copy[i]->tetrino_field, 1, map_size)) == 0)
 			{
-				while ((shift_down(bit_field_copy[i]->tetrino_field, 1, map_size)) == 1)
 				if (shift_down(bit_field_copy[i]->tetrino_field, 1, map_size) == 0)
+				{
 					if ((bit_field_copy[i] != NULL) && (bit_field_copy[i]->used_flag == 0))
 					{
 						i--;
 						unstamp_map(map_field, bit_field_copy[i]->tetrino_field);	
 						bit_field_copy[i]->used_flag = 0;
 					}
+				}
 			}
 		}
 		algorithm_alpha(map_field, bit_field_copy, map_size, tetrino_count);
