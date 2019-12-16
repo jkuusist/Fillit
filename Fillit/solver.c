@@ -6,13 +6,17 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/16 10:57:11 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/16 11:30:46 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "../Libft/libft.h"
 #include <stdlib.h>
+
+
+#include "stdio.h"
+
 
 /*
 ** check_tblocks returns -1 on NULL pointer, i (index) for unused t_blocks and
@@ -24,7 +28,7 @@ int							check_tblocks(t_block **src)
 	int i;
 
 	i = 0;
-	if (src[i] == NULL)
+	if (*src == NULL)
 		return (-1);
 	while ((src[i] != NULL) && (src[i]->used_flag == 1))
 		i++;
@@ -51,6 +55,9 @@ t_block						**copy_tblocks(t_block **src)
 		copy[i] = (t_block*)malloc(sizeof(t_block));
 		copy[i]->tetrino_field = (unsigned short *)malloc(sizeof(unsigned short) * 10);
 		copy[i]->id = src[i]->id;
+		
+		//printf("copy->used flag is now %d\nsrc->used_flag is now %d\n", );
+
 		copy[i]->used_flag = src[i]->used_flag;
 		while (j < 10)
 		{
@@ -168,7 +175,7 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 					}
 			}
 		}
-		algorithm_alpha(map_field, bit_field, map_size, tetrino_count);
+		algorithm_alpha(map_field, bit_field_copy, map_size, tetrino_count);
 		if (bit_field_copy[i] == NULL)
 			i = 0;
 		else
