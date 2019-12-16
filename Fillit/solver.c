@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/16 13:11:34 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/16 13:14:50 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,7 +183,7 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 		else
 			i++;
 	}
-	if (check_tblocks(bit_field_copy) == 2)
+	if (check_tblocks(bit_field_copy) == -2)
 	{
 		free_tblocks(bit_field);
 		bit_field = bit_field_copy;
