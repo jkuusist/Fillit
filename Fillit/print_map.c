@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 11:45:18 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/17 11:46:32 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/17 11:50:25 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static unsigned short		check_bit(unsigned short tetrino_field,
 unsigned int				check_four(unsigned short *map_field, unsigned int map_size)
 {
 	unsigned int	i;
-	unsigned int	j;
 	
 	i = 0;
 	while ((map_size < 5) && (i < 5))
