@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/17 16:52:27 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/17 17:55:14 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int					check_tblocks(t_block **src)
 	int i;
 
 	i = 0;
-	if (*src == NULL)
+	if (src == NULL)
 		return (-1);
 	while ((src[i] != NULL) && (src[i]->used_flag == 1))
 		i++;
@@ -70,22 +70,28 @@ void						unstamp_map(unsigned short *map_field, unsigned short *tetrino)
 
 t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, unsigned int map_size, unsigned int tetrino_count)
 {
-	int index;
+	int		index;
 
-	for (int j = 0; j < 2; j++)
-		printf("block[%d]->id is %c. block[%d]->unused_flag is %d\n", j, bit_field[j]->id, j, bit_field[j]->used_flag);
-
+	if (bit_field == NULL)
+		return (NULL);
 	if ((check_tblocks(bit_field)) == -2) //IS SOLUTION
 		return (bit_field);
-	index = check_tblocks(bit_field);
-	stamp_map(map_field, bit_field[index]->tetrino_field);
-	bit_field[index]->used_flag = 1; 
+	index = 0;
+	if	(stamp_map(map_field, bit_field[index]->tetrino_field))
+	{
+		bit_field[index]->used_flag = 1; 
+		index = check_tblocks(bit_field);
+		algorithm_alpha(map_field, &(bit_field[index]), map_size, tetrino_count);
+	}
+/*
 	while ((check_tblocks(bit_field) >= 0)) //while (BLOCKS_REMAIN)
 	{
 		if (algorithm_alpha(map_field, bit_field, map_size, tetrino_count)) //if (algorithm_alpha(REMAINING BLOCKS))
 				return (bit_field); //return (TRUE);
+		else
+			unstamp_map(map_field, bit_field[index]->tetrino_field);
 	}
-	unstamp_map(map_field, bit_field[index]->tetrino_field);
+*/
 	if (bit_field[index] != NULL)
 	{
 		bit_field[index]->used_flag = 0; 
@@ -106,7 +112,7 @@ t_block						**solver(unsigned short *binary_map)
 	while (binary_map[tetrino_count] != 0)
 		tetrino_count++;
 	ft_bzero(map_field, 20);
-	map_size = 8; //(unsigned int)square_root(tetrino_count * 4);
+	map_size = (unsigned int)square_root(tetrino_count * 4);
 	bit_field = create_tblocks(binary_map, tetrino_count);
 	while (map_size <= 10)
 	{
