@@ -6,14 +6,13 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:05:55 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/16 17:06:03 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/17 10:19:23 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "fillit.h"
 #include "../Libft/libft.h"
-
 
 t_block		**copy_tblocks(t_block **src)
 {

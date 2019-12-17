@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 11:45:18 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/16 17:23:58 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/17 11:00:00 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,29 +55,38 @@ void						print_map(t_block **bit_field,
 	unsigned int	checked_bits;
 	unsigned int	checked_rows;
 
+
+	printf("map size passed into printer is %d\n", map_size);
+
 	i = 0;
 	checked_bits = 0;
 	checked_rows = 0;
 	while (i <= (map_size * map_size + map_size))
 		ft_memset((&(char_map[i++])), '.', 1);
 	i = 0;
-
-	while ((bit_field[i] != NULL) && (i < num_tetrinos))
+	printf("i is now %dd\n", i);
+	while ((bit_field[i] != NULL) || (i < num_tetrinos))
 	{
+		//printf();
+
 		while (checked_rows <= map_size)
 		{
-			if (check_bit(bit_field[i]->tetrino_field[checked_rows],
-						checked_bits))
+		/*	for (int k = 0; k < 10; k++)
+				printf("bit_field[%d]->tetrino_field[%d] is %d\n", i, k, bit_field[i]->tetrino_field[k]);
+		*/
+
+			if ((i < num_tetrinos) && (check_bit(bit_field[i]->tetrino_field[checked_rows],
+						checked_bits)))
 			{
 				char_map[i] = bit_field[i]->id;
 				checked_bits++;
 			}
-			if ((checked_bits != 0) && (checked_bits % map_size == 0))
+			if (/* (checked_bits != 0) && (*/checked_bits % map_size == 0)
 			{
 				char_map[i] = '\n';
 				i++;
 			}
-			if (checked_bits == 16)
+			if (checked_bits == map_size) //16)
 			{
 				checked_rows++;
 				checked_bits = 0;
