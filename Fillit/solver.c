@@ -6,13 +6,15 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/17 16:00:47 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/17 16:52:27 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "../Libft/libft.h"
 #include <stdlib.h>
+
+#include <stdio.h>
 
 /*
 ** check_tblocks returns -1 on NULL pointer, i (index) for unused t_blocks and
@@ -68,49 +70,27 @@ void						unstamp_map(unsigned short *map_field, unsigned short *tetrino)
 
 t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, unsigned int map_size, unsigned int tetrino_count)
 {
-	unsigned int	i;
-	t_block			**bit_field_copy;
+	int index;
 
-	i = 0;
-	bit_field_copy = copy_tblocks(bit_field);
-	while ((i = (check_tblocks(bit_field_copy) >= 0)))
-	{
-		while ((i < tetrino_count) && (stamp_map(map_field, bit_field_copy[i]->tetrino_field) == 1))
-		{
-			bit_field_copy[i]->used_flag = 1;
-			i++;
-		}
-		while ((i < tetrino_count) && (stamp_map(map_field, bit_field_copy[i]->tetrino_field) == 0))
-		{
-			if ((shift_right(bit_field_copy[i]->tetrino_field, 1, map_size)) == 0)
-			{
-				if (shift_down(bit_field_copy[i]->tetrino_field, 1, map_size) == 0)
-				{
-					if ((bit_field_copy[i] != NULL) && (bit_field_copy[i]->used_flag == 0))
-					{
-						i--;
-						unstamp_map(map_field, bit_field_copy[i]->tetrino_field);	
-						bit_field_copy[i]->used_flag = 0;
-					}
-						if (
-				}
-			}
-		}
-		if (check_tblocks(bit_field_copy) != -2)
-			algorithm_alpha(map_field, bit_field_copy, map_size, tetrino_count);
-		if (bit_field_copy[i] == NULL)
-			i = 0;
-		else
-			i++;
-	}
-	if (check_tblocks(bit_field_copy) == -2)
-	{
-		free_tblocks(bit_field);
-		bit_field = bit_field_copy;
+	for (int j = 0; j < 2; j++)
+		printf("block[%d]->id is %c. block[%d]->unused_flag is %d\n", j, bit_field[j]->id, j, bit_field[j]->used_flag);
+
+	if ((check_tblocks(bit_field)) == -2) //IS SOLUTION
 		return (bit_field);
+	index = check_tblocks(bit_field);
+	stamp_map(map_field, bit_field[index]->tetrino_field);
+	bit_field[index]->used_flag = 1; 
+	while ((check_tblocks(bit_field) >= 0)) //while (BLOCKS_REMAIN)
+	{
+		if (algorithm_alpha(map_field, bit_field, map_size, tetrino_count)) //if (algorithm_alpha(REMAINING BLOCKS))
+				return (bit_field); //return (TRUE);
 	}
-	free_tblocks(bit_field_copy);
-	return (NULL);
+	unstamp_map(map_field, bit_field[index]->tetrino_field);
+	if (bit_field[index] != NULL)
+	{
+		bit_field[index]->used_flag = 0; 
+	}	
+	return (NULL); //return (FALSE);
 }
 
 t_block						**solver(unsigned short *binary_map)
@@ -126,7 +106,7 @@ t_block						**solver(unsigned short *binary_map)
 	while (binary_map[tetrino_count] != 0)
 		tetrino_count++;
 	ft_bzero(map_field, 20);
-	map_size = (unsigned int)square_root(tetrino_count * 4);
+	map_size = 8; //(unsigned int)square_root(tetrino_count * 4);
 	bit_field = create_tblocks(binary_map, tetrino_count);
 	while (map_size <= 10)
 	{
