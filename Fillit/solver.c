@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/17 12:13:42 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/17 15:06:13 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,23 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 	t_block			**bit_field_copy;
 
 	i = 0;
+	
+for (int k = 0; k < 2; k++)
+	{
+		printf("block[%d] is %c. it's used flag is %d\n", k, bit_field[k]->id, bit_field[k]->used_flag);
+		for (int l = 0; l < 10; l++)
+			printf("block[%d]->tetrino_field[%d] is %d\n", k, l, bit_field[k]->tetrino_field[l]);
+	}
+	
 	bit_field_copy = copy_tblocks(bit_field);
+	
+for (int m = 0; m < 2; m++)
+	{
+		printf("block_copy[%d] is %c. it's used flag is %d\n", m, bit_field_copy[m]->id, bit_field_copy[m]->used_flag);
+		for (int n = 0; n < 10; n++)
+			printf("block_copy[%d]->tetrino_field[%d] is %d\n", m, n, bit_field_copy[m]->tetrino_field[n]);
+	}
+
 	while (check_tblocks(bit_field_copy) >= 0)
 	{
 		while ((i < tetrino_count) && (stamp_map(map_field, bit_field_copy[i]->tetrino_field) == 1))

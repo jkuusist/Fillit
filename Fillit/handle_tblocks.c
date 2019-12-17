@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:05:55 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/17 12:01:28 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/17 15:10:35 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_block		**copy_tblocks(t_block **src)
 			copy[i]->tetrino_field[j] = src[i]->tetrino_field[j];
 			j++;
 		}
+		j = 0;
 		i++;
 	}
 	copy[i] = NULL;

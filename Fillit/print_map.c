@@ -6,12 +6,14 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 11:45:18 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/17 14:28:02 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/17 14:57:19 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "../Libft/libft.h"
+
+#include <stdio.h>
 
 static unsigned short		check_bit(unsigned short tetrino_field,
 		unsigned int bit_nb)
@@ -47,6 +49,12 @@ void						print_map(t_block **bit_field,
 	unsigned int	checked_bits;
 	unsigned int	checked_rows;
 
+	for (int k = 0; k < 26; k++)
+	{
+		printf("block[%d] is %c. it's used flag is %d\n", k, bit_field[k]->id, bit_field[k]->used_flag);
+		for (int l = 0; l < 10; l++)
+			printf("block[%d]->tetrino_field[%d] is %d\n", k, l, bit_field[k]->tetrino_field[l]);
+	}
 	i = 0;
 	checked_bits = 0;
 	checked_rows = 0;
