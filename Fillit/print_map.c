@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 11:45:18 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/17 12:13:04 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/17 12:27:07 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,20 @@ void						print_map(t_block **bit_field,
 	i = 0;
 	while ((bit_field[i] != NULL) || (i < num_tetrinos))
 	{
-		while (checked_rows <= map_size)
+		while ((checked_rows <= map_size) && (i < num_tetrinos))
 		{
+			if ((checked_bits != 0) && (checked_bits % map_size == 0))
+			{
+				char_map[i] = '\n';
+				i++;
+			}
 			if ((i < num_tetrinos) && (check_bit(bit_field[i]->tetrino_field[checked_rows],
 						checked_bits)))
 			{
 				char_map[i] = bit_field[i]->id;
 				checked_bits++;
 			}
-			if (/* (checked_bits != 0) && (*/checked_bits % map_size == 0)
-			{
-				char_map[i] = '\n';
-				i++;
-			}
-			if (checked_bits == map_size) //16)
+			if (checked_bits == map_size)
 			{
 				checked_rows++;
 				checked_bits = 0;
