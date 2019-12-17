@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/17 11:58:15 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/17 12:13:42 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 
 	i = 0;
 	bit_field_copy = copy_tblocks(bit_field);
-//	TRY ALL POSSIBLE TETRINO BOYS FOR THIS PLACE (loop)
 	while (check_tblocks(bit_field_copy) >= 0)
 	{
 		while ((i < tetrino_count) && (stamp_map(map_field, bit_field_copy[i]->tetrino_field) == 1))
@@ -127,34 +126,15 @@ t_block						**solver(unsigned short *binary_map)
 	i = 0;
 	while (binary_map[tetrino_count] != 0)
 		tetrino_count++;
-
-	printf("first go\n");
-	for (int j = 0; j < 10; j++)
-			{
-				printf("map_field[%d] is %d\n", j, map_field[j]);
-			}
-
 	ft_bzero(map_field, 20);
-
-	printf("second go\n");
-	for (int k = 0; k < 10; k++)
-			{
-				printf("map_field[%d] is %d\n", k, map_field[k]);
-			}
-
 	map_size = (unsigned int)square_root(tetrino_count * 4);
 	bit_field = create_tblocks(binary_map, tetrino_count);
 	while (map_size <= 10)
 	{
 		if ((bit_field = algorithm_alpha(map_field, bit_field, map_size, tetrino_count)) != NULL)
 		{
-			for (int l = 0; l < 10; l++)
-			{
-				printf("map_field[%d] is %d\n", l, map_field[l]);
-			}
 			if (map_size < 4)
 				map_size = check_four(map_field, map_size);
-			printf("map_size before print_map call is %d\n", map_size);
 			print_map(bit_field, map_size, tetrino_count);
 			free_tblocks(bit_field);
 			break;

@@ -6,15 +6,13 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/11/29 17:25:29 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/17 12:13:29 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #define MAP_SIZE 600
 #include <unistd.h>
 #include "../Libft/libft.h"
-
-#include <stdio.h>
 
 /*
 ** A penultimate check for any tetrino, ensuring almost all criteria.
