@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 11:45:18 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/17 12:27:07 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/17 13:03:03 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,34 +41,39 @@ unsigned int				check_four(unsigned short *map_field, unsigned int map_size)
 void						print_map(t_block **bit_field,
 		unsigned int map_size, unsigned int num_tetrinos)
 {
-	char			char_map[(map_size * 2) + map_size];
+	char			char_map[((map_size * map_size) + map_size) + 1];
 	unsigned int	i;
+	unsigned int	j;
 	unsigned int	checked_bits;
 	unsigned int	checked_rows;
 
 	i = 0;
+	j = 0;
 	checked_bits = 0;
 	checked_rows = 0;
-	while (i <= (map_size * 2 + map_size))
+	while (i < ((map_size * map_size) + map_size))
 		ft_memset((&(char_map[i++])), '.', 1);
 	i = 0;
 	while ((bit_field[i] != NULL) || (i < num_tetrinos))
 	{
 		while ((checked_rows <= map_size) && (i < num_tetrinos))
 		{
-			if ((checked_bits != 0) && (checked_bits % map_size == 0))
+			if (check_bit(bit_field[i]->tetrino_field[checked_rows],
+						checked_bits))
 			{
-				char_map[i] = '\n';
-				i++;
-			}
-			if ((i < num_tetrinos) && (check_bit(bit_field[i]->tetrino_field[checked_rows],
-						checked_bits)))
-			{
-				char_map[i] = bit_field[i]->id;
+				char_map[j] = bit_field[i]->id;
 				checked_bits++;
+				j++;
+			}
+			else if (i < num_tetrinos)
+			{
+				checked_bits++;
+				j++;
 			}
 			if (checked_bits == map_size)
 			{
+				char_map[j] = '\n';
+				j++;
 				checked_rows++;
 				checked_bits = 0;
 			}
@@ -77,5 +82,6 @@ void						print_map(t_block **bit_field,
 		checked_bits = 0;
 		i++;
 	}
+	char_map[j] = '\0';
 	ft_putstr(char_map);
 }
