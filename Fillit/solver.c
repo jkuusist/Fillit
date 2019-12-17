@@ -6,13 +6,15 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/16 17:09:54 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/17 11:09:40 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "../Libft/libft.h"
 #include <stdlib.h>
+
+#include <stdio.h>
 
 /*
 ** check_tblocks returns -1 on NULL pointer, i (index) for unused t_blocks and
@@ -134,6 +136,7 @@ t_block						**solver(unsigned short *binary_map)
 		{
 			if (map_size < 4)
 				map_size = check_four(map_field, map_size);
+			printf("map_size before print_map call is %d\n", map_size);
 			print_map(bit_field, map_size, tetrino_count);
 			free_tblocks(bit_field);
 			break;
