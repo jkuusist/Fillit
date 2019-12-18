@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/18 12:01:33 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/18 12:38:10 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,24 +79,32 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 	if ((check_tblocks(bit_field)) == -2)
 		return (bit_field);
 	index = 0;
-	shift_amount = 0;
-	while (shifter(map_field, shift_amount, map_size))
+	if	(stamp_map(map_field, bit_field[index]->tetrino_field))
 	{
-		if	(stamp_map(map_field, bit_field[index]->tetrino_field))
+		bit_field[index]->used_flag = 1;
+		index = check_tblocks(bit_field);
+		algorithm_alpha(map_field, &(bit_field[index]),
+				map_size, tetrino_count);
+	}
+	else
+	{
+		while (shifter(map_field, 1, map_size))
 		{
-			bit_field[index]->used_flag = 1;
-			index = check_tblocks(bit_field);
-			algorithm_alpha(map_field, &(bit_field[index]),
+			if	(stamp_map(map_field, bit_field[index]->tetrino_field))
+			{
+				bit_field[index]->used_flag = 1;
+				index = check_tblocks(bit_field);
+				algorithm_alpha(map_field, &(bit_field[index]),
 					map_size, tetrino_count);
+			}
+			else
+			{
+				unstamp_map(map_field, bit_field[index]);
+				bit_field[index]->used_flag = 0;
+				algorithm_alpha(map_field, &(bit_field[index++]),
+						map_size, tetrino_count);
+			}
 		}
-		else
-		{
-			unstamp_map(map_field, bit_field[index]);
-			algorithm_alpha(map_field, &(bit_field[index++]),
-					map_size, tetrino_count);
-			bit_field[index]->used_flag = 0;
-		}
-		shift_amount++;
 	}
 /*
 	if (bit_field[index] != NULL)
