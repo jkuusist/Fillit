@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:03:13 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/18 17:02:18 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/18 17:38:58 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,12 @@ unsigned short	shift_down(unsigned short *bit_field, int shift_amount,
 	i = mask_size - 1;
 	while (i < 10)
 	{
-		if ((bit_field[i] & 65535) != 0)
+		if ((bit_field[i++] & 65535) != 0)
 			return (0);
-		i++;
 	}
 	i = 0;
 	j = mask_size;
-	while (i < shift_amount)
+	while (i++ < shift_amount)
 	{
 		while (j >= 0)
 		{
@@ -85,31 +84,27 @@ unsigned short	shift_down(unsigned short *bit_field, int shift_amount,
 			bit_field[j + 1] = temp;
 		}
 		j = mask_size;
-		i++;
 	}
 	i = 0;
 	while (i < shift_amount)
-	{
-		bit_field[i] = 0;
-		i++;
-	}
+		bit_field[i++] = 0;
 	return (1);
 }
 
 unsigned short	shifter(unsigned short *map_field, int shift_amount,
 		unsigned int mask_size)
 {
-		if (shift_right(map_field, shift_amount, mask_size) == 0)
+	if (shift_right(map_field, shift_amount, mask_size) == 0)
+	{
+		if (shift_down(map_field, shift_amount, mask_size) == 1)
 		{
-			if (shift_down(map_field, shift_amount, mask_size) == 1)
-			{
-				while (shift_left(map_field, 1, mask_size) == 1)
-					;
-				return (1);
-			}
-			else 
-				return (0);
+			while (shift_left(map_field, 1, mask_size) == 1)
+				;
+			return (1);
 		}
 		else
-			return (1);
+			return (0);
+	}
+	else
+		return (1);
 }
