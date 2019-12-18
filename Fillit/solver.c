@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/18 15:52:42 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/18 16:16:00 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,12 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 		unsigned int map_size, unsigned int tetrino_count)
 {
 	int		index;
-
+/*
+	for (int o = 0; o < 10; o++)
+		for (int p = 0; p < 10; p++)
+			printf("in algorithm_alpha. bit_field[%d]->tetrino_field[%d] is %d\n", o, p, bit_field[o]->tetrino_field[p]);
+	printf("\n");
+*/
 	if (bit_field == NULL)
 		return (NULL);
 	if ((check_tblocks(bit_field)) == -2)
@@ -88,7 +93,7 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 	}
 	else
 	{
-		while (shifter(map_field, 1, map_size))
+		while (shifter(bit_field[index]->tetrino_field, 1, map_size))
 		{
 			if	(stamp_map(map_field, bit_field[index]->tetrino_field))
 			{
@@ -99,16 +104,16 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 				return (bit_field);
 			}
 		}
-		if (shifter(map_field, 1, map_size) == 0)
+		if (shifter(bit_field[index]->tetrino_field, 1, map_size) == 0)
 		{
 			unstamp_map(map_field, bit_field[index]->tetrino_field);
 			bit_field[index]->used_flag = 0;
 			return (NULL);
-			/*
+			
 			if ((algorithm_alpha(map_field, bit_field,
 							map_size, tetrino_count) != NULL))
 				return (bit_field);
-			*/
+			
 		}
 	}
 	return (NULL);
