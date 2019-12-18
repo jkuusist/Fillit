@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 11:45:18 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/17 15:13:09 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/18 15:58:06 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,12 @@ void						print_map(t_block **bit_field,
 	unsigned int	j;
 	unsigned int	checked_bits;
 	unsigned int	checked_rows;
-
+/*
+	for (int o = 0; o < 10; o++)
+		for (int p = 0; p < 10; p++)
+			printf("bit_field[%d]->tetrino_field[%d] is %d\n", o, p, bit_field[o]->tetrino_field[p]);
+	printf("\n");	
+*/
 	i = 0;
 	checked_bits = 0;
 	checked_rows = 0;
