@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/18 12:38:10 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/18 13:12:12 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 		unsigned int map_size, unsigned int tetrino_count)
 {
 	int		index;
-	int		shift_amount;
 
 	if (bit_field == NULL)
 		return (NULL);
@@ -83,8 +82,9 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 	{
 		bit_field[index]->used_flag = 1;
 		index = check_tblocks(bit_field);
-		algorithm_alpha(map_field, &(bit_field[index]),
-				map_size, tetrino_count);
+		if ((algorithm_alpha(map_field, bit_field,
+						map_size, tetrino_count) != NULL))
+			return (bit_field);
 	}
 	else
 	{
@@ -94,24 +94,20 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 			{
 				bit_field[index]->used_flag = 1;
 				index = check_tblocks(bit_field);
-				algorithm_alpha(map_field, &(bit_field[index]),
-					map_size, tetrino_count);
+				if ((algorithm_alpha(map_field, bit_field,
+								map_size, tetrino_count) != NULL))
+				return (bit_field);
 			}
 			else
 			{
-				unstamp_map(map_field, bit_field[index]);
+				unstamp_map(map_field, bit_field[index]->tetrino_field);
 				bit_field[index]->used_flag = 0;
-				algorithm_alpha(map_field, &(bit_field[index++]),
-						map_size, tetrino_count);
+				if ((algorithm_alpha(map_field, bit_field,
+								map_size, tetrino_count) != NULL))
+					return (bit_field);
 			}
 		}
 	}
-/*
-	if (bit_field[index] != NULL)
-	{
-		bit_field[index]->used_flag = 0; 
-	}
-*/
 	return (NULL);
 }
 
