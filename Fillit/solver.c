@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/17 17:55:14 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/18 11:25:29 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,32 +71,38 @@ void						unstamp_map(unsigned short *map_field, unsigned short *tetrino)
 t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, unsigned int map_size, unsigned int tetrino_count)
 {
 	int		index;
+	int		shift_amount;
 
 	if (bit_field == NULL)
 		return (NULL);
-	if ((check_tblocks(bit_field)) == -2) //IS SOLUTION
+	if ((check_tblocks(bit_field)) == -2)
 		return (bit_field);
 	index = 0;
-	if	(stamp_map(map_field, bit_field[index]->tetrino_field))
+	shift_amount = 0;
+	while (shifter(map_field, shift_amount, map_size))
 	{
-		bit_field[index]->used_flag = 1; 
-		index = check_tblocks(bit_field);
-		algorithm_alpha(map_field, &(bit_field[index]), map_size, tetrino_count);
+
+		if	(stamp_map(map_field, bit_field[index]->tetrino_field))
+		{
+			bit_field[index]->used_flag = 1; 
+			index = check_tblocks(bit_field);
+			algorithm_alpha(map_field, &(bit_field[index]), map_size, tetrino_count);
+		}
+		else
+		{
+			unstamp_map(map_field, bit_field[index]);	
+			algorithm_alpha(map_field, &(bit_field[index++]), map_size, tetrino_count);
+			bit_field[index]->used_flag = 0;
+		}
+		shift_amount++;
 	}
 /*
-	while ((check_tblocks(bit_field) >= 0)) //while (BLOCKS_REMAIN)
-	{
-		if (algorithm_alpha(map_field, bit_field, map_size, tetrino_count)) //if (algorithm_alpha(REMAINING BLOCKS))
-				return (bit_field); //return (TRUE);
-		else
-			unstamp_map(map_field, bit_field[index]->tetrino_field);
-	}
-*/
 	if (bit_field[index] != NULL)
 	{
 		bit_field[index]->used_flag = 0; 
-	}	
-	return (NULL); //return (FALSE);
+	}
+*/
+	return (NULL);
 }
 
 t_block						**solver(unsigned short *binary_map)
