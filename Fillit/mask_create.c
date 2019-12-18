@@ -6,13 +6,13 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 17:05:39 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/18 17:09:56 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/18 17:11:45 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-unsigned short	l_shift_create(unsigned int min_size)
+unsigned short	l_shift_create()
 {
 	return (32768);
 }
