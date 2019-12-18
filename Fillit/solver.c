@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/18 13:49:04 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/18 14:34:02 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 		return (NULL);
 	if ((check_tblocks(bit_field)) == -2)
 		return (bit_field);
-	index = 0;
+	index = check_tblocks(bit_field);
 	if	(stamp_map(map_field, bit_field[index]->tetrino_field))
 	{
 		bit_field[index]->used_flag = 1;
@@ -98,14 +98,14 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 								map_size, tetrino_count) != NULL))
 				return (bit_field);
 			}
-			else
-			{
-				unstamp_map(map_field, bit_field[index]->tetrino_field);
-				bit_field[index]->used_flag = 0;
-				if ((algorithm_alpha(map_field, bit_field,
-								map_size, tetrino_count) != NULL))
-					return (bit_field);
-			}
+		}
+		if (shifter(map_field, 1, map_size) == 0)
+		{
+			unstamp_map(map_field, bit_field[index]->tetrino_field);
+			bit_field[index]->used_flag = 0;
+			if ((algorithm_alpha(map_field, bit_field,
+							map_size, tetrino_count) != NULL))
+				return (bit_field);
 		}
 	}
 	return (NULL);

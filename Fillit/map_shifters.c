@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:03:13 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/18 14:11:07 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/18 14:29:29 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,11 @@ unsigned short	shifter(unsigned short *map_field, int shift_amount,
 				return (1);
 		}
 		if (shift_down(map_field, shift_amount, mask_size) == 1)
+		{
 			while (shift_left(map_field, 1, mask_size) == 1)
 				;
+			return (1);
+		}
 	}
 	else
 		return (1);
