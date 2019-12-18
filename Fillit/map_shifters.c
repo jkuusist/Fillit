@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:03:13 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/18 14:38:19 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/18 15:31:16 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,35 +61,6 @@ unsigned short	shift_right(unsigned short *bit_field, int shift_amount,
 	return (1);
 }
 
-unsigned short	shift_up(unsigned short *bit_field, int shift_amount)
-{
-	int i;
-	int j;
-	int temp;
-
-	if ((bit_field[0] & 65535) != 0)
-		return (0);
-	i = 0;
-	j = 0;
-	while (i < shift_amount)
-	{
-		while (j < 11)
-		{
-			temp = bit_field[++j];
-			bit_field[j - 1] = temp;
-		}
-		j = 0;
-		i++;
-	}
-	i = (11 - shift_amount);
-	while (i < 11)
-	{
-		bit_field[i] = 0;
-		i++;
-	}
-	return (1);
-}
-
 unsigned short	shift_down(unsigned short *bit_field, int shift_amount,
 		unsigned int mask_size)
 {
@@ -122,30 +93,23 @@ unsigned short	shift_down(unsigned short *bit_field, int shift_amount,
 		bit_field[i] = 0;
 		i++;
 	}
-	shift_left(bit_field, (mask_size - 1), mask_size);
 	return (1);
 }
 
 unsigned short	shifter(unsigned short *map_field, int shift_amount,
 		unsigned int mask_size)
 {
-	unsigned int	rshift_amount;
-
-	rshift_amount = 1;
-	while (rshift_amount < mask_size)
-	{
-		if (shift_right(map_field, rshift_amount, mask_size) == 0)
-			rshift_amount++;
+		if (shift_right(map_field, shift_amount, mask_size) == 0)
+		{
+			if (shift_down(map_field, shift_amount, mask_size) == 1)
+			{
+				while (shift_left(map_field, 1, mask_size) == 1)
+					;
+				return (1);
+			}
+			else 
+				return (0);
+		}
 		else
 			return (1);
-	}
-	if (shift_down(map_field, shift_amount, mask_size) == 1)
-	{
-		while (shift_left(map_field, 1, mask_size) == 1)
-			;
-		return (1);
-	}
-	else
-		return (1);
-	return (0);
 }
