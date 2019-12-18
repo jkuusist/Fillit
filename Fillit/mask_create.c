@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 17:05:39 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/12 14:44:45 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/18 17:09:56 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,7 @@
 
 unsigned short	l_shift_create(unsigned int min_size)
 {
-	unsigned int	i;
-	unsigned short	bitmask;
-
-	i = 0;
-	bitmask = 1;
-	while (i < (min_size - 2))
-	{
-		bitmask = (bitmask << 1) | bitmask;
-		i++;
-	}
-	return (~bitmask);
+	return (32768);
 }
 
 unsigned short	r_shift_create(unsigned int min_size)
