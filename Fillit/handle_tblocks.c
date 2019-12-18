@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:05:55 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/17 15:10:35 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/18 17:48:48 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,20 @@ t_block		**copy_tblocks(t_block **src)
 	t_block **copy;
 
 	i = 0;
-	j = 0;
 	while (src[i] != 0)
 		i++;
 	copy = (t_block **)malloc((sizeof(t_block) * i) + 1);
 	i = 0;
-	while(src[i] != 0)
+	while (src[i] != 0)
 	{
+		j = -1;
 		copy[i] = (t_block*)malloc(sizeof(t_block));
-		copy[i]->tetrino_field = (unsigned short *)malloc(sizeof(unsigned short) * 10);
+		copy[i]->tetrino_field =
+			(unsigned short *)malloc(sizeof(unsigned short) * 10);
 		copy[i]->id = src[i]->id;
 		copy[i]->used_flag = src[i]->used_flag;
-		while (j < 10)
-		{
+		while (++j < 10)
 			copy[i]->tetrino_field[j] = src[i]->tetrino_field[j];
-			j++;
-		}
-		j = 0;
 		i++;
 	}
 	copy[i] = NULL;
@@ -91,7 +88,8 @@ void		tblock_conversion(unsigned short binary_mapi, unsigned short *array)
 	}
 }
 
-t_block		**create_tblocks(unsigned short *binary_map, unsigned int tetrino_count)
+t_block		**create_tblocks(unsigned short *binary_map,
+		unsigned int tetrino_count)
 {
 	int				i;
 	unsigned char	id;
