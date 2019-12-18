@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:21:04 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/13 16:25:22 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/18 17:27:49 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-unsigned short	*check_validity(unsigned char *file_map)
+static unsigned short	*check_validity(unsigned char *file_map)
 {
 	unsigned short	*semi_valid_array;
 
@@ -26,12 +26,9 @@ unsigned short	*check_validity(unsigned char *file_map)
 	return (0);
 }
 
-int				main(int argc, char **argv)
+static int				check_file(int argc, char **argv)
 {
-	int				fd;
-	unsigned char	*file_map;
-	unsigned short	*binary_map;
-	t_block			**bit_field;
+	int	fd;
 
 	if (argc != 2)
 	{
@@ -43,6 +40,18 @@ int				main(int argc, char **argv)
 		write(2, "Open failed work with file\n", 26);
 		return (-1);
 	}
+	return (fd);
+}
+
+int						main(int argc, char **argv)
+{
+	int				fd;
+	unsigned char	*file_map;
+	unsigned short	*binary_map;
+	t_block			**bit_field;
+
+	if ((fd = check_file(argc, argv)) == -1)
+		return (0);
 	file_map = check_input(fd);
 	if (!file_map)
 		write(1, "error\n", 6);

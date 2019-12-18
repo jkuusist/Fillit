@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:32:01 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/18 12:03:22 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/18 17:18:34 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ void				print_map(t_block **bit_field, unsigned int map_size,
 t_block				**copy_tblocks(t_block **src);
 void				free_tblocks(t_block **array);
 unsigned long long	square_root(unsigned long long x);
-unsigned int		check_four(unsigned short *map_field, unsigned int map_size);
-unsigned short	shifter(unsigned short *map_field, int shift_amount,
-	   	unsigned int mask_size);
+unsigned int		check_four(unsigned short *map_field,
+		unsigned int map_size);
+unsigned short		shifter(unsigned short *map_field, int shift_amount,
+		unsigned int mask_size);
 
 #endif

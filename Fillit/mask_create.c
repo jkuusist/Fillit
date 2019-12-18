@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mask_array_create.c                                :+:      :+:    :+:   */
+/*   mask_create.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/04 17:05:39 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/18 17:11:45 by jkuusist         ###   ########.fr       */
+/*   Created: 2019/12/18 17:19:10 by lharvey           #+#    #+#             */
+/*   Updated: 2019/12/18 17:19:13 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-unsigned short	l_shift_create()
+unsigned short	l_shift_create(void)
 {
 	return (32768);
 }
