@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:03:13 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/18 12:00:18 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/18 14:11:07 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ unsigned short	shift_down(unsigned short *bit_field, int shift_amount,
 }
 
 unsigned short	shifter(unsigned short *map_field, int shift_amount,
-	   	unsigned int mask_size)
+		unsigned int mask_size)
 {
 	unsigned int	rshift_amount;
 
@@ -138,13 +138,14 @@ unsigned short	shifter(unsigned short *map_field, int shift_amount,
 		{
 			if (shift_right(map_field, rshift_amount, mask_size) == 0)
 				rshift_amount++;
-			else 
+			else
 				return (1);
 		}
 		if (shift_down(map_field, shift_amount, mask_size) == 1)
-			shift_left(map_field, mask_size, mask_size);
+			while (shift_left(map_field, 1, mask_size) == 1)
+				;
 	}
-	else 
+	else
 		return (1);
 	return (0);
 }
