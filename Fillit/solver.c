@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/18 11:25:29 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/18 12:01:33 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 ** finally, returns -2 if EVERY SINGLE ONE has been stamped.
 */
 
-static int					check_tblocks(t_block **src)
+static int	check_tblocks(t_block **src)
 {
 	int i;
 
@@ -35,7 +35,7 @@ static int					check_tblocks(t_block **src)
 	return (-2);
 }
 
-static int 					stamp_map(unsigned short *map_field, unsigned short *tetrino)
+static int	stamp_map(unsigned short *map_field, unsigned short *tetrino)
 {
 	int i;
 
@@ -44,7 +44,7 @@ static int 					stamp_map(unsigned short *map_field, unsigned short *tetrino)
 	{
 		if ((map_field[i] & tetrino[i]) == 0)
 			i++;
-		else 
+		else
 			return (0);
 	}
 	i = 0;
@@ -56,7 +56,7 @@ static int 					stamp_map(unsigned short *map_field, unsigned short *tetrino)
 	return (1);
 }
 
-void						unstamp_map(unsigned short *map_field, unsigned short *tetrino)
+void		unstamp_map(unsigned short *map_field, unsigned short *tetrino)
 {
 	int i;
 
@@ -68,7 +68,8 @@ void						unstamp_map(unsigned short *map_field, unsigned short *tetrino)
 	}
 }
 
-t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, unsigned int map_size, unsigned int tetrino_count)
+t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
+		unsigned int map_size, unsigned int tetrino_count)
 {
 	int		index;
 	int		shift_amount;
@@ -81,17 +82,18 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 	shift_amount = 0;
 	while (shifter(map_field, shift_amount, map_size))
 	{
-
 		if	(stamp_map(map_field, bit_field[index]->tetrino_field))
 		{
-			bit_field[index]->used_flag = 1; 
+			bit_field[index]->used_flag = 1;
 			index = check_tblocks(bit_field);
-			algorithm_alpha(map_field, &(bit_field[index]), map_size, tetrino_count);
+			algorithm_alpha(map_field, &(bit_field[index]),
+					map_size, tetrino_count);
 		}
 		else
 		{
-			unstamp_map(map_field, bit_field[index]);	
-			algorithm_alpha(map_field, &(bit_field[index++]), map_size, tetrino_count);
+			unstamp_map(map_field, bit_field[index]);
+			algorithm_alpha(map_field, &(bit_field[index++]),
+					map_size, tetrino_count);
 			bit_field[index]->used_flag = 0;
 		}
 		shift_amount++;
@@ -105,7 +107,7 @@ t_block						**algorithm_alpha(unsigned short *map_field, t_block **bit_field, u
 	return (NULL);
 }
 
-t_block						**solver(unsigned short *binary_map)
+t_block		**solver(unsigned short *binary_map)
 {
 	unsigned int	tetrino_count;
 	unsigned short	map_field[10];
@@ -122,13 +124,14 @@ t_block						**solver(unsigned short *binary_map)
 	bit_field = create_tblocks(binary_map, tetrino_count);
 	while (map_size <= 10)
 	{
-		if ((bit_field = algorithm_alpha(map_field, bit_field, map_size, tetrino_count)) != NULL)
+		if ((bit_field = algorithm_alpha(map_field, bit_field,
+						map_size, tetrino_count)) != NULL)
 		{
 			if (map_size < 4)
 				map_size = check_four(map_field, map_size);
 			print_map(bit_field, map_size, tetrino_count);
 			free_tblocks(bit_field);
-			break;
+			break ;
 		}
 		map_size++;
 	}
