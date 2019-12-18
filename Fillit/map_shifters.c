@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:03:13 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/18 14:29:29 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/18 14:38:19 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,21 +132,18 @@ unsigned short	shifter(unsigned short *map_field, int shift_amount,
 	unsigned int	rshift_amount;
 
 	rshift_amount = 1;
-	if (shift_right(map_field, rshift_amount, mask_size) == 0)
+	while (rshift_amount < mask_size)
 	{
-		while (rshift_amount < mask_size)
-		{
-			if (shift_right(map_field, rshift_amount, mask_size) == 0)
-				rshift_amount++;
-			else
-				return (1);
-		}
-		if (shift_down(map_field, shift_amount, mask_size) == 1)
-		{
-			while (shift_left(map_field, 1, mask_size) == 1)
-				;
+		if (shift_right(map_field, rshift_amount, mask_size) == 0)
+			rshift_amount++;
+		else
 			return (1);
-		}
+	}
+	if (shift_down(map_field, shift_amount, mask_size) == 1)
+	{
+		while (shift_left(map_field, 1, mask_size) == 1)
+			;
+		return (1);
 	}
 	else
 		return (1);
