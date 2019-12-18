@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:03:13 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/18 11:26:08 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/18 11:57:29 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,16 +126,26 @@ unsigned short	shift_down(unsigned short *bit_field, int shift_amount,
 	return (1);
 }
 
-unsigned short	shifter(unsigned short *map_field, int shift_amount, unsigned int mask_size)
+unsigned short	shifter(unsigned short *map_field, int shift_amount
+	   	unsigned int mask_size)
 {
-	while (num_rounds < 10)
+	int	rshift_amount;
+
+	rshift_amount = 1;
+	if (shift_right(map_field, rshift_amount, mask_size) == 0)
 	{
-		if (shift_right(map_field, 1, mask_size) == 0)
+		while (rshift_amount < mask_size)
 		{
-			shift_down(map_field, 1, mask_size);
-			shift_left(map_field, 8, mask_size);
+			if (shift_right(map_field, rshift_amount, mask_size) == 0)
+				rshift_amount++;
+			else 
+				return (1);
 		}
-		shifter(map_field, 1, mask_size, num_rounds);
+		if (shift_down(map_field, shift_amount, mask_size) == 1)
+			shift_left(map_field, mask_size, mask_size);
+	}
+	else 
+		return (1);
 	}
 	return (0);
 }
