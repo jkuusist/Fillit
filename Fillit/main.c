@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:21:04 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/18 17:27:49 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/19 16:32:27 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ int						main(int argc, char **argv)
 	t_block			**bit_field;
 
 	if ((fd = check_file(argc, argv)) == -1)
+	{
+		write(1, "error\n", 6);
 		return (0);
+	}
 	file_map = check_input(fd);
 	if (!file_map)
 		write(1, "error\n", 6);
