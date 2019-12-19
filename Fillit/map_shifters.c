@@ -6,14 +6,14 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:03:13 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/19 15:00:02 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/19 16:18:12 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Libft/libft.h"
 #include "fillit.h"
 
-unsigned short	shift_left(unsigned short *bit_field, int shift_amount,
+unsigned short			shift_left(unsigned short *bit_field, int shift_amount,
 		unsigned int mask_size)
 {
 	int				i;
@@ -37,7 +37,7 @@ unsigned short	shift_left(unsigned short *bit_field, int shift_amount,
 	return (1);
 }
 
-unsigned short	shift_right(unsigned short *bit_field, int shift_amount,
+static unsigned short	shift_right(unsigned short *bit_field, int shift_amount,
 		unsigned int mask_size)
 {
 	int				i;
@@ -61,7 +61,7 @@ unsigned short	shift_right(unsigned short *bit_field, int shift_amount,
 	return (1);
 }
 
-unsigned short	shift_down(unsigned short *bit_field, int shift_amount,
+static unsigned short	shift_down(unsigned short *bit_field, int shift_amount,
 		unsigned int mask_size)
 {
 	int i;
@@ -91,7 +91,38 @@ unsigned short	shift_down(unsigned short *bit_field, int shift_amount,
 	return (1);
 }
 
-unsigned short	shifter(unsigned short *map_field, int shift_amount,
+unsigned short			shift_up(unsigned short *bit_field, int shift_amount)
+{
+	int				i;
+	int				j;
+	unsigned short	temp;
+
+	i = 0;
+	j = 0;
+	while ((i < shift_amount) && (bit_field[i] & 65535) == 0)
+		i++;
+	if ((bit_field[0] & 65535) != 0)
+		return (0);
+	while (j < shift_amount)
+	{
+		i = 0;
+		while (i < 9)
+		{
+			temp = bit_field[++i];
+			bit_field[--i] = temp;
+			i++;
+		}
+		j++;
+	}
+	while (i < 9)
+	{
+		bit_field[i] = 0;
+		i++;
+	}
+	return (1);
+}
+
+unsigned short			shifter(unsigned short *map_field, int shift_amount,
 		unsigned int mask_size)
 {
 	if (shift_right(map_field, shift_amount, mask_size) == 0)

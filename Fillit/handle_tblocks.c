@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:05:55 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/18 17:48:48 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/19 16:09:02 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,18 @@
 #include "fillit.h"
 #include "../Libft/libft.h"
 
-t_block		**copy_tblocks(t_block **src)
+int			check_tblocks(t_block **src)
 {
-	int		i;
-	int		j;
-	t_block **copy;
+	int i;
 
 	i = 0;
-	while (src[i] != 0)
+	if (src == NULL)
+		return (-1);
+	while ((src[i] != NULL) && (src[i]->used_flag == 1))
 		i++;
-	copy = (t_block **)malloc((sizeof(t_block) * i) + 1);
-	i = 0;
-	while (src[i] != 0)
-	{
-		j = -1;
-		copy[i] = (t_block*)malloc(sizeof(t_block));
-		copy[i]->tetrino_field =
-			(unsigned short *)malloc(sizeof(unsigned short) * 10);
-		copy[i]->id = src[i]->id;
-		copy[i]->used_flag = src[i]->used_flag;
-		while (++j < 10)
-			copy[i]->tetrino_field[j] = src[i]->tetrino_field[j];
-		i++;
-	}
-	copy[i] = NULL;
-	return (copy);
+	if ((src[i] != NULL) && (src[i]->used_flag == 0))
+		return (i);
+	return (-2);
 }
 
 void		free_tblocks(t_block **array)
@@ -55,7 +42,7 @@ void		free_tblocks(t_block **array)
 	free(array);
 }
 
-void		stack_to_heap(unsigned short *array, t_block *temp)
+static void	stack_to_heap(unsigned short *array, t_block *temp)
 {
 	int k;
 
@@ -67,7 +54,7 @@ void		stack_to_heap(unsigned short *array, t_block *temp)
 	}
 }
 
-void		tblock_conversion(unsigned short binary_mapi, unsigned short *array)
+static void	tblock_conversion(unsigned short binary_mapi, unsigned short *array)
 {
 	int	j;
 
