@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/02 11:42:24 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/19 14:59:12 by lharvey          ###   ########.fr       */
+/*   Created: 2019/12/19 15:07:31 by lharvey           #+#    #+#             */
+/*   Updated: 2019/12/19 15:07:33 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,12 +111,13 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 		unsigned int map_size, unsigned int tetrino_count)
 {
 	int		index;
-
 	if (bit_field == NULL)
 		return (NULL);
 	if ((check_tblocks(bit_field)) == -2)
 		return (bit_field);
 	index = check_tblocks(bit_field);
+	
+	
 	if	(stamp_map(map_field, bit_field[index]->tetrino_field))
 	{
 		bit_field[index]->used_flag = 1;
@@ -179,7 +180,7 @@ t_block		**solver(unsigned short *binary_map)
 	while (binary_map[tetrino_count] != 0)
 		tetrino_count++;
 	map_size = (unsigned int)square_root(tetrino_count * 4);
-	while (map_size <= 10)
+	while (map_size <= 10)	
 	{
 		bit_field = create_tblocks(binary_map, tetrino_count);
 		ft_bzero(map_field, 20);
