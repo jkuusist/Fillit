@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:21:04 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/19 16:32:27 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/19 17:14:46 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int				check_file(int argc, char **argv)
 	}
 	if (!(fd = open(argv[1], O_RDONLY)))
 	{
-		write(2, "Open failed work with file\n", 26);
+		write(2, "Open failed to work with file\n", 30);
 		return (-1);
 	}
 	return (fd);
@@ -57,7 +57,10 @@ int						main(int argc, char **argv)
 	}
 	file_map = check_input(fd);
 	if (!file_map)
+	{
 		write(1, "error\n", 6);
+		return (0);
+	}
 	else if ((binary_map = check_validity(file_map)))
 	{
 		if ((bit_field = solver(binary_map)) == NULL)

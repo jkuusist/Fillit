@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:17:19 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/11 10:02:49 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/20 11:45:33 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,19 @@ static unsigned short		str_to_bin(unsigned char *block)
 }
 
 static void					write_temp(unsigned char **string,
-		unsigned char *temp, int *nl_count)
+		unsigned char *temp)
 {
 	int i;
+	int nl_count;
 
 	i = 0;
+	nl_count = 0;
 	if (**string == '\n')
 		(*string)++;
-	while (**string != '\0' && *nl_count < 5)
+	while (**string != '\0' && nl_count < 5)
 	{
 		if (**string == '\n')
-			(*nl_count)++;
+			nl_count++;
 		temp[i] = **string;
 		i++;
 		(*string)++;
@@ -101,21 +103,18 @@ unsigned short				*create_block_array(unsigned char *string)
 {
 	int				i;
 	int				block_count;
-	int				nl_count;
 	unsigned char	*temp;
 	unsigned short	*array;
 
 	i = 0;
 	block_count = get_block_count(string);
-	nl_count = 0;
-	array = (unsigned short*)malloc(sizeof(unsigned short*) * 27);
+	array = (unsigned short *)malloc(sizeof(unsigned short) * 27);
 	while (i < block_count)
 	{
 		temp = (unsigned char *)malloc((sizeof(unsigned char*)) * 20);
-		write_temp(&string, temp, &nl_count);
+		write_temp(&string, temp);
 		array[i] = str_to_bin(temp);
 		ft_strdel((char**)&temp);
-		nl_count = 0;
 		i++;
 	}
 	array[i] = 0;
