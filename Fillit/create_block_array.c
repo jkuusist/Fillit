@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:17:19 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/20 14:27:34 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/20 14:48:29 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static unsigned short		str_to_bin(unsigned char *block)
 
 	i = 0;
 	length = 0;
-	binstr = (unsigned char *)malloc(sizeof(unsigned char) * 16);
+	binstr = (unsigned char *)malloc(sizeof(unsigned char) * (16 + 1));
 	while (block[i] != '\0')
 	{
 		if (block[i] == '#')
