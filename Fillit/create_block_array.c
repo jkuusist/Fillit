@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:17:19 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/20 11:45:33 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/20 14:27:34 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ static void					write_temp(unsigned char **string,
 		i++;
 		(*string)++;
 	}
+	return ;
 }
 
 static int					get_block_count(unsigned char *string)
@@ -108,10 +109,10 @@ unsigned short				*create_block_array(unsigned char *string)
 
 	i = 0;
 	block_count = get_block_count(string);
-	array = (unsigned short *)malloc(sizeof(unsigned short) * 27);
+	array = (unsigned short *)malloc(sizeof(unsigned short) * (block_count + 1));
 	while (i < block_count)
 	{
-		temp = (unsigned char *)malloc((sizeof(unsigned char*)) * 20);
+		temp = (unsigned char *)malloc((sizeof(unsigned char)) * 20);
 		write_temp(&string, temp);
 		array[i] = str_to_bin(temp);
 		ft_strdel((char**)&temp);
