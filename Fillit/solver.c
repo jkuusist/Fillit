@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:07:31 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/26 11:03:57 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/26 11:38:54 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ t_block		**solver(unsigned short *binary_map)
 	i = 0;
 	while (binary_map[tetrino_count] != 0)
 		tetrino_count++;
-	map_size = (unsigned int)square_root(tetrino_count * 4) + 2;
+	map_size = 7; //(unsigned int)square_root(tetrino_count * 4);
 	while (map_size <= 14)
 	{
 		printf("map_size is now %d\n", map_size);
