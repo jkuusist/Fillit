@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 10:49:42 by jkuusist          #+#    #+#             */
-/*   Updated: 2019/12/26 10:49:52 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/26 12:14:45 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,8 @@ unsigned short				*create_block_array(unsigned char *string)
 
 	i = 0;
 	block_count = get_block_count(string);
-	array = (unsigned short *)malloc(sizeof(unsigned short) * (block_count + 1));
+	array = (unsigned short *)malloc(sizeof(unsigned short)
+			* (block_count + 1));
 	while (i < block_count)
 	{
 		temp = (unsigned char *)malloc((sizeof(unsigned char)) * 20);

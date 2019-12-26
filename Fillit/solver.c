@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:07:31 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/26 12:09:42 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/26 13:34:37 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include <stdio.h>
 
-//int global_int = 0;
+//	int global_int = 0;
 
 /*
 ** check_tblocks returns -1 on NULL pointer, i (index) for unused t_blocks and
@@ -36,60 +36,51 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 {
 	int		index;
 
-/*
-	printf("global_int is now %d\n", global_int);
-	global_int++;
-*/
+
+//	printf("global_int is now %d\n", global_int);
+//	global_int++;
+
 	if (bit_field == NULL)
 		return (NULL);
-	if ((check_tblocks(bit_field)) == -2)
-		return (bit_field);
 	index = check_tblocks(bit_field);
-	if (stamp_map(map_field, bit_field[index]->tetrino_field))
+	if (index == -2)
+		return (bit_field);
+	if ((index >= 0) && (stamp_map(map_field, bit_field[index]->tetrino_field)))
 	{
 		bit_field[index]->used_flag = 1;
+		index = check_tblocks(bit_field);
+	}
+	while ((index >= 0) && (shifter(bit_field[index]->tetrino_field, 1, map_size)))
+	{
+		if (stamp_map(map_field, bit_field[index]->tetrino_field))
+		{
+			bit_field[index]->used_flag = 1;
+			index = check_tblocks(bit_field);
+		}
+	}
+	if ((index >= 0) && (shifter(bit_field[index]->tetrino_field, 1, map_size) == 0))
+	{
+		reset_tetrino(bit_field[index]->tetrino_field, map_size);
+		index--;
+		while (index >= 0)
+		{
+			unstamp_map(map_field, bit_field[index]->tetrino_field);
+			bit_field[index]->used_flag = 0;
+			if (shifter(bit_field[index]->tetrino_field, 1, map_size) == 0)
+				index--;
+			else
+				break ;
+		}
+		if (index == -1)
+			return (NULL);
 		if (algorithm_alpha(map_field, bit_field,
-						map_size, tetrino_count) != NULL)
+					map_size, tetrino_count) != NULL)
 			return (bit_field);
 		else
 			return (NULL);
 	}
-	else
-	{
-		while (shifter(bit_field[index]->tetrino_field, 1, map_size))
-		{
-			if (stamp_map(map_field, bit_field[index]->tetrino_field))
-			{
-				bit_field[index]->used_flag = 1;
-				if (algorithm_alpha(map_field, bit_field,
-							map_size, tetrino_count) != NULL)
-					return (bit_field);
-				else
-					return (NULL);
-			}
-		}
-		if ((index != 0) && (shifter(bit_field[index]->tetrino_field, 1, map_size) == 0))
-		{
-			reset_tetrino(bit_field[index]->tetrino_field, map_size);
-			index--;
-			while (index >= 0)
-			{
-				unstamp_map(map_field, bit_field[index]->tetrino_field);
-				bit_field[index]->used_flag = 0;
-				if (shifter(bit_field[index]->tetrino_field, 1, map_size) == 0)
-					index--;
-				else
-					break ;
-			}
-			if (index == -1)
-				return (NULL);
-			if (algorithm_alpha(map_field, bit_field,
-						map_size, tetrino_count) != NULL)
-				return (bit_field);
-			else
-				return (NULL);
-		}
-	}
+	if (index == -2)
+		return (bit_field);
 	return (NULL);
 }
 
