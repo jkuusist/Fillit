@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:07:31 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/26 11:38:54 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/26 12:09:42 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <stdlib.h>
 
 #include <stdio.h>
+
+//int global_int = 0;
 
 /*
 ** check_tblocks returns -1 on NULL pointer, i (index) for unused t_blocks and
@@ -34,6 +36,10 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 {
 	int		index;
 
+/*
+	printf("global_int is now %d\n", global_int);
+	global_int++;
+*/
 	if (bit_field == NULL)
 		return (NULL);
 	if ((check_tblocks(bit_field)) == -2)
@@ -90,7 +96,7 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 t_block		**solver(unsigned short *binary_map)
 {
 	unsigned int	tetrino_count;
-	unsigned short	map_field[14];
+	unsigned short	*map_field; //[14];
 	unsigned int	map_size;
 	t_block			**bit_field;
 	unsigned int	i;
@@ -99,13 +105,14 @@ t_block		**solver(unsigned short *binary_map)
 	i = 0;
 	while (binary_map[tetrino_count] != 0)
 		tetrino_count++;
-	map_size = 7; //(unsigned int)square_root(tetrino_count * 4);
+	map_size = (unsigned int)square_root(tetrino_count * 4);
 	while (map_size <= 14)
 	{
+		map_field = (unsigned short*)malloc(sizeof(unsigned short) * map_size);
 		printf("map_size is now %d\n", map_size);
 
 		bit_field = create_tblocks(binary_map, tetrino_count);
-		ft_bzero(map_field, 20);
+		ft_bzero(map_field, (map_size * 2));
 		if ((bit_field = algorithm_alpha(map_field, bit_field,
 						map_size, tetrino_count)) != NULL)
 		{
@@ -113,9 +120,13 @@ t_block		**solver(unsigned short *binary_map)
 				map_size = check_four(map_field, map_size);
 			print_map(bit_field, map_size, tetrino_count);
 			free_tblocks(bit_field);
+
+			free(map_field);
+
 			break ;
 		}
 		map_size++;
+		free(map_field);
 		//free_tblocks(bit_field);
 	}
 	return (bit_field);
