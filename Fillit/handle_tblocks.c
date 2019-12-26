@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:05:55 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/26 10:57:47 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/26 15:29:04 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@ static void	tblock_conversion(unsigned short binary_mapi, unsigned short *array)
 	}
 }
 
+/*
+**	Creates the array of tetrino blocks utilised by the solver. Bzero clears,
+**	
+*/
+
 t_block		**create_tblocks(unsigned short *binary_map,
 		unsigned int tetrino_count)
 {
@@ -86,13 +91,13 @@ t_block		**create_tblocks(unsigned short *binary_map,
 
 	i = 0;
 	id = 'A';
-	bit_field = (t_block**)malloc(sizeof(t_block) * tetrino_count + 1);
+	bit_field = (t_block**)malloc(sizeof(t_block) * (tetrino_count + 1));
 	while (binary_map[i] != 0)
 	{
 		temp = (t_block*)malloc(sizeof(t_block));
 		temp->tetrino_field =
 			(unsigned short *)malloc(sizeof(unsigned short) * 14);
-		ft_bzero(temp->tetrino_field, 20);
+		ft_bzero(temp->tetrino_field, 28);
 		temp->id = id;
 		temp->used_flag = 0;
 		tblock_conversion(binary_map[i], array);
