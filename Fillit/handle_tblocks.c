@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:05:55 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/19 16:09:02 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/26 10:57:47 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	stack_to_heap(unsigned short *array, t_block *temp)
 	int k;
 
 	k = 0;
-	while (k < 10)
+	while (k < 14)
 	{
 		temp->tetrino_field[k] = array[k];
 		k++;
@@ -59,7 +59,7 @@ static void	tblock_conversion(unsigned short binary_mapi, unsigned short *array)
 	int	j;
 
 	j = 0;
-	while (j < 10)
+	while (j < 14)
 	{
 		if (j == 0)
 			array[j] = binary_mapi & 61440;
@@ -82,7 +82,7 @@ t_block		**create_tblocks(unsigned short *binary_map,
 	unsigned char	id;
 	t_block			*temp;
 	t_block			**bit_field;
-	unsigned short	array[10];
+	unsigned short	array[14];
 
 	i = 0;
 	id = 'A';
@@ -91,7 +91,7 @@ t_block		**create_tblocks(unsigned short *binary_map,
 	{
 		temp = (t_block*)malloc(sizeof(t_block));
 		temp->tetrino_field =
-			(unsigned short *)malloc(sizeof(unsigned short) * 10);
+			(unsigned short *)malloc(sizeof(unsigned short) * 14);
 		ft_bzero(temp->tetrino_field, 20);
 		temp->id = id;
 		temp->used_flag = 0;

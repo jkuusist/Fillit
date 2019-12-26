@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:07:31 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/26 10:43:59 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/26 11:03:57 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 t_block		**solver(unsigned short *binary_map)
 {
 	unsigned int	tetrino_count;
-	unsigned short	map_field[10];
+	unsigned short	map_field[14];
 	unsigned int	map_size;
 	t_block			**bit_field;
 	unsigned int	i;
@@ -100,7 +100,7 @@ t_block		**solver(unsigned short *binary_map)
 	while (binary_map[tetrino_count] != 0)
 		tetrino_count++;
 	map_size = (unsigned int)square_root(tetrino_count * 4) + 2;
-	while (map_size <= 10)
+	while (map_size <= 14)
 	{
 		printf("map_size is now %d\n", map_size);
 
