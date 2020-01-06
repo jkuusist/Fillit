@@ -6,13 +6,15 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:05:55 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/26 15:29:04 by lharvey          ###   ########.fr       */
+/*   Updated: 2019/12/26 16:30:24 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "fillit.h"
 #include "../Libft/libft.h"
+
+#include <stdio.h>
 
 int			check_tblocks(t_block **src)
 {
@@ -31,6 +33,8 @@ int			check_tblocks(t_block **src)
 void		free_tblocks(t_block **array)
 {
 	int i;
+
+	//printf("in free_tblocks\n");
 
 	i = 0;
 	while (array[i] != 0)
