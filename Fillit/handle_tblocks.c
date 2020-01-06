@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:05:55 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/06 13:34:19 by jkuusist         ###   ########.fr       */
+/*   Updated: 2020/01/06 17:28:10 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void		free_tblocks(t_block **array)
 	int j;
 
 	//printf("in free_tblocks\n");
-
+	if (array == NULL)
+		return ;
 	i = 0;
 	j = 0;
 	while (array[i] != 0)

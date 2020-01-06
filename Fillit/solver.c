@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:07:31 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/06 15:56:22 by jkuusist         ###   ########.fr       */
+/*   Updated: 2020/01/06 17:27:12 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 ** finally, returns -2 if EVERY SINGLE ONE has been stamped.
 */
 
-static void	reset_tetrino(unsigned short *tetrino, unsigned int map_size)
+void	reset_tetrino(unsigned short *tetrino, unsigned int map_size)
 {
 	while (shift_left(tetrino, 1, map_size) == 1)
 		;
@@ -32,7 +32,7 @@ static void	reset_tetrino(unsigned short *tetrino, unsigned int map_size)
 }
 
 t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
-		unsigned int *map_size)
+		unsigned int map_size)
 {
 	int		index;
 
@@ -48,20 +48,20 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 				index = check_tblocks(bit_field);
 			}
 			else
-				if (shifter(bit_field[index]->tetrino_field, 1, *map_size) == 0)
+				if (shifter(bit_field[index]->tetrino_field, 1, map_size) == 0)
 					break ;
 		}
 		if (index >= 0)
 		{
-			reset_tetrino(bit_field[index]->tetrino_field, *map_size);
+			reset_tetrino(bit_field[index]->tetrino_field, map_size);
 			index--;
 			while (index >= 0)
 			{
 				unstamp_map(map_field, bit_field[index]->tetrino_field);
 				bit_field[index]->used_flag = 0;
-				if (shifter(bit_field[index]->tetrino_field, 1, *map_size) == 0)
+				if (shifter(bit_field[index]->tetrino_field, 1, map_size) == 0)
 				{
-					reset_tetrino(bit_field[index]->tetrino_field, *map_size);
+					reset_tetrino(bit_field[index]->tetrino_field, map_size);
 					index--;
 				}
 				else
@@ -88,11 +88,14 @@ t_block		**solver(unsigned short *binary_map)
 	map_size = (unsigned int)square_root(tetrino_count * 4);
 	while (map_size <= 14)
 	{
+		
+		//printf("map_size is now %d\n", map_size);
+
 		bit_field = create_tblocks(binary_map, tetrino_count);
 		temp_field = bit_field;
-		ft_bzero(map_field, (/*14*/  map_size * 2));
+		ft_bzero(map_field, (14 * 2));
 		if ((bit_field = algorithm_alpha(map_field, bit_field,
-						&map_size)) != NULL)
+						map_size)) != NULL)
 		{
 			if (map_size < 4)
 				map_size = check_four(map_field, map_size);
@@ -100,7 +103,8 @@ t_block		**solver(unsigned short *binary_map)
 			break ;
 		}
 		map_size++;
-		free_tblocks(temp_field);
+		free(temp_field);
 	}
+	free_tblocks(bit_field);
 	return (bit_field);
 }
