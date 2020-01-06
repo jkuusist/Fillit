@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:07:31 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/06 13:52:50 by jkuusist         ###   ########.fr       */
+/*   Updated: 2020/01/06 13:56:40 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_block		**algorithm_alpha(unsigned short **map_field, t_block **bit_field,
 		return (bit_field);
 	while (index >= 0)
 	{
-		if (stamp_map(*map_field, bit_field[index]->tetrino_field))
+		if (stamp_map(map_field, bit_field[index]->tetrino_field))
 		{
 			bit_field[index]->used_flag = 1;
 			index = check_tblocks(bit_field);
@@ -62,7 +62,7 @@ t_block		**algorithm_alpha(unsigned short **map_field, t_block **bit_field,
 		index--;
 		while (index >= 0)
 		{
-			unstamp_map(*map_field, bit_field[index]->tetrino_field);
+			unstamp_map(map_field, bit_field[index]->tetrino_field);
 			bit_field[index]->used_flag = 0;
 			if (shifter(bit_field[index]->tetrino_field, 1, map_size) == 0)
 				index--;
@@ -96,7 +96,7 @@ t_block		**solver(unsigned short *binary_map)
 		bit_field = create_tblocks(binary_map, tetrino_count);
 		temp_field = bit_field;
 		ft_bzero(map_field, (/*14*/  map_size * 2));
-		if ((bit_field = algorithm_alpha(&map_field, bit_field,
+		if ((bit_field = algorithm_alpha(map_field, bit_field,
 						map_size, tetrino_count)) != NULL)
 		{
 			if (map_size < 4)
