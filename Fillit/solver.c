@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:07:31 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/06 14:00:40 by jkuusist         ###   ########.fr       */
+/*   Updated: 2020/01/06 14:22:41 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	reset_tetrino(unsigned short *tetrino, unsigned int map_size)
 }
 
 t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
-		unsigned int map_size, unsigned int tetrino_count)
+		unsigned int *map_size)
 {
 	int		index;
 
@@ -53,18 +53,18 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 			index = check_tblocks(bit_field);
 		}
 		else
-			if (shifter(bit_field[index]->tetrino_field, 1, map_size) == 0)
+			if (shifter(bit_field[index]->tetrino_field, 1, *map_size) == 0)
 				break ;
 	}
 	if (index >= 0)
 	{
-		reset_tetrino(bit_field[index]->tetrino_field, map_size);
+		reset_tetrino(bit_field[index]->tetrino_field, *map_size);
 		index--;
 		while (index >= 0)
 		{
 			unstamp_map(map_field, bit_field[index]->tetrino_field);
 			bit_field[index]->used_flag = 0;
-			if (shifter(bit_field[index]->tetrino_field, 1, map_size) == 0)
+			if (shifter(bit_field[index]->tetrino_field, 1, *map_size) == 0)
 				index--;
 			else
 				break ;
@@ -73,7 +73,7 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 			return (NULL);
 	}
 	return (algorithm_alpha(map_field, bit_field,
-				map_size, tetrino_count));
+				map_size));
 }
 
 t_block		**solver(unsigned short *binary_map)
@@ -97,7 +97,7 @@ t_block		**solver(unsigned short *binary_map)
 		temp_field = bit_field;
 		ft_bzero(map_field, (/*14*/  map_size * 2));
 		if ((bit_field = algorithm_alpha(map_field, bit_field,
-						map_size, tetrino_count)) != NULL)
+						&map_size)) != NULL)
 		{
 			if (map_size < 4)
 				map_size = check_four(map_field, map_size);
