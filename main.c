@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:21:04 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/06 15:50:10 by jkuusist         ###   ########.fr       */
+/*   Updated: 2020/01/06 17:59:16 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 #include "fillit.h"
 #include <fcntl.h>
 #include <unistd.h>
-#include <stdio.h>
-
-#include <time.h>
+#include <stdlib.h>
 
 static unsigned short	*check_validity(unsigned char *file_map)
 {
@@ -34,8 +32,8 @@ static int				check_file(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		write(2, "Usage: fillit target_file\n", 26);
-		return (-1);
+		write(2, "Usage: ./fillit [target_file]\n", 30);
+		exit(-1);
 	}
 	if (!(fd = open(argv[1], O_RDONLY)))
 	{
@@ -47,8 +45,6 @@ static int				check_file(int argc, char **argv)
 
 int						main(int argc, char **argv)
 {
-	clock_t begin = clock();
-
 	int				fd;
 	unsigned char	*file_map;
 	unsigned short	*binary_map;
@@ -73,11 +69,5 @@ int						main(int argc, char **argv)
 	else
 		write(1, "error\n", 6);
 	close(fd);
-	
-	clock_t end = clock();
-	double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-
-	printf("time spent is %f\n", time_spent);
-
 	return (0);
 }
