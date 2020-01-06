@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:05:55 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/26 16:30:24 by jkuusist         ###   ########.fr       */
+/*   Updated: 2020/01/06 13:34:19 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,22 @@ int			check_tblocks(t_block **src)
 void		free_tblocks(t_block **array)
 {
 	int i;
+	int j;
 
 	//printf("in free_tblocks\n");
 
 	i = 0;
+	j = 0;
 	while (array[i] != 0)
 	{
 		free(array[i]->tetrino_field);
+		array[i]->tetrino_field = NULL;
 		free(array[i]);
+		array[i] = NULL;
 		i++;
 	}
 	free(array);
+	array = NULL;
 }
 
 static void	stack_to_heap(unsigned short *array, t_block *temp)
