@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:07:31 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/06 13:56:40 by jkuusist         ###   ########.fr       */
+/*   Updated: 2020/01/06 14:00:40 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	reset_tetrino(unsigned short *tetrino, unsigned int map_size)
 		;
 }
 
-t_block		**algorithm_alpha(unsigned short **map_field, t_block **bit_field,
+t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 		unsigned int map_size, unsigned int tetrino_count)
 {
 	int		index;
