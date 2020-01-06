@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:07:31 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/06 14:22:41 by jkuusist         ###   ########.fr       */
+/*   Updated: 2020/01/06 15:08:56 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,44 +36,39 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 {
 	int		index;
 
-
-//	printf("global_int is now %d\n", global_int);
-//	global_int++;
-
-	if (bit_field == NULL)
-		return (NULL);
-	index = check_tblocks(bit_field);
-	if (index == -2)
-		return (bit_field);
-	while (index >= 0)
+	while ((index = check_tblocks(bit_field)) != -2)
 	{
-		if (stamp_map(map_field, bit_field[index]->tetrino_field))
-		{
-			bit_field[index]->used_flag = 1;
-			index = check_tblocks(bit_field);
-		}
-		else
-			if (shifter(bit_field[index]->tetrino_field, 1, *map_size) == 0)
-				break ;
-	}
-	if (index >= 0)
-	{
-		reset_tetrino(bit_field[index]->tetrino_field, *map_size);
-		index--;
+		if (bit_field == NULL)
+			return (NULL);
 		while (index >= 0)
 		{
-			unstamp_map(map_field, bit_field[index]->tetrino_field);
-			bit_field[index]->used_flag = 0;
-			if (shifter(bit_field[index]->tetrino_field, 1, *map_size) == 0)
-				index--;
+			if (stamp_map(map_field, bit_field[index]->tetrino_field))
+			{
+				bit_field[index]->used_flag = 1;
+				index = check_tblocks(bit_field);
+			}
 			else
-				break ;
+				if (shifter(bit_field[index]->tetrino_field, 1, *map_size) == 0)
+					break ;
 		}
-		if (index == -1)
-			return (NULL);
+		if (index >= 0)
+		{
+			reset_tetrino(bit_field[index]->tetrino_field, *map_size);
+			index--;
+			while (index >= 0)
+			{
+				unstamp_map(map_field, bit_field[index]->tetrino_field);
+				bit_field[index]->used_flag = 0;
+				if (shifter(bit_field[index]->tetrino_field, 1, *map_size) == 0)
+					index--;
+				else
+					break ;
+			}
+			if (index == -1)
+				return (NULL);
+		}
 	}
-	return (algorithm_alpha(map_field, bit_field,
-				map_size));
+	return (bit_field);
 }
 
 t_block		**solver(unsigned short *binary_map)
