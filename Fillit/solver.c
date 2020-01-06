@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:07:31 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/06 11:57:27 by jkuusist         ###   ########.fr       */
+/*   Updated: 2019/12/26 15:15:19 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include <stdio.h>
 
-//int global_int = 0;
+//	int global_int = 0;
 
 /*
 ** check_tblocks returns -1 on NULL pointer, i (index) for unused t_blocks and
@@ -31,19 +31,20 @@ static void	reset_tetrino(unsigned short *tetrino, unsigned int map_size)
 		;
 }
 
-/*t_block		** */	int algorithm_alpha(unsigned short *map_field, t_block **bit_field,
-		unsigned int map_size , unsigned int tetrino_count)
+t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
+		unsigned int map_size, unsigned int tetrino_count)
 {
 	int		index;
 
-/*
-	printf("global_int is now %d\n", global_int);
-	global_int++;
-*/
+
+//	printf("global_int is now %d\n", global_int);
+//	global_int++;
+
 	if (bit_field == NULL)
-		return (0);
-		//return (NULL);
+		return (NULL);
 	index = check_tblocks(bit_field);
+	if (index == -2)
+		return (bit_field);
 	while (index >= 0)
 	{
 		if (stamp_map(map_field, bit_field[index]->tetrino_field))
@@ -69,8 +70,7 @@ static void	reset_tetrino(unsigned short *tetrino, unsigned int map_size)
 				break ;
 		}
 		if (index == -1)
-			return (0);
-			//return (NULL);
+			return (NULL);
 	}
 	return (algorithm_alpha(map_field, bit_field,
 				map_size, tetrino_count));
@@ -96,8 +96,8 @@ t_block		**solver(unsigned short *binary_map)
 		bit_field = create_tblocks(binary_map, tetrino_count);
 		temp_field = bit_field;
 		ft_bzero(map_field, (14 * 2));
-		if ((/*bit_field = */algorithm_alpha(map_field, bit_field,
-						map_size, tetrino_count)) != 0) //NULL)
+		if ((bit_field = algorithm_alpha(map_field, bit_field,
+						map_size, tetrino_count)) != NULL)
 		{
 			if (map_size < 4)
 				map_size = check_four(map_field, map_size);
@@ -105,9 +105,6 @@ t_block		**solver(unsigned short *binary_map)
 			break ;
 		}
 		map_size++;
-
-		printf("map size is now %d\n", map_size);
-		//global_int = 0;
 		free_tblocks(temp_field);
 	}
 	return (bit_field);
