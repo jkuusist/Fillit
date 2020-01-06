@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:03:13 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/06 13:26:29 by jkuusist         ###   ########.fr       */
+/*   Updated: 2020/01/06 17:09:34 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ static unsigned short	shift_right(unsigned short *bit_field, int shift_amount,
 	{
 		if ((bit_field[i] & r_mask) != 0)
 			return (0);
-		i++;
+		++i;
 	}
 	while (i >= 0)
 	{
 		bit_field[i] >>= shift_amount;
-		i--;
+		--i;
 	}
 	return (1);
 }
@@ -72,15 +72,15 @@ static unsigned short	shift_down(unsigned short *bit_field, int shift_amount,
 	int 			j;
 	unsigned short	temp;
 
-	i = mask_size - 1;
-	while (i < 14)
+	i = (mask_size - shift_amount) - 1;
+	while (++i < 13)
 	{
-		if ((bit_field[i++] & 65535) != 0)
+		if ((bit_field[i] & 65535) != 0)
 			return (0);
 	}
-	i = 0;
+	i = -1;
 	j = mask_size;
-	while (i++ < shift_amount)
+	while (++i < shift_amount)
 	{
 		while (j > 0)
 		{
@@ -88,10 +88,8 @@ static unsigned short	shift_down(unsigned short *bit_field, int shift_amount,
 			bit_field[j + 1] = temp;
 		}
 		j = mask_size;
+		bit_field[i] = 0;
 	}
-	i = 0;
-	while (i < shift_amount)
-		bit_field[i++] = 0;
 	return (1);
 }
 
