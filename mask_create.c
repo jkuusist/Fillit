@@ -6,11 +6,9 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:19:10 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/18 17:19:13 by lharvey          ###   ########.fr       */
+/*   Updated: 2020/01/07 15:24:07 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdlib.h>
 
 unsigned short	l_shift_create(void)
 {

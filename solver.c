@@ -6,13 +6,12 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:07:31 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/07 15:01:03 by lharvey          ###   ########.fr       */
+/*   Updated: 2020/01/07 15:28:03 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "Libft/libft.h"
-#include <stdlib.h>
 
 /*
 **	Resets position of a tetrino to the upper-left position.

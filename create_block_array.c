@@ -6,12 +6,11 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 10:49:42 by jkuusist          #+#    #+#             */
-/*   Updated: 2020/01/07 12:39:46 by jkuusist         ###   ########.fr       */
+/*   Updated: 2020/01/07 15:27:47 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "fillit.h"
 #include "Libft/libft.h"
 
 static unsigned short		binary_atoi(const unsigned char *str, int len)
