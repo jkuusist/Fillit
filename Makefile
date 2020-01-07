@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/01/07 15:49:57 by jkuusist          #+#    #+#              #
+#    Updated: 2020/01/07 15:50:01 by jkuusist         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = fillit 
 #REMEMBER TO CHANGE IT SO THE EXECUTABLE IS CREATED IN THE ROOT OF THE PROJECT
 
