@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:05:55 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/06 17:28:10 by jkuusist         ###   ########.fr       */
+/*   Updated: 2020/01/07 10:42:04 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 #include "fillit.h"
 #include "../Libft/libft.h"
 
-#include <stdio.h>
+/*
+**	This function returns -1 on NULL (an error catch), but provides the caller
+**	with an index of the first unused tetrino, searching linearly. If all
+**	tetrinos are being used, then -2 is returned; indication completion.
+*/
 
 int			check_tblocks(t_block **src)
 {
@@ -35,7 +39,6 @@ void		free_tblocks(t_block **array)
 	int i;
 	int j;
 
-	//printf("in free_tblocks\n");
 	if (array == NULL)
 		return ;
 	i = 0;
@@ -52,6 +55,11 @@ void		free_tblocks(t_block **array)
 	array = NULL;
 }
 
+/*
+**	This function assigns value to 'rows' that lie within inside
+**	t_block->tetrino_field[0-13] (named temp).
+*/
+
 static void	stack_to_heap(unsigned short *array, t_block *temp)
 {
 	int k;
@@ -63,6 +71,11 @@ static void	stack_to_heap(unsigned short *array, t_block *temp)
 		k++;
 	}
 }
+
+/*
+**	Data is set here in this function. Tetrinos were 16-bit shorts and need
+**	coversion into 4 'rows' [0-3] via this bitwise &.
+*/
 
 static void	tblock_conversion(unsigned short binary_mapi, unsigned short *array)
 {
@@ -87,7 +100,9 @@ static void	tblock_conversion(unsigned short binary_mapi, unsigned short *array)
 
 /*
 **	Creates the array of tetrino blocks utilised by the solver. Bzero clears,
-**	
+**	space for the fields is malloc'd, tetrino ID/flags are set. Data is set
+**	by converting the 16-bit short into 4 'lines' of shorts, with the
+**	remaining data being zeroed.
 */
 
 t_block		**create_tblocks(unsigned short *binary_map,

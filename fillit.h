@@ -6,7 +6,7 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 10:32:01 by jkuusist          #+#    #+#             */
-/*   Updated: 2020/01/06 17:28:31 by jkuusist         ###   ########.fr       */
+/*   Updated: 2020/01/07 10:35:18 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int					stamp_map(unsigned short *map_field,
 		unsigned short *tetrino);
 void				unstamp_map(unsigned short *map_field,
 		unsigned short *tetrino);
-void				reset_tetrino(unsigned short *tetrino, unsigned int map_size);
+void				reset_tetrino(unsigned short *tetrino,
+		unsigned int map_size);
 
 #endif
