@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:05:55 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/07 11:02:24 by lharvey          ###   ########.fr       */
+/*   Updated: 2020/01/07 14:23:29 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void		free_tblocks(t_block **array)
 **	t_block->tetrino_field[0-13] (named temp).
 */
 
-static void	stack_to_heap(unsigned short *array, t_block *temp)
+static void	assign_row_values(unsigned short *array, t_block *temp)
 {
 	int k;
 
@@ -126,7 +126,7 @@ t_block		**create_tblocks(unsigned short *binary_map,
 		temp->id = id;
 		temp->used_flag = 0;
 		tblock_conversion(binary_map[i], array);
-		stack_to_heap(array, temp);
+		assign_row_values(array, temp);
 		bit_field[i] = temp;
 		id++;
 		i++;
