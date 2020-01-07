@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:07:31 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/07 15:28:03 by lharvey          ###   ########.fr       */
+/*   Updated: 2020/01/07 16:03:48 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,8 @@ t_block			**solver(unsigned short *binary_map)
 						map_size)) != NULL)
 		{
 			success_printer(tetrino_count, map_size, map_field, temp_field);
-			break ;
 			free_tblocks(temp_field);
+			break ;
 		}
 		free_tblocks(temp_field);
 	}
