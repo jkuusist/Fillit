@@ -6,11 +6,10 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:21:04 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/07 14:13:12 by lharvey          ###   ########.fr       */
+/*   Updated: 2020/01/07 16:54:46 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Libft/libft.h"
 #include "fillit.h"
 #include <fcntl.h>
 #include <unistd.h>
