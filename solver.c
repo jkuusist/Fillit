@@ -6,24 +6,20 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:07:31 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/06 17:27:12 by jkuusist         ###   ########.fr       */
+/*   Updated: 2020/01/07 11:01:15 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "../Libft/libft.h"
+#include "Libft/libft.h"
 #include <stdlib.h>
-
-#include <stdio.h>
-
-//	int global_int = 0;
 
 /*
 ** check_tblocks returns -1 on NULL pointer, i (index) for unused t_blocks and
 ** finally, returns -2 if EVERY SINGLE ONE has been stamped.
 */
 
-void	reset_tetrino(unsigned short *tetrino, unsigned int map_size)
+void		reset_tetrino(unsigned short *tetrino, unsigned int map_size)
 {
 	while (shift_left(tetrino, 1, map_size) == 1)
 		;
@@ -47,9 +43,8 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 				bit_field[index]->used_flag = 1;
 				index = check_tblocks(bit_field);
 			}
-			else
-				if (shifter(bit_field[index]->tetrino_field, 1, map_size) == 0)
-					break ;
+			else if (shifter(bit_field[index]->tetrino_field, 1, map_size) == 0)
+				break ;
 		}
 		if (index >= 0)
 		{
@@ -88,9 +83,6 @@ t_block		**solver(unsigned short *binary_map)
 	map_size = (unsigned int)square_root(tetrino_count * 4);
 	while (map_size <= 14)
 	{
-		
-		//printf("map_size is now %d\n", map_size);
-
 		bit_field = create_tblocks(binary_map, tetrino_count);
 		temp_field = bit_field;
 		ft_bzero(map_field, (14 * 2));

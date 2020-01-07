@@ -6,14 +6,12 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 11:45:18 by lharvey           #+#    #+#             */
-/*   Updated: 2019/12/18 16:57:55 by lharvey          ###   ########.fr       */
+/*   Updated: 2020/01/07 11:02:54 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "../Libft/libft.h"
-
-#include <stdio.h>
+#include "Libft/libft.h"
 
 static unsigned short		check_bit(unsigned short tetrino_field,
 		unsigned int bit_nb)

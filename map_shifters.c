@@ -6,11 +6,11 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:03:13 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/06 17:24:47 by lharvey          ###   ########.fr       */
+/*   Updated: 2020/01/07 11:01:31 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/libft.h"
+#include "Libft/libft.h"
 #include "fillit.h"
 
 unsigned short			shift_left(unsigned short *bit_field, int shift_amount,

@@ -6,13 +6,13 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:05:55 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/07 10:42:04 by lharvey          ###   ########.fr       */
+/*   Updated: 2020/01/07 11:02:24 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "fillit.h"
-#include "../Libft/libft.h"
+#include "Libft/libft.h"
 
 /*
 **	This function returns -1 on NULL (an error catch), but provides the caller
