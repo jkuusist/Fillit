@@ -6,11 +6,11 @@
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 11:34:46 by jkuusist          #+#    #+#             */
-/*   Updated: 2020/01/07 11:02:16 by lharvey          ###   ########.fr       */
+/*   Updated: 2020/01/07 16:17:39 by lharvey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define MAP_SIZE 600
+#define MAP_SIZE 550
 #include <unistd.h>
 #include "Libft/libft.h"
 
