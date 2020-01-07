@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:07:31 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/07 11:01:15 by lharvey          ###   ########.fr       */
+/*   Updated: 2020/01/07 13:50:34 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_block		**algorithm_alpha(unsigned short *map_field, t_block **bit_field,
 	return (bit_field);
 }
 
-t_block		**solver(unsigned short *binary_map)
+t_block			**solver(unsigned short *binary_map)
 {
 	unsigned int	tetrino_count;
 	unsigned short	map_field[14];
@@ -92,11 +92,11 @@ t_block		**solver(unsigned short *binary_map)
 			if (map_size < 4)
 				map_size = check_four(map_field, map_size);
 			print_map(bit_field, map_size, tetrino_count);
+			free_tblocks(temp_field);
 			break ;
 		}
 		map_size++;
-		free(temp_field);
+		free_tblocks(temp_field);
 	}
-	free_tblocks(bit_field);
 	return (bit_field);
 }

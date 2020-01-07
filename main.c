@@ -6,7 +6,7 @@
 /*   By: lharvey <lharvey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:21:04 by lharvey           #+#    #+#             */
-/*   Updated: 2020/01/07 11:01:21 by lharvey          ###   ########.fr       */
+/*   Updated: 2020/01/07 13:52:33 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int						main(int argc, char **argv)
 	unsigned short	*binary_map;
 	t_block			**bit_field;
 
+	bit_field = NULL;
 	if ((fd = check_file(argc, argv)) == -1)
 	{
 		write(1, "error\n", 6);
