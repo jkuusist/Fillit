@@ -6,7 +6,7 @@
 #    By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/07 15:49:57 by jkuusist          #+#    #+#              #
-#    Updated: 2020/01/07 16:49:51 by jkuusist         ###   ########.fr        #
+#    Updated: 2020/01/09 15:38:38 by jkuusist         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,16 +27,16 @@ all: $(NAME)
 $(NAME):
 	make -C $(LIBFT) fclean
 	make -C $(LIBFT)
-	@gcc $(FLAGS) $(SRCS) $(LIBFT)/libft.a -o $(NAME)
+	gcc $(FLAGS) $(SRCS) $(LIBFT)/libft.a -o $(NAME)
 
 .PHONY: clean fclean re
 
 clean:
-	@rm -f $(OBJECTS)
+	rm -f $(OBJECTS)
 	make -C $(LIBFT) clean
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 	make -C $(LIBFT) fclean
 
 re: fclean all
