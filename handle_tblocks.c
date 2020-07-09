@@ -37,12 +37,12 @@ int			check_tblocks(t_block **src)
 void		free_tblocks(t_block **array)
 {
 	int i;
-	int j;
+//	int j;
 
 	if (array == NULL)
 		return ;
 	i = 0;
-	j = 0;
+//	j = 0;
 	while (array[i] != 0)
 	{
 		free(array[i]->tetrino_field);
